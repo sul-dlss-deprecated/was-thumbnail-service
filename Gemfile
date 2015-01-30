@@ -50,3 +50,4 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'bluepill'
 gem 'druid-tools'
+gem 'coveralls', require: false
