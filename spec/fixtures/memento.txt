@@ -1,0 +1,827 @@
+
+<html>
+
+<head>
+<meta http-equiv="keywords" content="high-energy, physics, SLAC, Stanford">
+<meta http-equiv="name"
+content="Welcome to the Stanford Linear Accelerator Center, a national laboratory operated by Stanford University for the Department of Energry and the home of the first U.S. Web site">
+<title>Welcome to SLAC</title>
+</head>
+
+<body bgcolor="#FFFFFF"
+background="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welcome-border.gif" link="#9B9B9B"
+vlink="#9B9B9B" alink="#800000">
+<script type="text/javascript">
+function SetCookie(cookieName,cookieValue,nDays) {
+  var today = new Date();
+  var expire = new Date();
+  if (nDays==null || nDays==0) nDays=1;
+  expire.setTime(today.getTime() + 86400000*nDays);
+  document.cookie = cookieName+"="+escape(cookieValue)
+    + ";expires="+expire.toGMTString() + ";path=/";
+}
+function SetAnchorDate(date) {
+  SetCookie("request.anchordate",date,365);
+}
+function SetAnchorWindow(maxSeconds) {
+  SetCookie("request.anchorwindow",maxSeconds,365);
+}
+function SUWaybackGetCookie(cookieName){
+	var keyValue = document.cookie.match('(^|;) ?' + cookieName + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
+</script>
+
+
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+
+<style type="text/css">
+  body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    min-width: 800px !important;
+  }
+  #wm-ipp a:hover {
+    text-decoration: underline !important;
+  }
+  .su-wayback-m-tooltip {
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    visibility: visible;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  .su-wayback-m-tooltip.in {
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+  }
+  .su-wayback-m-tooltip.top {
+    margin-top: -3px;
+    padding: 5px 0;
+  }
+  .su-wayback-m-tooltip.right {
+    margin-left: 3px;
+    padding: 0 5px;
+  }
+  .su-wayback-m-tooltip.bottom {
+    margin-top: 3px;
+    padding: 5px 0;
+  }
+  .su-wayback-m-tooltip.left {
+    margin-left: -3px;
+    padding: 0 5px;
+  }
+  .su-wayback-m-tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #f7f7f7;
+    text-align: center;
+    text-decoration: none;
+    background-color: #990000;
+    border-radius: 4px;
+  }
+  .su-wayback-m-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+  .su-wayback-m-tooltip.top .su-wayback-m-tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #990000;
+  }
+  .su-wayback-m-tooltip.top-left .su-wayback-m-tooltip-arrow {
+    bottom: 0;
+    left: 5px;
+    border-width: 5px 5px 0;
+    border-top-color: #990000;
+  }
+  .su-wayback-m-tooltip.top-right .su-wayback-m-tooltip-arrow {
+    bottom: 0;
+    right: 5px;
+    border-width: 5px 5px 0;
+    border-top-color: #990000;
+  }
+  .su-wayback-m-tooltip.right .su-wayback-m-tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-width: 5px 5px 5px 0;
+    border-right-color: #990000;
+  }
+  .su-wayback-m-tooltip.left .su-wayback-m-tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #990000;
+  }
+  .su-wayback-m-tooltip.bottom .su-wayback-m-tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #990000;
+  }
+  .su-wayback-m-tooltip.bottom-left .su-wayback-m-tooltip-arrow {
+    top: 0;
+    left: 5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #990000;
+  }
+  .su-wayback-m-tooltip.bottom-right .su-wayback-m-tooltip-arrow {
+    top: 0;
+    right: 5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #990000;
+  }
+  .su-wayback-m-tooltip {
+    font-size: 13px;
+    z-index: 100000;
+  }
+  .su-wayback-m-tooltip-inner {
+    background-color: #990000;
+    border: 1px solid #000; border: 0;
+    color: #f7f7f7;
+    -moz-box-shadow: 2px 5px 10px 2px #999;
+    -webkit-box-shadow: 2px 5px 10px 2px #999;
+    box-shadow: 2px 5px 10px 2px #999;
+  }
+  .su-wayback-m-tooltip.in {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  .su-wayback-m-tooltip.left {
+    margin-left: -12px;
+  }
+  @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700);
+  .su-wayback-m-years, .su-wayback-m-months, .su-wayback-m-days  {
+    border-collapse:collapse;
+    border-spacing:0;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .su-wayback-m-years td, .su-wayback-m-months td, .su-wayback-m-days td {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    padding: 5px;
+    border:1px solid #bbb;
+    overflow:hidden;
+    word-break:normal;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .su-wayback-m-years td > div, .su-wayback-m-months td > div, .su-wayback-m-days td > div {
+    background: #555;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+  }
+  .su-wayback-m-years .su-wayback-m-year-heading,
+  .su-wayback-m-months .su-wayback-m-month-heading,
+  .su-wayback-m-days .su-wayback-m-day-heading {
+    border:0;
+    font-weight:bold;
+    color:#9b9b9b;
+    text-align:left;
+    font-size:11px;
+    padding:0 0 3px;
+  }
+  .su-wayback-m-days .su-wayback-m-day-heading {
+    padding-left: 3px;
+  }
+  .su-wayback-m-year-label, .su-wayback-m-month-label, .su-wayback-m-day-label  {
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: right;
+    margin-right: 10px;
+    color: #999;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 50px;
+  }
+  .su-wayback-m-years .su-wayback-m-frequency,
+  .su-wayback-m-months .su-wayback-m-frequency,
+  .su-wayback-m-days .su-wayback-m-frequency {
+    height: 24px;
+    width: 24px;
+    background-color: #f7f7f7;
+  }
+
+  .su-wayback-m-year-display {margin: 10px 10px 20px 10px;}
+  .su-wayback-m-month-display {margin: 10px 10px 20px 10px;}
+  .su-wayback-m-day-display {margin: 10px 10px 25px 10px;}
+  
+  .su-wayback-m-month-display, .su-wayback-m-day-display {display: none;}
+  
+  .su-wayback-m-month-heading, .su-wayback-m-month-label,
+  .su-wayback-m-day-heading, .su-wayback-m-day-label {
+    display: none;
+  }
+  .su-wayback-m-months .su-wayback-m-month-heading {
+    padding-left: 3px;
+  }
+  .su-wayback-m-month-heading.dec, .su-wayback-m-day-heading.thirty {text-align: right;}
+
+  .su-wayback-m-days .su-wayback-m-frequency {
+    padding: 0;
+  }
+  .su-wayback-m-frequency.su-wayback-m-low {
+    background-color: #fee391;
+  }
+  .su-wayback-m-frequency.su-wayback-m-low-medium {
+    background-color: #fec44f;
+  }
+  .su-wayback-m-frequency.su-wayback-m-medium {
+    background-color: #fe9929;
+    color: #f7f7f7;
+  }
+  .su-wayback-m-frequency.su-wayback-m-medium-high {
+    background-color: #d95f0e;
+    color: #f7f7f7;
+  }
+  .su-wayback-m-frequency.su-wayback-m-high {
+    background-color: #993404;
+    color: #f7f7f7;
+  }
+</style>  
+
+<!-- TODO: We should be able to remove js/disclaim-element.js 
+           but without it the overlay doesn't show.
+           Probably related to JS code at very bottom of this page. -->
+<script type="text/javascript" src="https://swap.stanford.edu/js/disclaim-element.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+
+<script type="text/javascript" src="https://swap.stanford.edu/js/su-wayback-m-bootstrap-tooltip.js" ></script>
+
+<script type="text/javascript">
+
+  function daysInMonth(month,year) {
+     return new Date(year, month, 0).getDate();
+  }
+
+  function sumDigitString(digits){
+    var sum = 0;
+    for(var i=0; i< digits.length; i++){
+      var digit = digits[i];
+      sum = sum + parseInt(digit,16);
+    }
+    return sum;
+  }
+
+  $().ready(function(){
+    // Stanford Wayback show/hide toggle
+    $("#su-wayback-m-visibility-toggle").click(function() {
+      $(this).text($(this).text() == 'Show overlay' ? 'Hide overlay' : 'Show overlay');
+      $("#su-wayback-m-toolbar-info").toggle();
+      //$.cookie();
+      SetCookie("toogle_mode", $(this).text().substring(0,4),1);
+      $("#su-wayback-toolbar-mode").val($(this).text());
+      return false;
+  });
+
+  var toogle_mode = SUWaybackGetCookie("toogle_mode");
+  
+  if(toogle_mode == null || toogle_mode == '' ){
+	    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+	    $("#su-wayback-m-toolbar-info").toggle();
+  } else if(toogle_mode != null && toogle_mode == "Show"){
+	    $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+	    $("#su-wayback-m-toolbar-info").toggle();
+  } 
+  
+  var years_json={};
+  var months_json={};
+  var days_json={};
+  
+
+  var timemap_str = "625_27_1991:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_1992:-1:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_1993:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_1994:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_1995:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000_1996:-1:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000_1997:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000_1998:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_1999:3:00010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2000:-1:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2001:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2002:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2003:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2004:-1:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2005:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2006:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2007:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2008:-1:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2009:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2010:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2011:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2012:-1:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2013:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2014:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000_2015:-1:00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  var years_list = timemap_str.split("_");
+  
+  for(var i=2;i<years_list.length;i++){
+    
+    var year_record = years_list[i].split(":");
+    var year = year_record[0];
+    var year_digits = year_record[2];
+    
+    var detailed_month_json={};
+    var sum_month_json={};
+    var sum_year=0;
+    
+    var last_index = 0;
+    for(var month=1;month<=12;month++){
+      
+      no_of_days = daysInMonth(month,parseInt(year));
+      month_digit = year_digits.substring(last_index,last_index+no_of_days);
+      last_index=last_index+no_of_days;
+
+      var month_sum = sumDigitString(month_digit);
+      sum_year = sum_year+month_sum;
+      detailed_month_json[month]=month_digit;
+      sum_month_json[month]=month_sum;
+    }
+    days_json[year]=detailed_month_json;
+    months_json[year]=sum_month_json;
+    years_json[year]=sum_year;
+  }
+       
+
+  var freq_class;
+  var months = [ "January", "February", "March", "April", "May", "June", 
+                   "July", "August", "September", "October", "November", "December" ];
+
+ 
+  // Create cells for the YEARS visualization when the document is loaded.
+  $.each(years_json, function(key, value) {
+    determineFrequencyClass(value);
+     //console.log(key + ": " + value + " = " + freq_class);
+    if (freq_class.indexOf("captures")>=0) {
+      var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-key="' + key + '" data-original-title="' + key + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>');
+    } else {
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
+    }
+    $("#su-wayback-m-year-data").append(cell);
+    $("[data-toggle='tooltip']").tooltip();
+  });
+  
+  // When a year is clicked, create cells for the MONTHS visualization.
+  $(document).on('click', '#su-wayback-m-year-data td.su-wayback-m-captures', function () {
+    $("#su-wayback-m-year-data td > div").css("opacity", "0");
+    $(this).find("div").css("opacity", "1");
+    $(".su-toolbar-viz-message").css("display", "none");
+    $(".su-wayback-m-month-display").css("display", "block");
+    $(".su-wayback-m-day-display .su-wayback-m-day-label").css("display", "none");
+    $(".su-wayback-m-day-display .su-wayback-m-day-heading").css("display", "none");
+    $(".su-wayback-m-month-display .su-wayback-m-month-label").css("display", "inline-block");
+    $(".su-wayback-m-month-display .su-wayback-m-month-heading").css("display", "table-cell");
+    $("#su-wayback-m-month-data").empty();
+    $("#su-wayback-m-day-data").empty();
+    target_year = $(this).data("key");
+    $.each(months_json[target_year], function(key, value) {
+      determineFrequencyClass(value);
+      month_label = getMonthLabel(key);
+      // console.log("key: " +key + ", value: " + value + " month label: " + month_label);
+      if (freq_class.indexOf("captures")>=0) {
+        // console.log("cell has: " + freq_class);
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-year="' + target_year + '" data-key="' + key + '" data-original-title="' +  month_label + " " + target_year + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>');
+      } else {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '""><div style="opacity: 0;">&nbsp;</div></td>');
+      }
+      $("#su-wayback-m-month-data").append(cell);
+        $("[data-toggle='tooltip']").tooltip();
+    });
+  });
+  
+  // When a month is clicked, create cells for the DAYS visualization.
+  $(document).on('click', '#su-wayback-m-month-data td.su-wayback-m-captures', function () {
+    $("#su-wayback-m-month-data td > div").css("opacity", "0");
+    $(this).find("div").css("opacity", "1");
+    $(".su-wayback-m-day-display").css("display", "block");
+    $(".su-wayback-m-day-display .su-wayback-m-day-label").css("display", "inline-block");
+    $(".su-wayback-m-day-display .su-wayback-m-day-heading").css("display", "table-cell");
+    $("#su-wayback-m-day-data").empty();
+    target_year = $(this).data("year");
+    target_month = $(this).data("key");
+    month_label = getMonthLabel(target_month);
+    month_data = days_json[target_year][target_month];
+    for (var i = 0; i < month_data.length; i++) {
+      var day_value = month_data.substring(i, i+1);
+      // convert day value to int from string
+      determineFrequencyClass(parseInt(day_value, 10));
+      var day_label = i + 1; // adjust for zero-based index; days start with 1
+      var day_2_digits_label = ("0"+day_label).slice(-2);
+      var month_2_digits_label = ("0"+target_month).slice(-2);
+      if (freq_class.indexOf("captures")>=0) {
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="' + month_label + " " + day_label + ", " + target_year + ': ' + day_value +  ' captures" title=""><a href="https://swap.stanford.edu/'+target_year+month_2_digits_label+day_2_digits_label+'120000/'+'http://www.slac.stanford.edu/" style="z-index: 100001;"><div style="opacity: 0;">&nbsp;</div></a></td>');
+      } else {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
+      }
+      $("#su-wayback-m-day-data").append(cell);
+      $("[data-toggle='tooltip']").tooltip();
+    }
+  });
+
+  function determineFrequencyClass(freq) {
+    if (freq == 1) {
+      freq_class = "su-wayback-m-low su-wayback-m-captures";
+    } else if ((freq > 1) && (freq <= 3 )) {
+      freq_class = "su-wayback-m-low-medium su-wayback-m-captures";
+    } else if ((freq > 3) && (freq <= 5 )) {
+      freq_class = "su-wayback-m-medium su-wayback-m-captures";
+    } else if ((freq > 5) && (freq <= 7 )) {
+      freq_class = "su-wayback-m-medium-high su-wayback-m-captures";
+    } else if (freq > 7) {
+      freq_class = "su-wayback-m-high su-wayback-m-captures";
+    } else {
+      freq_class = "";
+    }
+    
+    return freq_class;
+  }
+  
+  function getMonthLabel(month_value) {
+    month_label = months[month_value - 1];
+    return month_label;
+  }
+
+});
+</script>
+
+<style type="text/css"></style>
+<div id="wm-ipp" style="display:none; position:relative;padding:0;min-height:90px;min-width:800px; z-index:99999; margin: 0 10px;">
+  <div id="wm-ipp-inside" 
+    style="position:fixed;padding: 0!important;margin:0!important;
+          width:96%;min-width:780px;
+          border: 2px solid #999; border-top:none;
+          border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+          background-color: #990000;
+          text-align:center;
+          font-size:12px!important;font-family:'Lucida Grande','Arial',sans-serif!important; -moz-box-shadow: 3px 5px 5px #777; -webkit-box-shadow: 3px 5px 5px #777; box-shadow: 3px 5px 5px #777; border-collapse: separate;">
+
+          <div id="su-wayback-m-sul-logo" style="padding: 6px 12px 12px; height: 36px; -moz-box-sizing: border-box; -webkit-box-sizing; border-box; box-sizing: border-box;">
+            <div style="width: 100%;">
+              <span style="display: inline-block; float: left;">
+                <a href="http://library.stanford.edu" title="Stanford University Library homepage">
+                  <img src="https://swap.stanford.edu/images/toolbar/SUL-Logo-white-text-h25.png" alt="Stanford Web Archive Portal" width="297" height="25" border="0" />
+                </a>
+              </span>
+              <span class="su-wayback-m-toolbar-actions"
+                    style="display: inline-block; float: right; padding-top: 3px;
+                          font-size: 13px;
+                          font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;">
+                <a href="https://swap.stanford.edu/"  
+                   title="Find out more about the Stanford Web Archive Portal"
+                  style="color: #ddd; text-decoration: none;">
+                    Stanford Web Archive Portal Home</a>
+                <span style="color: #bbb; padding: 4px;">|</span>
+                <a href="https://library.stanford.edu/projects/web-archiving/frequently-asked-questions#stanford_swap"
+                    style="color: #ddd; text-decoration: none; margin-right: 12px;">
+                    Help</a>
+              </span>
+            </div>           
+          </div>
+          <div style="float: left; height: 34px; width: 100%; margin:0; padding: 8px 20px; font-size: 14px; font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif!important; color: #555; background-color: #f7f7f7; -moz-box-sizing: border-box; -webkit-box-sizing; box-sizing: border-box;">
+            <div style="float: left; margin-left: 30px;">
+              <span>
+                Showing 
+                <span style="text-decoration: underline;">
+                  http://www.slac.stanford.edu/</span> 
+                captured on
+                Jan
+                4,
+                1999
+              </span>
+            </div>
+
+
+    <div style="float: right;">
+              <span>
+
+              
+                <a href="https://swap.stanford.edu/19980901000000/http://www.slac.stanford.edu/" style="color: #555; text-decoration: none;"> 
+                <img src="https://swap.stanford.edu/images/toolbar/su-wayback-m-left-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.6;">
+                          Previous capture</a>
+              
+              
+              </span>
+              <span style="color: #bbb; padding: 4px;">|</span>
+              <a href="#" id="su-wayback-m-visibility-toggle"
+                  style="color: #555; font-weight: bold; text-decoration: none;">
+                  Hide overlay</a>
+              <span style="color: #bbb; padding: 4px;">|</span>
+
+              <span>
+
+              
+                   <span style="color: #aaa; text-decoration: none;"> Next capture</span>
+                <img src="https://swap.stanford.edu/images/toolbar/su-wayback-m-right-arrow.png" style="width: 14px; height: 14px; vertical-align: middle; margin-bottom: 3px; opacity: 0.2;">
+                    
+              
+               
+              </span>
+            </div>
+          </div>
+          
+
+    <table id="su-wayback-m-toolbar-info" 
+           style="border-collapse:collapse;margin: 0 0;width:100%;
+                  border-top: 2px solid #bbb; 
+                  border-bottom-left-radius: 9px; border-bottom-right-radius: 9px;
+                  background-color: #eee;">
+      <tbody>     
+      <tr>
+        <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+          <table style="border-collapse:collapse;margin:0 auto;padding:0;">
+            <tbody>
+              <tr>
+                <td style="padding: 20px 0 0; text-align:center" colspan="2">
+                  <form target="_top" method="get" action="https://swap.stanford.edu/query" name="wmtb" id="wmtb"
+                        style="margin:0!important;padding:0!important;">
+                        <input type="text" name="url" id="wmtbURL" 
+                                value="http://www.slac.stanford.edu/" maxlength="256"
+                                style="width:300px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;"/>
+                        <input type="hidden" name="type" value="replay">
+                        <input type="hidden" name="date" value="19990104000000">
+                        <input type="submit" value="Browse history" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;"/>
+                        <span id="wm_tb_options" style="display:block;"></span>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h2 style="font-family: Arial,sans-serif; font-size: 15px; color: #777; margin-top: 20px; margin-bottom: 10px;">
+                     Captured
+                      <a href="https://swap.stanford.edu/19990104000000*/http://www.slac.stanford.edu/" style="color: #333; text-decoration: none;">5 times</a>
+                     between
+                     
+
+                     <a href="https://swap.stanford.edu/19951222000000/http://www.slac.stanford.edu/" style="color: #333; text-decoration: none;">December 22, 1995</a>
+                     and
+                     <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/" style="color: #333; text-decoration: none;">January 4, 1999</a>
+                  </h2>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:0!important;text-align:left;vertical-align:top;width:100%;">
+          <table style="border-collapse:collapse;margin:0 auto;padding:0;min-width: 850px;">
+            <tbody>
+              <tr>
+                <td>
+                  <div class="su-wayback-m-year-display">
+                    <span class="su-wayback-m-year-label">
+                      Year
+                    </span>
+
+                    <table class="su-wayback-m-years">
+                      <tr>
+                        <th class="su-wayback-m-year-heading" colspan="4">1991</th>
+                        <th class="su-wayback-m-year-heading" colspan="5">1995</th>
+                        <th class="su-wayback-m-year-heading" colspan="5">2000</th>
+                        <th class="su-wayback-m-year-heading" colspan="5">2005</th>
+                        <th class="su-wayback-m-year-heading" colspan="3">2010</th>
+                        <th class="su-wayback-m-year-heading" colspan="2" style="text-align: right;">2014</th>
+                      </tr>
+                      <tr id="su-wayback-m-year-data">
+                        <!-- table cells are populated by jQuery below -->
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div class="su-wayback-m-month-display">
+                    <span class="su-wayback-m-month-label">
+                      Month
+                    </span>
+
+                    <table class="su-wayback-m-months">
+                      <tr>
+                        <th class="su-wayback-m-month-heading jan" colspan="3">Jan</th>
+                        <th class="su-wayback-m-month-heading" colspan="4">Apr</th>
+                        <th class="su-wayback-m-month-heading" colspan="4">Aug</th>
+                        <th class="su-wayback-m-month-heading dec" colspan="1">Dec</th>
+                      </tr>
+                      <tr id="su-wayback-m-month-data">
+                        <!-- table cells are populated by jQuery below -->
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div class="su-wayback-m-day-display">
+                    <span class="su-wayback-m-day-label">
+                      Day
+                    </span>
+
+                    <table class="su-wayback-m-days">
+                      <tr>
+                        <th class="su-wayback-m-day-heading" colspan="4">1st</th>
+                        <th class="su-wayback-m-day-heading" colspan="5">5th</th>
+                        <th class="su-wayback-m-day-heading" colspan="5">10th</th>
+                        <th class="su-wayback-m-day-heading" colspan="5">15th</th>
+                        <th class="su-wayback-m-day-heading" colspan="5">20th</th>
+                        <th class="su-wayback-m-day-heading" colspan="5">25th</th>
+                        <th class="su-wayback-m-day-heading" colspan="1">30th</th>
+                      </tr>
+                      <tr id="su-wayback-m-day-data">
+                        <!-- table cells are populated by jQuery below -->
+                      </tr>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+           </tbody>
+         </table>
+       </td>
+    </tr>
+   </tbody>
+  </table>
+
+  <script>
+  
+
+
+  </script>
+  
+  </div> <!-- end #wm-ipp-inside -->
+</div> <!-- end #wm-ipp -->
+
+<script type="text/javascript">
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+</script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+
+<!-- <hr align=left width="600"><small><font color="FFFFFF">600</font></small><br clear="all">-->
+
+<table width="570" border="0">
+<!-- initializing row: precedes colspan -->
+  <tr>
+    <td width="100"><img alt src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/blank.gif"
+    width="100" height="1" alt></td>
+    <td width="100"><img alt src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/blank.gif"
+    width="100" height="1" alt></td>
+    <td width="100"><img alt src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/blank.gif"
+    width="100" height="1" alt></td>
+    <td width="100"><img alt src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/blank.gif"
+    width="100" height="1" alt></td>
+    <td width="50"><img alt src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/blank.gif"
+    width="50" height="1" alt></td>
+    <td width="120"><img alt src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/blank.gif"
+    width="120" height="1" alt></td>
+  </tr>
+  <tr>
+<!-- BEGIN INSTITUTIONAL IDENTIFICATION BLOCK -->
+    <td colspan="2" rowspan="3" valign="top" align="left"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/new-welcome.gif"
+    alt="[Stanford Linear Accelerator Center]" width="180" height="190"> <div align="left"><table
+    border="0" width="180">
+      <tr>
+        <td width="100%" align="left" valign="top"><strong><font face="Arial,Geneva,sans-serif"
+        color="#FFFFFF">A national laboratory operated by </font><font
+        face="Arial,Geneva,sans-serif" color="#FFFFFF"><a style="color: rgb(192,217,217)"
+        href="https://swap.stanford.edu/19990104000000/http://www.stanford.edu/">Stanford University</a> for the <a
+        style="color: rgb(192,217,217)" href="https://swap.stanford.edu/19990104000000/http://www.doe.gov/">Department of Energy</a> and
+        home of the </font><a style="color: rgb(192,217,217)"
+        href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/pubs/slacpubs/7000/slac-pub-7636.html"><font
+        face="Arial,Geneva,sans-serif" color="#FFFFFF">first U.S. Web site.</font></a></strong> <!-- END INSTITUTIONAL IDENTIFICATION BLOCK --> <!-- BEGIN SHP BUTTONS --> <p
+        align="left"><a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/detailed.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-detailed.gif"
+        alt="[SLAC Detailed Home Page]" border="0" width="160" height="40"></a><br>
+        <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/siresearch.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-rp.gif"
+        alt="[Research Program at SLAC]" border="0" width="80" height="40"></a><a
+        href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/sciinfo.shtml"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-si.gif"
+        alt="[Scientific Information from SLAC]" border="0" width="80" height="40"></a><br>
+        <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/compute.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-comp.gif" alt="[Computing at SLAC]"
+        border="0" width="80" height="30"></a><a
+        href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/organize.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-org.gif" alt="[SLAC Organization]"
+        border="0" width="80" height="30"></a><br>
+        <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/working.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-was.gif" alt="[Working at SLAC]"
+        border="0" width="160" height="30"></a><br>
+        <font face="Arial,Geneva,sans-serif" color="#FFFFFF"><a style="color: rgb(192,217,217)"
+        href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/feature/"><small><strong>Previous Feature Articles</strong></small></a></font></p>
+        <p><!-- END SHP BUTTONS --> <!-- BEGIN VVC REGION --> <a href="https://swap.stanford.edu/19990104000000/http://www2.slac.stanford.edu/vvc/home.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/vvclogo.gif"
+        alt="[Enter SLAC's Virtual Visitor Center]" border="0" width="120" height="327"
+        hspace="10"></a></td>
+      </tr>
+    </table>
+    </div></td>
+<!-- END VVC REGION -->
+<!-- 3-COLSPAN CELL HOLDING AERIAL PHOTO -->
+    <td colspan="3" width="250" valign="middle" align="center"><p align="center"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/lookingwest.jpg"
+    alt="Looking down the Klystron Gallery from the Research Yard" width="255" height="204"></td>
+<!-- BEGIN RIGHTHAND SIDE VERTICAL BUTTON COLUMN -->
+    <td valign="middle" align="center"><p align="center"><a
+    href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/welcome/aboutslac.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-aboutslac.gif"
+    alt="[About SLAC]" border="0" vspace="1" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/welcome/mission.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-mission.gif" alt="[Mission]"
+    vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/welcome/location.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-reachus.gif"
+    alt="[How to Reach Us]" vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/media-info/"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-mediainfo.gif"
+    alt="[Media Information]" vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/pubs/beamline/"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/wel-beamline.gif" alt="[Beam Line]"
+    vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/gen/edu/education.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-education.gif"
+    alt="[Educational Programs]" vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/emp/emp-opp/emp-opp.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-employement.gif"
+    alt="[Employment Opportunities]" vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/grp/pao/tour.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-tours.gif"
+    alt="[Tours of SLAC]" vspace="1" border="0" width="92" height="23"></a><br>
+    <a href="https://swap.stanford.edu/19990104000000/http://www-spires.slac.stanford.edu/find/spires.html"><img
+    src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/welbutton-spires.gif" alt="SPIRES"
+    vspace="1" border="0" width="92" height="23"></a></td>
+  </tr>
+<!-- END RIGHTHAND SIDE VERTICAL BUTTON COLUMN -->
+  <tr>
+<!-- BEGIN SEARCH BOXES -->
+    <td colspan="3" valign="top" align="center"><form
+    action="https://swap.stanford.edu/19990104000000/http://search.stanford.edu/query.html" method="GET" name="seek">
+      <input type="hidden" name="col" value="stanford"><input type="hidden" name="qp" value><input
+      type="hidden" name="qs" value="+site:slac.stanford.edu"><input type="hidden" name="qc"
+      value><input type="hidden" name="ws" value="0"><input type="hidden" name="qm" value="0"><input
+      type="hidden" name="st" value="1"><input type="hidden" name="nh" value="10"><input
+      type="hidden" name="lk" value="1"><input type="hidden" name="rf" value="0"><input
+      type="hidden" name="oq" value><input type="hidden" name="rq" value="0"><p><input
+      type="text" size="24" maxlength="2047" name="qt"><br>
+      <small><font face="Arial,Geneva,sans-serif"><strong>Website Search</strong></font></small></p>
+    </form>
+    </td>
+    <td valign="top" align="center"><form
+    action="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/cgi-bin/spiface/find/binlist/wwwg" method="GET"
+    name="Phone">
+      <p><input type="text" size="13" name="name"><br>
+      <strong><small><a style="color: rgb(160,61,83)"
+      href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/comp/telecom/phone-dir/search.html"><font
+      face="Arial,Geneva,sans-serif">Phonebook</font></a><font face="Arial,Geneva,sans-serif">
+      Search</font></small></strong> </p>
+    </form>
+    </td>
+  </tr>
+<!-- END SEARCH BOXES -->
+<!-- BEGIN FEATURE REGION -->
+  <tr>
+    <td colspan="4" valign="top"><hr>
+    <p><a style="color: rgb(160,61,83)" href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/feature/981223/dorfanfeature.html"><font
+    face="Arial,Geneva,sans-serif"><strong>Jonathan Dorfan Named New SLAC Director</strong></font></a>
+    </p>
+    <table border="0" width="100%" cellspacing="4" cellpadding="4">
+      <tr>
+        <td valign="top"><font face="Arial,Geneva,sans-serif"><small>Stanford University President
+        Gerhard Casper has named Jonathan Dorfan to become Director on September 1 when Burton
+        Richter steps down after 15 years in the post.</small></font> <p><small><a
+        href="https://swap.stanford.edu/19990104000000/http://www.stanford.edu/dept/news/release/981222dorfan.html"><font
+        face="Arial,Geneva,sans-serif">Stanford Press Release</font></a><font
+        face="Arial,Geneva,sans-serif"> </font></small></td>
+        <td valign="top"><a href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/feature/981223/dorfanfeature.html"><img
+        src="https://swap.stanford.edu/19990104000000im_/http://www.slac.stanford.edu/welcome/images/icondorfan.jpg" alt="Jonathan Dorfan"
+        border="0" hspace="3" vspace="3" width="100" height="117"></a></td>
+      </tr>
+    </table>
+    <hr>
+    <font face="Geneva,Arial,sans-serif"><small><h4 align="left">SLAC-sponsored Conferences,
+    Workshops, and Meetings</small></h4>
+    <p>[an error occurred while processing this directive]<br>
+    <small>Check the <a style="color: rgb(160,61,83)"
+    href="https://swap.stanford.edu/19990104000000/http://www-spires.slac.stanford.edu/spires/form/confspif.html">SPIRES Conferences
+    database</a> for physics conferences elsewhere or the <a
+    href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/conf/index.shtml">Conferences</a> page for recent
+    SLAC-sponsored conferences.</font></p>
+    </small><hr>
+    <p><small>Owner: <a style="color: rgb(160,61,83)"
+    href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/owner/henniss/"><i>Henniss</i></a> <br>
+    Last modified Tue Nov 10 09:01:34 PST 1998 by <a
+    href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/contact/mcdunn">McDunn</a> <br>
+    <a style="color: rgb(160,61,83)"
+    href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/welcome/oversight.html">Oversight and maintenance of
+    this page</a> <br>
+    <a style="color: rgb(160,61,83)" href="https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/slac/disclaimer.html"><i>Disclaimers,
+    Copyright, and Other Fine Print</i></a></small> </td>
+<!-- END FOOTER -->
+  </tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 0:00:00 Jan 4, 1999 AND RETRIEVED FROM THE
+     AN OPENWAYBACK INSTANCE ON 0:09:57 Jan 22, 2015.
+     JAVASCRIPT APPENDED BY OPENWAYBACK, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

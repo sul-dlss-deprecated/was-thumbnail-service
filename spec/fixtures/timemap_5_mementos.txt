@@ -1,0 +1,8 @@
+<http://test2.edu>; rel="original",
+<https://swap.stanford.edu/timemap/link/http://test2.edu>; rel="self"; type="application/link-format"; from="Fri, 22 Dec 1995 00:00:00 GMT"; until="Mon, 04 Jan 1999 00:00:00 GMT",
+<https://swap.stanford.edu/http://test2.edu>; rel="timegate",
+<https://swap.stanford.edu/19951222000000/http://test2.edu/>; rel="first memento"; datetime="Fri, 22 Dec 1995 00:00:00 GMT",
+<https://swap.stanford.edu/19961125000000/http://test2.edu/>; rel="memento"; datetime="Mon, 25 Nov 1996 00:00:00 GMT",
+<https://swap.stanford.edu/19971219000000/http://test2.edu/>; rel="memento"; datetime="Fri, 19 Dec 1997 00:00:00 GMT",
+<https://swap.stanford.edu/19980901000000/http://test2.edu/>; rel="memento"; datetime="Tue, 01 Sep 1998 00:00:00 GMT",
+<https://swap.stanford.edu/19990104000000/http://test2.edu/>; rel="last memento"; datetime="Mon, 04 Jan 1999 00:00:00 GMT"

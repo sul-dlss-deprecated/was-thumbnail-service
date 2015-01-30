@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stanford Web Archive Portal</title>
+
+   <!-- Bootstrap sytles -->
+    <link href="https://swap.stanford.edu/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Two stylesheets below are for Stanford Identity footer -->
+    <link href="https://www.stanford.edu/su-identity/css/su-identity.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+    <!-- Original Wayback Machine CSS -->
+    <link href="https://swap.stanford.edu/css/styles.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- Customized Stanford Wayback Machine CSS -->
+    <link href="https://swap.stanford.edu/css/su-wayback.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body onload="" class="">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://swap.stanford.edu/js/bootstrap.min.js"></script>
+    <!-- Stanford Wayback specific JS -->
+    <script src="https://swap.stanford.edu/js/su-wayback.js"></script>
+
+    <div id="su-wrap"> <!-- #su-wrap start -->
+      <div id="su-content"> <!-- #su-content start -->
+
+        <!-- Brandbar snippet start -->
+        <div id="brandbar">
+          <div class="container">
+            <a href="http://library.stanford.edu/">
+              <img alt="Stanford University Libraries" src="https://swap.stanford.edu/images/SUL-Logo-white-text-h25.png">
+            </a>
+            <span id="report-problem">
+          	  <a href="mailto:sul-was-support@lists.stanford.edu" >Feedback</a>
+          	</span>
+          </div>
+        </div>
+        <!-- Brandbar snippet end -->
+
+        <!-- Report a problem form -->
+        <div id="report-problem-form" class="">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+                <h2>Contact Us</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-2">
+                <form accept-charset="UTF-8" action="/contact" class="form-horizontal report-problem" data-remote="true" method="post">
+
+                	<div id="contact-us-errors" class="contact-us-errors alert alert-error hidden"></div>
+
+                	<input id="from" name="from" type="hidden" value="/galleries/my-fancy-gallery-with-a-pretty-long-title">
+                	<input id="auto_response" name="auto_response" type="hidden" value="true">
+                	<input id="loadtime" name="loadtime" type="hidden" value="2014-09-15 16:22:47 -0700">
+
+                		<div class="form-group">
+                		  <label class="control-label col-xs-12 col-sm-3 col-md-2" for="subject">Subject</label>
+                		  <div class="col-xs-8 col-sm-6 col-md-5">
+                		    <select class="col-md-3 form-control" id="subject" name="subject"><option value="default">Select a topic...</option>
+                <option value="metadata">Corrections to content</option>
+                <option value="error">Problem with the website</option>
+                <option value="other">Other questions</option></select>
+                		  </div>
+                		</div>
+	
+                	<div class="form-group">
+                	  <label class="control-label col-xs-12 col-sm-3 col-md-2" for="message">Message</label>
+                	  <div class="col-xs-12 col-sm-9 col-md-10">
+                	    <textarea class="form-control" id="message" name="message" placeholder="Please describe your question or problem." rows="10"></textarea>
+                	  </div>
+                	</div>
+
+                	<div class="form-group">
+                	  <label class="control-label col-xs-12 col-sm-3 col-md-2" for="name">Your name</label>
+                	  <div class="col-xs-8 col-sm-6 col-md-5">
+                	    <input class="form-control" id="fullname" name="fullname" placeholder="Your name" type="text" value="">
+                	  </div>
+                	</div>
+
+                	<div class="form-group">
+                	  <label class="control-label col-xs-12 col-sm-3 col-md-2" for="email">Your email</label>
+                	  <div class="col-xs-8 col-sm-6 col-md-5">
+                	    <input class="form-control" id="email" name="email" placeholder="Email address" type="text" value="">
+                	  </div>
+                	</div>
+
+                	<div class="form-group hidden">
+                	  <label class="control-label col-xs-12 col-sm-3 col-md-2" for="email">Leave blank</label>
+                	  <div class="col-xs-8 col-sm-6 col-md-5">
+                	    <input class="form-control" id="email_confirm" name="email_confirm" placeholder="Please leave this field blank - it is used to prevent spam submissions" type="text" value="">
+                	  </div>
+                	</div>
+
+                	<div class="form-group">
+                	  <div class="col-sm-offset-3 col-sm-6 col-md-offset-2">
+                	    <input class="btn btn-default" name="commit" type="submit" value="Send">
+                	    <a href="/" class="cancel-link">Cancel</a>
+                	  </div>
+                	</div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site masthead: application title and subtitle -->
+        <div class="masthead">
+          <div class="container">
+            
+            <div class="site-header-content">
+              <h1><a href="https://swap.stanford.edu/">Stanford Web Archive Portal</a>
+                <!-- Toggle icon used to show navbar, which is hidden when 
+                    viewport is less than  768px wide -->
+                <div class="navbar navbar-default">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#wayback-navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>  
+                </div> <!-- end toggle icon -->
+              </h1>
+              <h2 class="hidden-xs">
+                A searchable collection of websites archived by Stanford University
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search bar below masthead -->
+        <nav class="navbar navbar-default search-bar" role="navigation">
+          <div class="container">
+            <!-- Search bar content for toggling; content is visible when
+                 viewport is at least 768px wide, hidden when less than 768px -->
+            <div class="collapse navbar-collapse" id="wayback-navbar">
+              <form class="navbar-form center-block clearfix" action="https://swap.stanford.edu/query" method="get" role="search">
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">http://</span>
+                    <input type="hidden" name="type" value="urlquery">
+                    <input type="text" name="url" class="form-control input-sm search-url" size="30" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <select name="date" class="form-control input-sm">
+        						<option value="" selected="">Any year</option>
+        						<option>2010</option>
+        						<option>2009</option>
+        						<option>2008</option>
+        						<option>2007</option>
+        						<option>2006</option>
+        						<option>2005</option>
+        						<option>2004</option>
+        						<option>2003</option>
+        						<option>2002</option>
+        						<option>2001</option>
+        						<option>2000</option>
+        						<option>1999</option>
+        						<option>1998</option>
+        						<option>1997</option>
+        						<option>1996</option>
+        					</select>
+                </div>
+                <button type="submit" class="btn btn-default btn-sm">Browse history</button>
+              </form>
+              <!-- <div class="form-group advanced-search">
+                <a href="https://swap.stanford.edu/advanced_search.jsp">
+                  Advanced Search
+                </a>
+              </div> -->
+            </div><!-- /.navbar-collapse -->
+          </div>
+        </nav>
+
+
+
+<!-- Main page content -->
+<div id="main-container" class="container">
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      <div class="no-results-msg">
+        Bad Query Exception
+      </div>
+      
+      <div class="no-results-suggestions">
+        <p>The request is missing information, or is not understood by this server. Bad URL(http://)</p>
+
+        
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+<!-- Closing tags below close tags opened in UI_header.jsp -->
+      </div> <!-- #su-content end -->
+    </div> <!-- #su-wrap end -->
+
+  
+
+
+
+    <!-- Stanford global footer snippet start -->
+    <div id="global-footer">
+      <div class="container">
+        <div class="row">
+          <div id="bottom-logo" class="span2">
+            <a href="http://www.stanford.edu">
+              <img src="https://www.stanford.edu/su-identity/images/footer-stanford-logo@2x.png" alt="Stanford University" width="105" height="49"/>
+            </a>
+          </div>
+          <!-- #bottom-logo end -->
+          <div id="bottom-text" class="span10">
+            <ul>
+              <li class="home">
+                <a href="http://www.stanford.edu">SU Home</a>
+              </li>
+              <li class="maps alt">
+                <a href="http://visit.stanford.edu/plan/maps.html">Maps &amp; Directions</a>
+              </li>
+              <li class="search-stanford">
+                <a href="http://www.stanford.edu/search/">Search Stanford</a>
+              </li>
+              <li class="terms alt">
+                <a href="http://www.stanford.edu/site/terms.html">Terms of Use</a>
+              </li>
+              <li class="emergency-info">
+                <a href="http://emergency.stanford.edu">Emergency Info</a>
+              </li>
+            </ul>
+          </div> <!-- .bottom-text end -->
+          <div class="clear"></div>
+          <p class="copyright vcard">&copy; <span class="fn org">Stanford University</span>, <span class="adr"> <span class="locality">Stanford</span>, <span class="region">California</span> <span class="postal-code">94305</span> </span>
+            <span id="copyright-complaint">
+              <a href="http://www.stanford.edu/group/security/dmca.html" class="copyright-complaint" >Copyright Complaints</a>
+            </span>
+          </p>
+        </div> <!-- .row end -->
+      </div> <!-- .container end -->
+    </div> <!-- global-footer end -->
+    <!-- Global footer snippet end -->
+
+  </body>
+</html>
