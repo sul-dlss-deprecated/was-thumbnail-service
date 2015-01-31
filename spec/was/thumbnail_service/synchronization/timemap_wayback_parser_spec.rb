@@ -4,6 +4,7 @@ require 'spec_helper'
 describe Was::ThumbnailService::TimemapWaybackParser do
 
   before :all do
+    Rails.configuration.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
     @fixtures = "spec/fixtures/"
     @timemap_5_mementos = File.read("#{@fixtures}/timemap_5_mementos.txt")
     @rest_404_response  = File.read("#{@fixtures}/404_response.txt")
