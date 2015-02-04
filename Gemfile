@@ -43,6 +43,9 @@ gem 'rest-client'
 gem 'equivalent-xml'
 gem 'simhash'
 gem 'webmock'
+gem 'execjs'
+
+gem 'therubyracer'
 
 gem 'yard'
 gem 'phantomjs'
@@ -52,3 +55,11 @@ gem 'daemons'
 gem 'bluepill'
 gem 'druid-tools'
 gem 'coveralls', require: false
+
+group :deployment do
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'lyberteam-capistrano-devel'
+end
