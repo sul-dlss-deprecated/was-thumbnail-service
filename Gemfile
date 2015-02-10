@@ -37,12 +37,10 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem "rspec"
-gem 'rspec-rails'
 gem 'rest-client'
 gem 'equivalent-xml'
 gem 'simhash'
-gem 'webmock'
+#
 gem 'execjs'
 
 gem 'therubyracer'
@@ -55,6 +53,12 @@ gem 'daemons'
 gem 'bluepill'
 gem 'druid-tools'
 gem 'coveralls', require: false
+gem "rspec"
+gem 'rspec-rails'
+  
+group :test do
+  gem 'webmock'
+end
 
 group :deployment do
   gem 'capistrano', '~> 3.0'
