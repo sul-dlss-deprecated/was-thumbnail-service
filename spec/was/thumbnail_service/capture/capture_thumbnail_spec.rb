@@ -2,12 +2,16 @@
 require 'spec_helper'
  
 
-describe Was::ThumbnailService::CaptureThumbnail do
+describe Was::ThumbnailService::Capture::CaptureThumbnail do
+  
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.hook_into :webmock # or :fakeweb
+  end
   
   before :all do
     @fixtures = "spec/fixtures/"
     @memento_html = File.read("#{@fixtures}/memento.txt")
-  
   end
   
   before :each do
@@ -15,6 +19,7 @@ describe Was::ThumbnailService::CaptureThumbnail do
   describe ".process_thumbnail" do
     pending
   end
+  
   
   describe ".capture" do
     before :each do
@@ -24,14 +29,14 @@ describe Was::ThumbnailService::CaptureThumbnail do
     end
     
     it "should create an temporary image for a webpage" do
-      capture_thumbnail = Was::ThumbnailService::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/","19990104000000")
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/","19990104000000")
       result = capture_thumbnail.capture
       expect(result.length).to eq(0)
       expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpg")).to be true
     end
     
     it "should return result message if there is an error" do
-      capture_thumbnail = Was::ThumbnailService::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/20120101120000/http://not.existent.edu/","20120101120000")
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/20120101120000/http://not.existent.edu/","20120101120000")
       result = capture_thumbnail.capture
       expect(result.length).to be > 0
       expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jpg")).to be false
@@ -54,14 +59,14 @@ describe Was::ThumbnailService::CaptureThumbnail do
     end
     
     it "should copy the thumbnail file from the temp location to the stacks location" do
-      capture_thumbnail = Was::ThumbnailService::CaptureThumbnail.new(1, "druid:aa111aa1111", "", "19961125000000")
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "druid:aa111aa1111", "", "19961125000000")
       capture_thumbnail.save_to_stack
 
       expect(File.exists?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jpg")).to be true
     end
     
     it "should raise an error if the source file is not available" do
-      capture_thumbnail = Was::ThumbnailService::CaptureThumbnail.new(1, "druid:aa111aaa111", "", "19991125000000")
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "druid:aa111aaa111", "", "19991125000000")
       expect{capture_thumbnail.save_to_stack}.to raise_error
     end
     
@@ -78,14 +83,14 @@ describe Was::ThumbnailService::CaptureThumbnail do
     end
 
     it "should update is_thumbnail_captured for the memento record in the database" do
-      capture_thumbnail = Was::ThumbnailService::CaptureThumbnail.new(10001, "","https://swap.stanford.edu/19980901000000/http://test1.edu/", "19980901000000")
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(10001, "","https://swap.stanford.edu/19980901000000/http://test1.edu/", "19980901000000")
       capture_thumbnail.update_database
       
       expect(Memento.find(10001)[:is_thumbnail_captured]).to be true
     end
     
     it "should raise an error if the memento id is not found" do
-      capture_thumbnail = Was::ThumbnailService::CaptureThumbnail.new(10002, "", "", "")
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(10002, "", "", "")
       expect{capture_thumbnail.update_database}.to raise_error
     end
     

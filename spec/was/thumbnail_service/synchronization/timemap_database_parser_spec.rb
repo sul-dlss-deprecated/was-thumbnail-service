@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Was::ThumbnailService::TimemapDatabaseParser do
+describe Was::ThumbnailService::Synchronization::TimemapDatabaseParser do
 
   before :all do
     @uri1 = SeedUri.create({:id=>1001, :uri=>"http://test1.edu/", :druid_id=>"druid:aa111aa1111"})
@@ -21,38 +21,38 @@ describe Was::ThumbnailService::TimemapDatabaseParser do
 
   describe ".get_timemap" do
     it "should return a memento hash for existent uri and available mementos" do
-      timemap_parser = Was::ThumbnailService::TimemapDatabaseParser.new("http://test1.edu/")
+      timemap_parser = Was::ThumbnailService::Synchronization::TimemapDatabaseParser.new("http://test1.edu/")
       mementos_hash =timemap_parser.get_timemap
       expect(mementos_hash.length).to eq(3)
       expect(mementos_hash["19980901000000"]).to eq("https://swap.stanford.edu/19980901000000/http://test1.edu/")
     end
     
     it "should return an empty hash for existent uri without mementos" do
-      timemap_parser = Was::ThumbnailService::TimemapDatabaseParser.new("http://test2.edu/")
+      timemap_parser = Was::ThumbnailService::Synchronization::TimemapDatabaseParser.new("http://test2.edu/")
       mementos_hash =timemap_parser.get_timemap
       expect(mementos_hash.length).to eq(0)
     end
 
     it "should return avoid the not-complete records " do
-      timemap_parser = Was::ThumbnailService::TimemapDatabaseParser.new("http://test3.edu/")
+      timemap_parser = Was::ThumbnailService::Synchronization::TimemapDatabaseParser.new("http://test3.edu/")
       mementos_hash =timemap_parser.get_timemap
       expect(mementos_hash.length).to eq(1)  
     end
         
     it "should return an empty hash for non-existent uri" do
-      timemap_parser = Was::ThumbnailService::TimemapDatabaseParser.new("http://test4.edu/")
+      timemap_parser = Was::ThumbnailService::Synchronization::TimemapDatabaseParser.new("http://test4.edu/")
       mementos_hash =timemap_parser.get_timemap
       expect(mementos_hash.length).to eq(0)
     end
 
     it "should return an empty hash for empty uri" do
-      timemap_parser = Was::ThumbnailService::TimemapDatabaseParser.new("")
+      timemap_parser = Was::ThumbnailService::Synchronization::TimemapDatabaseParser.new("")
       mementos_hash =timemap_parser.get_timemap
       expect(mementos_hash.length).to eq(0)
     end
 
     it "should return an empty hash for nil uri" do
-      timemap_parser = Was::ThumbnailService::TimemapDatabaseParser.new(nil)
+      timemap_parser = Was::ThumbnailService::Synchronization::TimemapDatabaseParser.new(nil)
       mementos_hash =timemap_parser.get_timemap
       expect(mementos_hash.length).to eq(0)
     end
