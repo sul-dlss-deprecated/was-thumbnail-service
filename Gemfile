@@ -55,9 +55,11 @@ gem 'druid-tools'
 gem 'coveralls', require: false
 gem "rspec"
 gem 'rspec-rails'
-  
-group :test do
+gem 'sqlite3'
+group :development, :test do
   gem 'webmock'
+  gem 'vcr'
+  
 end
 
 group :deployment do
