@@ -1,6 +1,6 @@
 module Was
   module ThumbnailService
-    module picker
+    module Picker
       class MementoPicker
    
         def initialize(uri_id)

@@ -9,8 +9,6 @@ module Was
           uri = seed_uri[:uri]
           uri_id = seed_uri[:id]
           
-          puts uri
-          puts uri_id
           mementos_db_count = self.count_mementos_in_database uri_id
           mementos_wayback_count = self.count_mementos_in_wayback uri
           puts mementos_db_count, mementos_wayback_count
@@ -23,7 +21,7 @@ module Was
       end
       
       def self.count_mementos_in_wayback uri
-        timemap_parser = Was::ThumbnailService::TimemapWaybackParser.new(uri)        
+        timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new(uri)        
         wayback_memento_hash = timemap_parser.get_timemap
         unless wayback_memento_hash.nil? then
           return wayback_memento_hash.keys.count
