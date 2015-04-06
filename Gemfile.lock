@@ -29,6 +29,16 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    assembly-image (1.6.8)
+      activesupport (> 3)
+      assembly-objectfile (>= 1.6.4)
+      mini_exiftool (~> 1.6)
+      nokogiri
+      uuidtools
+    assembly-objectfile (1.6.4)
+      mime-types
+      mini_exiftool
+      nokogiri
     blue-daemons (1.1.11)
     bluepill (0.0.69)
       activesupport (>= 3, < 5)
@@ -112,6 +122,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
+    mini_exiftool (1.7.0)
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
@@ -220,6 +231,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode (0.4.4.2)
+    uuidtools (2.1.5)
     vcr (2.9.3)
     webmock (1.20.4)
       addressable (>= 2.3.6)
@@ -230,6 +242,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  assembly-image
   bluepill
   capistrano (~> 3.0)
   capistrano-bundler

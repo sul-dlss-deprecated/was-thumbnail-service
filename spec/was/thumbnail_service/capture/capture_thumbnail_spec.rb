@@ -14,64 +14,100 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
     @memento_html = File.read("#{@fixtures}/memento.txt")
   end
   
-  before :each do
-  end
   describe ".process_thumbnail" do
     pending
   end
   
-  
   describe ".capture" do
     before :each do
-      if File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpg") then
-        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpg")
+      if File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg") then
+        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
       end
     end
     
-    it "should create an temporary image for a webpage" do
-      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/","19990104000000")
-      result = capture_thumbnail.capture
-      expect(result.length).to eq(0)
-      expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpg")).to be true
+    it "should create an jp2 temporary image for a webpage" do
+      Rails.configuration.jp2_required = true
+      VCR.use_cassette("slac_19990104000000") do
+        capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/","19990104000000")
+        result = capture_thumbnail.capture
+        expect(result.length).to eq(0)
+        expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")).to be true
+        expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")).to be false
+      end
     end
+
+    it "should create an jpeg temporary image for a webpage" do
+      Rails.configuration.jp2_required = false
+      VCR.use_cassette("slac_19990104000000") do
+        capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/","19990104000000")
+        result = capture_thumbnail.capture
+        expect(result.length).to eq(0)
+        expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")).to be false
+        expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")).to be true
+      end
+    end
+
     
     it "should return result message if there is an error" do
-      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/20120101120000/http://not.existent.edu/","20120101120000")
-      result = capture_thumbnail.capture
-      expect(result.length).to be > 0
-      expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jpg")).to be false
+      VCR.use_cassette("notexistent_20120101120000") do
+        capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/20120101120000/http://not.existent.edu/","20120101120000")
+        result = capture_thumbnail.capture
+        expect(result.length).to be > 0
+        expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jpeg")).to be false
+        expect(File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jp2")).to be false
+      end
     end
     
     after :each do
-      if File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpg") then
-        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpg")
+      if File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg") then
+        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
       end
+      if File.exists?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2") then
+        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
+      end    
     end
   end
     
   describe ".save_to_stack" do
     before :all do
-      FileUtils.cp("#{@fixtures}/19961125000000.jpg","#{@fixtures}/tmp_directory/19961125000000.jpg")
       tmp_directory = "#{@fixtures}/tmp_directory"
       image_stacks = "#{@fixtures}/image_stacks"
+      FileUtils.cp("#{@fixtures}/19961125000000.jpeg","#{tmp_directory}/19961125000000.jpeg")
+      FileUtils.cp("#{@fixtures}/19961125000000.jp2","#{tmp_directory}/19961125000000.jp2")
       Rails.configuration.thumbnail_tmp_directory = tmp_directory
       Rails.configuration.image_stacks = image_stacks
     end
     
     it "should copy the thumbnail file from the temp location to the stacks location" do
+      Rails.configuration.jp2_required = false
       capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "druid:aa111aa1111", "", "19961125000000")
       capture_thumbnail.save_to_stack
 
-      expect(File.exists?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jpg")).to be true
+      expect(File.exists?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jpeg")).to be true
     end
     
-    it "should raise an error if the source file is not available" do
+    it "should raise an error if the source file is not available" do       
+      Rails.configuration.jp2_required = false
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "druid:aa111aaa111", "", "19991125000000")
+      expect{capture_thumbnail.save_to_stack}.to raise_error
+    end
+
+    it "should copy the thumbnail file from the temp location to the stacks location" do
+      Rails.configuration.jp2_required = true
+      capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "druid:aa111aa1111", "", "19961125000000")
+      capture_thumbnail.save_to_stack
+
+      expect(File.exists?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jp2")).to be true
+    end
+    
+    it "should raise an error if the source file is not available" do       
+      Rails.configuration.jp2_required = true
       capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "druid:aa111aaa111", "", "19991125000000")
       expect{capture_thumbnail.save_to_stack}.to raise_error
     end
     
     after :all do
-        if File.exists?("#{@fixtures}/image_stacks/aa/") then
+      if File.exists?("#{@fixtures}/image_stacks/aa/") then
         FileUtils.rm_r("#{@fixtures}/image_stacks/aa/")
       end
     end

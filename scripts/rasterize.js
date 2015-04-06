@@ -35,7 +35,7 @@ if (system.args.length < 3 || system.args.length > 5) {
 	};
     page.open(address, function (status) {
         if (status !== 'success' || general_status == false) {
-            console.log('Unable to load the address! with HTTP status: '+general_http_status+", HTTP message: "+general_http_message);
+            console.log('#FAIL# Unable to load the address! with HTTP status: '+general_http_status+", HTTP message: "+general_http_message);
             phantom.exit();
         } else {
             page.evaluate(function() {

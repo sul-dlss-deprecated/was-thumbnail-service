@@ -56,6 +56,7 @@ gem 'coveralls', require: false
 gem "rspec"
 gem 'rspec-rails'
 gem 'sqlite3'
+gem 'assembly-image'
 group :development, :test do
   gem 'webmock'
   gem 'vcr'
