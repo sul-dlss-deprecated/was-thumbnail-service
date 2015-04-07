@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'api/seed/list'
+
+  get 'api/seed/create'
+
   scope '/api' do 
     scope '/v1' do  
       scope '/was' do

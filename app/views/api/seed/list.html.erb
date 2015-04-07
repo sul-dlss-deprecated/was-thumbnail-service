@@ -1,0 +1,16 @@
+The following seed uris are available in thumbnail database
+<table>
+	<tr>
+		<th>Druid</th>
+		<th>Uri</th>
+	</tr>
+<%@seeds.each do |seed| %>
+	<tr>
+		<td><%=seed.druid_id%></td>
+		<td><%=seed.uri%></td>
+	</tr>
+	
+<%end%>
+
+
+</table>
