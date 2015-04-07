@@ -16,6 +16,9 @@ module Was
         end
         
         def read_timemap
+          unless @uri.present? then
+            return ""
+          end
           timemap_uri = "#{Rails.configuration.wayback_timemap_uri}#{@uri}"
           
           begin

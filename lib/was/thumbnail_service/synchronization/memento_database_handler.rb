@@ -46,7 +46,7 @@ module Was
           
           # Insert id_ after the datetime part in the uri to avoid
           # the wayback rewritten
-          if @memento_uri.nil? then
+          if @memento_uri.nil? || @memento_uri.empty? then
              return "" 
           end
           datetime_path = @memento_uri.match(/\/\d+{14}\//).to_s

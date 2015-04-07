@@ -2,19 +2,16 @@ require 'spec_helper'
 
 describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
 
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.hook_into :webmock # or :fakeweb
+  end
+  
   before :all do
     Rails.configuration.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
     @fixtures = "spec/fixtures/"
     @timemap_5_mementos = File.read("#{@fixtures}/timemap_5_mementos.txt")
     @rest_404_response  = File.read("#{@fixtures}/404_response.txt")
-  end
-
-  before :each do
-    stub_request(:get, "https://swap.stanford.edu/timemap/link/http://test2.edu/").
-      to_return(status: 200, body: @timemap_5_mementos, headers: {})
-
-    stub_request(:get, "https://swap.stanford.edu/timemap/link/http://non.existent.edu").
-      to_return(status: 404, body: @rest_404_response, headers: {})
   end
 
   describe ".sync_database" do
@@ -55,15 +52,19 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
   
   describe ".get_timemap_from_wayback" do
     it "should fill wayback_memento_hash for existent uri" do
-      timemap_synchronization = Was::ThumbnailService::Synchronization::TimemapSynchronization.new("http://test2.edu/", "")
-      timemap_synchronization.get_timemap_from_wayback
-      expect(timemap_synchronization.instance_variable_get(:@wayback_memento_hash).length).to eq(5)
+      VCR.use_cassette("slac_timemap") do
+        timemap_synchronization = Was::ThumbnailService::Synchronization::TimemapSynchronization.new("http://www.slac.stanford.edu/", "")
+        timemap_synchronization.get_timemap_from_wayback
+        expect(timemap_synchronization.instance_variable_get(:@wayback_memento_hash).length).to eq(5)
+      end
     end
  
     it "should keep wayback_memento_hash emtpy for non-existent uri" do
-      timemap_synchronization = Was::ThumbnailService::Synchronization::TimemapSynchronization.new("http://non.existent.edu", "")
-      timemap_synchronization.get_timemap_from_wayback
-      expect(timemap_synchronization.instance_variable_get(:@wayback_memento_hash).length).to eq(0)
+      VCR.use_cassette("notexistent_timemap") do
+        timemap_synchronization = Was::ThumbnailService::Synchronization::TimemapSynchronization.new("http://non.existent.edu", "")
+        timemap_synchronization.get_timemap_from_wayback
+        expect(timemap_synchronization.instance_variable_get(:@wayback_memento_hash).length).to eq(0)
+      end
     end
   end
 

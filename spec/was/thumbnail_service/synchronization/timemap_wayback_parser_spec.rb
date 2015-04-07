@@ -2,42 +2,38 @@
 require 'spec_helper'
  
 describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
-
+  
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.hook_into :webmock # or :fakeweb
+  end
+  
   before :all do
     Rails.configuration.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
     @fixtures = "spec/fixtures/"
     @timemap_5_mementos = File.read("#{@fixtures}/timemap_5_mementos.txt")
     @rest_404_response  = File.read("#{@fixtures}/404_response.txt")
     @rest_400_response  = File.read("#{@fixtures}/400_response.txt")
-  end
-
-  before :each do
-    stub_request(:get, "https://swap.stanford.edu/timemap/link/http://test1.edu/").
-      to_return(status: 200, body: "stubbed response", headers: {})
-    
-    stub_request(:get, "https://swap.stanford.edu/timemap/link/http://test2.edu/").
-      to_return(status: 200, body: @timemap_5_mementos, headers: {})
-
-    stub_request(:get, "https://swap.stanford.edu/timemap/link/http://non.existent.edu").
-      to_return(status: 404, body: @rest_404_response, headers: {})
-      
-    stub_request(:get, "https://swap.stanford.edu/timemap/link/").
-      to_return(status: 400, body: @rest_400_response, headers: {})
+    @slac_time = "<http://www.slac.stanford.edu/>; rel=\"original\",\r\n<https://swap.stanford.edu/timemap/link/http://www.slac.stanford.edu/>; rel=\"self\"; type=\"application/link-format\"; from=\"Fri, 22 Dec 1995 00:00:00 GMT\"; until=\"Mon, 04 Jan 1999 00:00:00 GMT\",\r\n<https://swap.stanford.edu/http://www.slac.stanford.edu/>; rel=\"timegate\",\r\n<https://swap.stanford.edu/19951222000000/http://www.slac.stanford.edu/>; rel=\"first memento\"; datetime=\"Fri, 22 Dec 1995 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19961125000000/http://www.slac.stanford.edu/>; rel=\"memento\"; datetime=\"Mon, 25 Nov 1996 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19971219000000/http://www.slac.stanford.edu/>; rel=\"memento\"; datetime=\"Fri, 19 Dec 1997 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19980901000000/http://www.slac.stanford.edu/>; rel=\"memento\"; datetime=\"Tue, 01 Sep 1998 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/>; rel=\"last memento\"; datetime=\"Mon, 04 Jan 1999 00:00:00 GMT\""
   end
 
   describe ".get_timemap" do
     it "should return memento hash for an existent uri" do
-      timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://test2.edu/")
-      memento_hash = timemap_parser.get_timemap
-      expect(memento_hash.length).to eq(5)
-      expect(memento_hash["19951222000000"]).to eq("https://swap.stanford.edu/19951222000000/http://test2.edu/")
-      expect(memento_hash["19990104000000"]).to eq("https://swap.stanford.edu/19990104000000/http://test2.edu/")
+      VCR.use_cassette("slac_timemap") do
+        timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://www.slac.stanford.edu/")
+        memento_hash = timemap_parser.get_timemap
+        expect(memento_hash.length).to eq(5)
+        expect(memento_hash["19951222000000"]).to eq("https://swap.stanford.edu/19951222000000/http://www.slac.stanford.edu/")
+        expect(memento_hash["19990104000000"]).to eq("https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/")
+      end
     end
     
     it "should return an emtpy memento hash for an non-existent uri" do
-      timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://non.existent.edu")
-      memento_hash = timemap_parser.get_timemap
-      expect(memento_hash.length).to eq(0)
+      VCR.use_cassette("noexistent_timemap") do
+        timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://non.existent.edu")
+        memento_hash = timemap_parser.get_timemap
+        expect(memento_hash.length).to eq(0)
+      end
     end
     
     it "should return an emtpy memento hash for an empty uri" do
@@ -49,13 +45,17 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
   
   describe ".read_timemap" do
     it "should download the timemap for existent URI" do
-      timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://test1.edu/")
-      expect(timemap_parser.read_timemap).to eq("stubbed response")
+      VCR.use_cassette("slac_timemap") do
+        timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://www.slac.stanford.edu/")
+        expect(timemap_parser.read_timemap).to eq(@slac_time)
+      end
     end
     
     it "should return empty string for non-existent URI" do
-      timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://non.existent.edu")
-      expect(timemap_parser.read_timemap).to eq("")
+      VCR.use_cassette("noexistent_timemap") do
+       timemap_parser = Was::ThumbnailService::Synchronization::TimemapWaybackParser.new("http://non.existent.edu")
+        expect(timemap_parser.read_timemap).to eq("")
+      end
     end
     
     it "should return empty string for empty URI" do

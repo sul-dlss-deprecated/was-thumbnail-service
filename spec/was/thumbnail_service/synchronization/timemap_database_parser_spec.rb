@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe Was::ThumbnailService::Synchronization::TimemapDatabaseParser do
 
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.hook_into :webmock # or :fakeweb
+  end
+  
   before :all do
     @uri1 = SeedUri.create({:id=>1001, :uri=>"http://test1.edu/", :druid_id=>"druid:aa111aa1111"})
     @memento11 = Memento.create({:id=>10001, :uri_id=>1001, :memento_uri=>"https://swap.stanford.edu/19980901000000/http://test1.edu/", :memento_datetime=>"1998-09-01 00:00:00"})

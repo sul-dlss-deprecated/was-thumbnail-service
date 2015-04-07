@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://swap.stanford.edu/19911206000000id_/http://slacvm.slac.stanford.edu/FIND/default.html
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '60'
+      Open-Timeout:
+      - '60'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 07 Apr 2015 16:53:43 GMT
+      Server:
+      - Apache
+      Memento-Datetime:
+      - Fri, 06 Dec 1991 00:00:00 GMT
+      Link:
+      - <http://slacvm.slac.stanford.edu/FIND/default.html>; rel="original", <https://swap.stanford.edu/timemap/link/http://slacvm.slac.stanford.edu/FIND/default.html>;
+        rel="timemap"; type="application/link-format", <https://swap.stanford.edu/http://slacvm.slac.stanford.edu/FIND/default.html>;
+        rel="timegate", <https://swap.stanford.edu/19911206000000/http://slacvm.slac.stanford.edu/FIND/default.html>;
+        rel="first memento"; datetime="Fri, 06 Dec 1991 00:00:00 GMT", <https://swap.stanford.edu/19920318000000/http://slacvm.slac.stanford.edu/FIND/default.html>;
+        rel="next memento"; datetime="Wed, 18 Mar 1992 00:00:00 GMT", <https://swap.stanford.edu/19950310000000/http://slacvm.slac.stanford.edu/FIND/default.html>;
+        rel="last memento"; datetime="Fri, 10 Mar 1995 00:00:00 GMT"
+      Etag:
+      - '"25740406-15b-2756b69a82902"'
+      Last-Modified:
+      - Fri, 06 Dec 1991 21:15:48 GMT
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '347'
+    body:
+      encoding: UTF-8
+      string: "<TITLE>default -- /slacvm.slac.stanford.edu</TITLE>\n<NEXTID 1>\n<H1>SLACVM\nInformation
+        Service</H1>\n<DL>\n<DT><A NAME=0 HREF=http://slacvm.slac.stanford.edu./FIND/binlist.html>BINLIST</A>\n<DD>SLAC
+        phone book with e-mail addresses\n<DT><A NAME=1 HREF=http://slacvm.slac.stanford.edu./FIND/hep.html>HEP</A>\n<DD>SPIRES
+        HEP preprint database\n</dl>\n \n \n \n"
+    http_version: 
+  recorded_at: Tue, 07 Apr 2015 16:53:43 GMT
+recorded_with: VCR 2.9.3

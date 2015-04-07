@@ -4,17 +4,11 @@ require 'spec_helper'
 
 describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
 
-  before :all do
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.hook_into :webmock # or :fakeweb
   end
-
-  before :each do
-    stub_request(:get, "https://swap.stanford.edu/20120101120000id_/http://test1.edu/").
-      to_return(status: 200, body: "This is memento text.", headers: {})
-    stub_request(:get, "https://swap.stanford.edu/20120101120000id_/http://test2.edu/").
-      to_return(status: 404, body: "This is not a memento text.", headers: {})
   
-  end
-
   describe ".insert_memento_into_databse" do
     it "should raise an error if any required fields is missing" do
        m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(nil, "https://swap.stanford.edu/20120101120000/http://test1.edu/", "Mon, 23 Nov 2001 12:00:00")
@@ -53,7 +47,7 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
     
     after :each do
       unless @test_memento.nil? then
-      #  @test_memento.destroy
+        @test_memento.destroy
       end
     end
   end
@@ -75,27 +69,32 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
       simhash_value = m_db_handler.compute_simhash_value(nil)
       expect(simhash_value).to eq(0)
     end
-
-
   end
 
   describe ".download_memento_text" do
     it "should download the memento text for available memento" do
-      m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(1, "https://swap.stanford.edu/20120101120000/http://test1.edu/", "")
-      memento_text = m_db_handler.download_memento_text
-      expect(memento_text).to eq("This is memento text.")
+      memento_text_expected = "<TITLE>default -- /slacvm.slac.stanford.edu</TITLE>\n<NEXTID 1>\n<H1>SLACVM\nInformation Service</H1>\n<DL>\n<DT><A NAME=0 HREF=http://slacvm.slac.stanford.edu./FIND/binlist.html>BINLIST</A>\n<DD>SLAC phone book with e-mail addresses\n<DT><A NAME=1 HREF=http://slacvm.slac.stanford.edu./FIND/hep.html>HEP</A>\n<DD>SPIRES HEP preprint database\n</dl>\n \n \n \n"
+      VCR.use_cassette("slac_text_only") do
+        m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(1, "https://swap.stanford.edu/19911206000000/http://slacvm.slac.stanford.edu/FIND/default.html", "")
+        memento_text = m_db_handler.download_memento_text
+        expect(memento_text).to eq(memento_text_expected)
+      end
     end
     
     it "should return an emtpy string for non-available memento" do
-      m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(1, "https://swap.stanford.edu/20120101120000/http://test2.edu/", "")
-      memento_text = m_db_handler.download_memento_text
-      expect(memento_text).to eq("")
+      VCR.use_cassette("test1_notavailable") do
+        m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(1, "https://swap.stanford.edu/20120101120000/http://test2.edu/", "")
+        memento_text = m_db_handler.download_memento_text
+        expect(memento_text).to eq("")
+      end
     end
     
     it "should return an emtpy string for not-valid memento" do
-      m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(1, "https://swap.stanford.edu/20120101/http://test2.edu/", "")
-      memento_text = m_db_handler.download_memento_text
-      expect(memento_text).to eq("")
+      VCR.use_cassette("test1_notvalid") do
+        m_db_handler = Was::ThumbnailService::Synchronization::MementoDatabaseHandler.new(1, "https://swap.stanford.edu/20120101/http://test2.edu/", "")
+        memento_text = m_db_handler.download_memento_text
+        expect(memento_text).to eq("")
+      end
     end
     
      it "should return an emtpy string for empty memento uri" do
