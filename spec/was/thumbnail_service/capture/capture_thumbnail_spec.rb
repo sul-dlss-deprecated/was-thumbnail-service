@@ -1,6 +1,9 @@
 
 require 'spec_helper'
- 
+
+RSpec.configure do |c|
+  c.filter_run_excluding :image_prerequisite
+end
 
 describe Was::ThumbnailService::Capture::CaptureThumbnail do
   
@@ -25,7 +28,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       end
     end
     
-    it "should create an jp2 temporary image for a webpage" do
+    it "should create an jp2 temporary image for a webpage", :image_prerequisite do
       Rails.configuration.jp2_required = true
       VCR.use_cassette("slac_19990104000000") do
         capture_thumbnail = Was::ThumbnailService::Capture::CaptureThumbnail.new(1, "", "https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/","19990104000000")
