@@ -9,7 +9,6 @@ module Was
         
         def submit_capture_jobs
           druid_id = get_druid_id
-          puts druid_id
           memento_records = Memento.where( "uri_id = ? AND is_selected = 1 AND is_thumbnail_captured = 0", @uri_id )
           memento_records.each do |memento_record|
             Delayed::Job.enqueue(CaptureJob.new(memento_record['id'], druid_id ))

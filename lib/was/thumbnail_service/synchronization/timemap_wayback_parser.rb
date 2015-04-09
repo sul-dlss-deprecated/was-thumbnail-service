@@ -25,7 +25,7 @@ module Was
             response=RestClient.get(timemap_uri,  :timeout => 60, :open_timeout => 60)
             return response
           rescue => e
-            puts "Error in retrieving the timemap for #{@uri}.\n#{e.message}"
+            Rails.logger.error { "Error in retrieving the timemap from #{timemap_uri}.\n#{e.message}\n#{e.backtrace}"}
             return ""
           end
         end

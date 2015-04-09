@@ -11,7 +11,6 @@ module Was
           
           mementos_db_count = self.count_mementos_in_database uri_id
           mementos_wayback_count = self.count_mementos_in_wayback uri
-          puts mementos_db_count, mementos_wayback_count
           # This kind of check assumes that the wayback will not remove mementos after
           # being indexed.
           if mementos_wayback_count > mementos_db_count then
@@ -30,7 +29,6 @@ module Was
       end
       
       def self.count_mementos_in_database uri_id
-        #Memento.where("uri_id = ? and memento_datetime in ( ?)",1,["1997-12-19 00:00:00","1996-11-25 00:00:00"])
         Memento.where("uri_id = ?",uri_id).count()
       end
     end

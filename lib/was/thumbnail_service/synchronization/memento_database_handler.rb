@@ -59,7 +59,7 @@ module Was
             response=RestClient.get(memento_uri_unwritten, :timeout => 60, :open_timeout => 60)
             return response
           rescue => e
-            puts "Error in downloading memento text.\n#{e.message}"
+            Rails.logger.error{ "Error in downloading memento text.\n#{e.message}\n#{e.backtrace}"}
             return ""
           end
         end
