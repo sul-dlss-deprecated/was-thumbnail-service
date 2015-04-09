@@ -7,9 +7,3 @@ require File.expand_path("../../config/environment", __FILE__)
 
 require 'coveralls'
 Coveralls.wear!
-
-#WebMock.disable_net_connect!(allow_localhost: true)
-# whitelist codeclimate.com so test coverage can be reported
-#Rails.configuration.after(:suite) do
- # WebMock.disable_net_connect!(:allow => 'codeclimate.com')
-#end
