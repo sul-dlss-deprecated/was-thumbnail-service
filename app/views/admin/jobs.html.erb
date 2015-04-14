@@ -1,0 +1,35 @@
+<script>
+//$().ready(function() {
+	$("#jobs-navbar").addClass("active");
+	$("#jobs_table").DataTable();
+//})
+</script>
+
+<div class="panel panel-primary">
+	<div class="panel-heading"> The following jobs have been submitted to the queue
+</div>
+	<div class="panel-body">
+
+<table id="jobs_table" class="table table-striped">
+	<tr>
+		<th>Job id</th>
+		<th>Druid</th>
+		<th>Memento</th>
+		<th>Attempts</th>
+		<th>Creation</th>
+		<th>Last run</th>
+	</tr>
+<%@jobs.each do |job| %>
+	<tr>
+		<td> <%=job.id%>	 </td>
+		<td> <%=get_druid_from_handler(job.handler)%>	 </td>
+		<td> <%=get_memento_uri_from_handler(job.handler)%>	 </td>
+		<td> <%=job.attempts%>	 </td>
+		<td> <%=job.created_at%>	 </td>
+		<td> <%=job.run_at%>	 </td>
+	</tr>
+<%end%>
+
+</table>
+</div>
+</div>

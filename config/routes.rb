@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  
+  root to: "admin#seeds"
+  
+  get 'jobs/retry'
+
+  get 'jobs/remove'
+
+  get 'admin/jobs'
+
+  get 'admin/seeds'
+
+  get 'admin/errors'
+
+  get 'admin/thumbnails'
+
   get 'api/seed/list'
 
   get 'api/seed/create'

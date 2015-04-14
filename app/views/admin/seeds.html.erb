@@ -1,0 +1,31 @@
+<script>
+//$().ready(function() {
+	$("#seeds-navbar").addClass("active");
+	$("#seed_table").DataTable();
+//})
+</script>
+
+<div class="panel panel-primary">
+	<div class="panel-heading"> The following seed uris are available in thumbnail database
+</div>
+	<div class="panel-body">
+
+<table id="seed_table" class="table table-striped">
+	<tr>
+		<th>Druid</th>
+		<th>Uri</th>
+		<th>No of mementos</th>
+		<th>#Thumbnails</th>
+	</tr>
+<%@seeds.each do |seed| %>
+	<tr>
+		<td><%=link_to(seed.druid_id, "#{Rails.configuration.purl_url}#{seed.druid_id}")%></td>
+		<td><%=link_to(seed.uri,seed.uri)%></td>
+		<td><%=link_to(seed.no_mementos, "#{Rails.configuration.wayback_uri}#{seed.uri}")%></td>
+		<td><%=link_to(seed.captured, "/admin/thumbnails?druid=#{seed.druid_id}")%></td>
+	</tr>
+<%end%>
+
+</table>
+</div>
+</div>
