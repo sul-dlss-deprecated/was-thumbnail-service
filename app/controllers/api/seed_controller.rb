@@ -18,7 +18,6 @@ module Api
     end
   
     def list
-      @seeds = SeedUri.all
     end
   end
 end
