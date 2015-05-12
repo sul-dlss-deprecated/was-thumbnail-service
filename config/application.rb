@@ -24,7 +24,6 @@ module Was
   
       config.autoload_paths += %W(#{config.root}/lib)
    #   config.autoload_paths += Dir["#{config.root}/lib/was/**/*"]
-      config.logger = Logger.new("was_thumbnail_service.log")
     #  Rails.logger.level = 0   
     end
   end
