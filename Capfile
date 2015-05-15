@@ -4,6 +4,7 @@ require 'capistrano/setup'
 # Includes default deployment tasks
 require 'capistrano/deploy'
 require 'capistrano/one_time_key'
+require "whenever/capistrano"
 
 # Includes tasks from other gems included in your Gemfile
 #

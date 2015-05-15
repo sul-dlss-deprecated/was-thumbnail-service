@@ -23,11 +23,12 @@ set :deploy_to, '/opt/app/was/was-thumbnail-service'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 set :linked_dirs, %w{bin log config/environments  vendor/bundle public/system }
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -45,17 +46,10 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       execute :touch, release_path.join('tmp/restart.txt')
+      invoke 'delayed_job:restart'
     end
   end
   
-  after :restart, :run_delayed_job do
-    on roles(:app), in: :groups, limit: 3, wait: 10 do
-      within release_path do
-        execute :bundle, :exec, "bin/delayed_job stop"
-        execute :bundle, :exec, "bin/delayed_job start"
-      end
-    end
-  end
   after :publishing, :restart
 
   after :restart, :clear_cache do
@@ -66,7 +60,6 @@ namespace :deploy do
       # end
     end
   end
-  
   
 end
 
