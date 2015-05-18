@@ -5,6 +5,3 @@ require 'bundler/setup' if File.exist?(ENV['BUNDLE_GEMFILE'])
 
 require 'bluepill'
 require 'phantomjs'
-
-#To ensure the phantomJS is installed
-Phantomjs.path

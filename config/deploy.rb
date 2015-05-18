@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.3.5'
+#lock '3.3.5'
 
 set :application, 'was-thumbnail-service'
 set :repo_url, 'https://github.com/sul-dlss/was-thumbnail-service.git'
@@ -47,6 +47,7 @@ namespace :deploy do
       # Your restart mechanism here, for example:
       execute :touch, release_path.join('tmp/restart.txt')
       invoke 'delayed_job:restart'
+      execute :rake, 'was_thumbnail_service:install_phantomJS'
     end
   end
   

@@ -21,6 +21,13 @@ namespace :was_thumbnail_service do
   end
 end
 
+namespace :was_thumbnail_service do
+  task install_phantomJS: :environment do
+    puts "Ensure PhatonmJS is installed"
+    Phantomjs.path 
+  end
+end
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
