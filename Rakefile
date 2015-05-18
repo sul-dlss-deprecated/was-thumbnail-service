@@ -11,11 +11,12 @@ require 'bundler'
 require 'rspec/core/rake_task'
 require 'yard'
 require 'yard/rake/yardoc_task'
+
 # Executed by the following command 
-# cd /opt/app/was/was-thumbnail-service/current && bundle exec rake RAILS_ENV=development was_thumbnail_service:run_thumbnail_monitor
+# cd /opt/app/was/was-thumbnail-service/current && bundle exec rake RAILS_ENV=production was_thumbnail_service:run_thumbnail_monitor
 namespace :was_thumbnail_service do
   task run_thumbnail_monitor: :environment do
-    puts "Check if there are new mementos added to SWAP"
+    File.open("run_thumbnail_monitor.log", 'a') { |f| f.write("Check if there are new mementos added to SWAP at #{Time.now}\n") }
     Was::ThumbnailService::Monitor.run
   end
 end
