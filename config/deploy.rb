@@ -47,7 +47,11 @@ namespace :deploy do
       # Your restart mechanism here, for example:
       execute :touch, release_path.join('tmp/restart.txt')
       invoke 'delayed_job:restart'
-      execute :rake, 'was_thumbnail_service:install_phantomJS'
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'was_thumbnail_service:install_phantomJS'
+        end
+      end
     end
   end
   
