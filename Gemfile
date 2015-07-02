@@ -30,6 +30,7 @@ gem 'rspec-rails'
 gem 'sqlite3'
 gem 'assembly-image'
 gem 'whenever', :require => false
+gem 'is_it_working-cbeer'
 
 group :development, :test do
   gem 'webmock'
