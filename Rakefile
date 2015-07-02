@@ -17,7 +17,7 @@ require 'yard/rake/yardoc_task'
 namespace :was_thumbnail_service do
   task run_thumbnail_monitor: :environment do
     Was::ThumbnailService::Monitor.run
-    File.open("run_thumbnail_monitor.log", 'a') { |f| f.write("Check if there are new mementos added to SWAP at #{Time.now}\n") }
+    File.open("log/run_thumbnail_monitor.log", 'a') { |f| f.write("Check if there are new mementos added to SWAP at #{Time.now}\n") }
   end
 end
 
