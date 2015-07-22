@@ -31,8 +31,9 @@ gem 'sqlite3'
 gem 'assembly-image'
 gem 'whenever', :require => false
 gem 'is_it_working-cbeer'
+gem 'mini_magick'
 
-group :development, :test do
+group :test do
   gem 'webmock'
   gem 'vcr'
 end
