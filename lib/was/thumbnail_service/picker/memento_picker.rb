@@ -11,7 +11,6 @@ module Was
           mementos_list = upload_mementos_list
           chosen_memento_list = choose_mementos(mementos_list)
           update_chosen_list_database chosen_memento_list
-          #return chosen_memento_list
         end
         
         def upload_mementos_list

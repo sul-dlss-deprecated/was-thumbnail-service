@@ -38,5 +38,7 @@ Rails.application.configure do
   config.thumbnail_tmp_directory = "tmp"
   config.image_stacks = "."
   config.image_stacks_uri = ""
-  config.jp2_required = true
+  config.jp2_required = true  
+  config.purl_url =  "http://purl.stanford.edu/"
+  config.threshold = 2
 end

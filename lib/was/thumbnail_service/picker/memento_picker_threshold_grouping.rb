@@ -2,7 +2,6 @@ module Was
   module ThumbnailService
     module Picker
       class MementoPickerThresholdGrouping
-         @threshold = 0
   
         def self.choose_mementos mementos_list
           chosen_list = []
@@ -18,7 +17,7 @@ module Was
           i = 1
           while i < mementos_list.length do
             simhash_diff = self.simhash_hamming_distance(mementos_list, right, left)
-            if  simhash_diff < @threshold then
+            if  simhash_diff < threshold then
               left = left + 1
             else
               chosen_list.push(mementos_list[left][:id])
@@ -33,6 +32,11 @@ module Was
         def self.simhash_hamming_distance(mementos_list, right, left)
           return mementos_list[right][:simhash_value].hamming_distance_to(mementos_list[left][:simhash_value])
         end
+        
+        def self.threshold
+          return Rails.configuration.try(:threshold) ? Rails.configuration.threshold : 0
+        end
+        
       end
     end
   end
