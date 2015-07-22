@@ -1,3 +1,5 @@
+require 'mini_magick'
+
 module Was
   module ThumbnailService
     module Capture
@@ -17,6 +19,8 @@ module Was
             if File.exist?(@temporary_file) then File.delete(@temporary_file) end
             raise "Thumbnail for memento #{@memento_uri} can't be generated.\n#{result}"
           end
+          
+          resize_temporary_image(@temporary_file+'.jpeg')
           if Rails.configuration.jp2_required then
               Assembly::Image.new(@temporary_file+'.jpeg').create_jp2(:output=>@temporary_file+".jp2")
               FileUtils.rm @temporary_file+'.jpeg'
@@ -50,6 +54,20 @@ module Was
             FileUtils.mv @temporary_file+".jpeg", thumbnail_file
           end
         end
+        def resize_temporary_image(temporary_image)
+          image = MiniMagick::Image.open(temporary_image)
+          width = image.width
+          height = image.height
+          
+          if width > height then
+            resize_dimension = " 400x "
+          else
+            resize_dimension = " x400 "
+          end
+          image.resize resize_dimension
+          image.write(temporary_image)
+        end
+
       end
     end
   end

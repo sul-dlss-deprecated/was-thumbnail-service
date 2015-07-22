@@ -127,6 +127,7 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
     mini_exiftool (1.7.0)
+    mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
@@ -271,6 +272,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   lyberteam-capistrano-devel
+  mini_magick
   mysql2
   phantomjs
   rails (= 4.1.11)
