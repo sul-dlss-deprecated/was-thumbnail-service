@@ -18,7 +18,8 @@ module Was
           mementos_query_result = Memento.where("uri_id = ?", @uri_id)
           mementos_query_result.each do |memento|
             mementos_list.push({:id=>memento[:id], :simhash_value=>memento[:simhash_value]})
-          end 
+          end
+          mementos_list
         end
         
         def choose_mementos mementos_list

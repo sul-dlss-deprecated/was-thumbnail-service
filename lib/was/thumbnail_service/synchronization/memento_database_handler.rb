@@ -5,8 +5,8 @@ module Was
         
         def initialize(uri_id, memento_uri, memento_datetime)
           @uri_id = uri_id
-          @memento_datetime = memento_datetime
           @memento_uri = memento_uri
+          @memento_datetime = memento_datetime
         end
         
         def add_memento_to_database_timemap
