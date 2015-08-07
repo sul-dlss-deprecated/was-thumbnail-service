@@ -18,9 +18,9 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
   
   describe '.initialize' do
     it 'initializes the object with the parameters' do
-      capture_thumbnail = CaptureThumbnail.new(1, 'druid:ab123cd4567', 'memento-uri','19990104000000')
+      capture_thumbnail = CaptureThumbnail.new(1, 'ab123cd4567', 'memento-uri','19990104000000')
       expect(capture_thumbnail.instance_variable_get(:@id)).to eq(1)
-      expect(capture_thumbnail.instance_variable_get(:@druid_id)).to eq('druid:ab123cd4567')
+      expect(capture_thumbnail.instance_variable_get(:@druid_id)).to eq('ab123cd4567')
       expect(capture_thumbnail.instance_variable_get(:@memento_uri)).to eq('memento-uri')
       expect(capture_thumbnail.instance_variable_get(:@memento_datetime)).to eq('19990104000000')
       expect(capture_thumbnail.instance_variable_get(:@temporary_file)).to eq("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000")
@@ -125,26 +125,26 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
     end
     it 'should copy the thumbnail file from the temp location to the stacks location' do
       Rails.configuration.jp2_required = false
-      capture_thumbnail = CaptureThumbnail.new(1, 'druid:aa111aa1111', '', '19961125000000')
+      capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19961125000000')
       capture_thumbnail.save_to_stack
 
       expect(File.exists?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jpeg")).to be true
     end
     it 'should raise an error if the source file is not available' do       
       Rails.configuration.jp2_required = false
-      capture_thumbnail = CaptureThumbnail.new(1, 'druid:aa111aa1111', '', '19991125000000')
+      capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
       expect{capture_thumbnail.save_to_stack}.to raise_error('No such file or directory - spec/fixtures//tmp_directory/19991125000000.jpeg')
     end
     it 'should copy the thumbnail file from the temp location to the stacks location' do
       Rails.configuration.jp2_required = true
-      capture_thumbnail = CaptureThumbnail.new(1, 'druid:aa111aa1111', '', '19961125000000')
+      capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19961125000000')
       capture_thumbnail.save_to_stack
 
       expect(File.exists?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jp2")).to be true
     end
     it 'should raise an error if the source file is not available' do       
       Rails.configuration.jp2_required = true
-      capture_thumbnail = CaptureThumbnail.new(1, 'druid:aa111aa1111', '', '19991125000000')
+      capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
       expect{capture_thumbnail.save_to_stack}.to raise_error('No such file or directory - spec/fixtures//tmp_directory/19991125000000.jp2')
     end
     after :all do

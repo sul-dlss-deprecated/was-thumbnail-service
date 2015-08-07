@@ -3,7 +3,7 @@ module Api
     before_filter :find_uri, only: [:list]
     respond_to :json
 
-    #https://was-thumbnail-dev.stanford.edu/api/v1/was/thumbnails/druid_id/druid:jx731tz7613?format=json
+    #https://was-thumbnail-dev.stanford.edu/api/v1/was/thumbnails/druid_id/jx731tz7613?format=json
     def list
       uri_id = @seed_uri[:id]
       @druid_id = @seed_uri[:druid_id]

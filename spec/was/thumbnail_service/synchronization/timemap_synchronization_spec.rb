@@ -124,7 +124,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
 
 #  describe '.uri_id' do
 #    before :each do
-#      @uri = SeedUri.create({:id=>9999, :uri=>'http://test.edu/', :druid_id=>'druid:aa111aa1111'})
+#      @uri = SeedUri.create({:id=>9999, :uri=>'http://test.edu/', :druid_id=>'aa111aa1111'})
 #    end
     
 #    it 'should return valid id number for valid uri string' do
@@ -149,14 +149,14 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
 end
 
 def initialize_database_with_mementos
-  @uri1 = SeedUri.create({ :uri=>'http://test1.edu/', :druid_id=>'druid:aa111aa1111'})
+  @uri1 = SeedUri.create({ :uri=>'http://test1.edu/', :druid_id=>'aa111aa1111'})
   @memento11 = Memento.create({ :uri_id=>@uri1.id, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00'})
   @memento12 = Memento.create({ :uri_id=>@uri1.id, :memento_uri=>'https://swap.stanford.edu/19990901000000/http://test1.edu/', :memento_datetime=>'1999-09-01 00:00:00'})
   @memento13 = Memento.create({ :uri_id=>@uri1.id, :memento_uri=>'https://swap.stanford.edu/20000901000000/http://test1.edu/', :memento_datetime=>'2000-09-01 00:00:00'})
    
-  @uri2 = SeedUri.create({ :uri=>'http://test2.edu/', :druid_id=>'druid:bb111bb1111'})
+  @uri2 = SeedUri.create({ :uri=>'http://test2.edu/', :druid_id=>'bb111bb1111'})
   
-  @uri3 = SeedUri.create({ :uri=>'http://test3.edu/', :druid_id=>'druid:cc111cc1111'})
+  @uri3 = SeedUri.create({ :uri=>'http://test3.edu/', :druid_id=>'cc111cc1111'})
   @memento31 = Memento.create({ :uri_id=>@uri2.id, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00'})
   @memento32 = Memento.create({ :uri_id=>@uri2.id, :memento_uri=>'', :memento_datetime=>'1999-09-01 00:00:00'})
   @memento33 = Memento.create({ :uri_id=>@uri2.id,                   :memento_datetime=>'1999-09-01 00:00:00'})

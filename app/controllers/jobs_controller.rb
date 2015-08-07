@@ -6,7 +6,6 @@ class JobsController < ApplicationController
       begin
         job = Delayed::Job.find(id)
         status = worker.run job
-        puts status
         job.last_error
         if status then
           render nothing: true, status: 200

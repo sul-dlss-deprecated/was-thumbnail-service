@@ -10,14 +10,14 @@ describe Was::ThumbnailService::Monitor do
       expect{Was::ThumbnailService::Monitor.run}.to_not raise_error
     end
     it 'does not call generator run if the mementos wayback equals to mementos db' do
-      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'druid:aa111aa1111'})
+      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'aa111aa1111'})
       allow(Was::ThumbnailService::Monitor).to receive(:count_mementos_in_database).and_return(4)
       allow(Was::ThumbnailService::Monitor).to receive(:count_mementos_in_wayback).and_return(4)
       expect(Was::ThumbnailService::Generator).to_not receive(:run)
       Was::ThumbnailService::Monitor.run
     end
     it 'calls generator run if the mementos wayback greater mementos db' do
-      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'druid:aa111aa1111'})
+      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'aa111aa1111'})
       allow(Was::ThumbnailService::Monitor).to receive(:count_mementos_in_database).with(1001).and_return(4)
       allow(Was::ThumbnailService::Monitor).to receive(:count_mementos_in_wayback).with('http://test1.edu/').and_return(5)
       allow_any_instance_of(Was::ThumbnailService::Generator).to receive(:run)
@@ -26,8 +26,8 @@ describe Was::ThumbnailService::Monitor do
       Was::ThumbnailService::Monitor.run
     end
     it 'calls generator run if there is new mementos and skip for the same number' do
-      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'druid:aa111aa1111'})
-      SeedUri.create({:id=>1002, :uri=>'http://test2.edu/', :druid_id=>'druid:bb111bb1111'})
+      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'aa111aa1111'})
+      SeedUri.create({:id=>1002, :uri=>'http://test2.edu/', :druid_id=>'bb111bb1111'})
       allow(Was::ThumbnailService::Monitor).to receive(:count_mementos_in_database).with(1001).and_return(4)
       allow(Was::ThumbnailService::Monitor).to receive(:count_mementos_in_wayback).with('http://test1.edu/').and_return(4)
 
