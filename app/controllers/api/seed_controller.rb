@@ -15,9 +15,6 @@ module Api
       else
         render nothing: true, status: 400 
       end
-    end
-  
-    def list
-    end
+    end  
   end
 end

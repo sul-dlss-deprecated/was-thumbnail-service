@@ -6,6 +6,7 @@ class JobsController < ApplicationController
       begin
         job = Delayed::Job.find(id)
         status = worker.run job
+        puts status
         job.last_error
         if status then
           render nothing: true, status: 200
@@ -27,7 +28,7 @@ class JobsController < ApplicationController
     if id.present? then
       begin
         records_count = Delayed::Job.delete(id)
-        if records_count == 0 then            
+        if records_count.present? && records_count == 0 then            
           render nothing: true, status: 404
         else
           render nothing: true, status: 200
