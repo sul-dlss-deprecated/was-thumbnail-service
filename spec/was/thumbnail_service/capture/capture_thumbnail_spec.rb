@@ -133,7 +133,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
     it 'should raise an error if the source file is not available' do       
       Rails.configuration.jp2_required = false
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
-      expect{capture_thumbnail.save_to_stack}.to raise_error('No such file or directory - spec/fixtures//tmp_directory/19991125000000.jpeg')
+      expect{capture_thumbnail.save_to_stack}.to raise_error(Errno::ENOENT)
     end
     it 'should copy the thumbnail file from the temp location to the stacks location' do
       Rails.configuration.jp2_required = true
@@ -145,7 +145,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
     it 'should raise an error if the source file is not available' do       
       Rails.configuration.jp2_required = true
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
-      expect{capture_thumbnail.save_to_stack}.to raise_error('No such file or directory - spec/fixtures//tmp_directory/19991125000000.jp2')
+      expect{capture_thumbnail.save_to_stack}.to raise_error(Errno::ENOENT)
     end
     after :all do
       if File.exists?("#{@fixtures}/image_stacks/aa/") then
