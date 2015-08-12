@@ -36,7 +36,7 @@ module Was
         
         def compute_simhash_value(memento_text)
           if memento_text.present? then
-            return memento_text.simhash(:preserve_punctuation => true, :stop_words => false)
+            return memento_text.force_encoding("UTF-8").simhash(:preserve_punctuation => true, :stop_words => false)
           else
             return 0
           end
