@@ -10,8 +10,7 @@ module Was
           capture_thumbnail.process_thumbnail
         end
       end
-      
+
     end
   end
 end
-

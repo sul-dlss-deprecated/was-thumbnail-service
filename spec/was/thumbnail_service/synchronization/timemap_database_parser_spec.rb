@@ -9,13 +9,15 @@ describe Was::ThumbnailService::Synchronization::TimemapDatabaseParser do
   end
  
   describe '.initialize' do
-    it 'initializes the TimemapDatabaseParser  with uri' do
+    it 'initializes the TimemapDatabaseParser with uri' do
       timemap_parser = TimemapDatabaseParser.new('http://test1.edu/')
       expect(timemap_parser.instance_variable_get(:@uri)).to eq('http://test1.edu/')
     end
   end
    
   before :all do
+    Memento.delete_all
+    SeedUri.delete_all
     @uri1 = SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'aa111aa1111'})
     @memento11 = Memento.create({:id=>10001, :uri_id=>1001, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00'})
     @memento12 = Memento.create({:id=>10002, :uri_id=>1001, :memento_uri=>'https://swap.stanford.edu/19990901000000/http://test1.edu/', :memento_datetime=>'1999-09-01 00:00:00'})
@@ -83,6 +85,6 @@ describe Was::ThumbnailService::Synchronization::TimemapDatabaseParser do
     @memento33.destroy
     @memento34.destroy
     @memento35.destroy
-    @memento36.destroy
+    @memento36.destroy  
   end
 end

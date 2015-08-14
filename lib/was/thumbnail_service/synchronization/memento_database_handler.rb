@@ -17,9 +17,9 @@ module Was
         
         def insert_memento_into_databse
           unless  @uri_id.present? &&  @memento_uri.present? && @memento_datetime.present? &&
-                   !@simhash_value.nil? && @simhash_value > 0 then
+                   !@simhash_value.nil? && @simhash_value > 0
             
-            raise "Memento insert is missing required fields. "+
+            raise 'Memento insert is missing required fields. '+
                   "Uri-id: #{@uri_id}, Memento-uri: #{@memento_uri}, "+ 
                   "Memento-datetime: #{@memento_datetime}, Simhash_value: #{@simhash_value}"
           end
@@ -35,32 +35,31 @@ module Was
         end
         
         def compute_simhash_value(memento_text)
-          if memento_text.present? then
-            return memento_text.force_encoding("UTF-8").simhash(:preserve_punctuation => true, :stop_words => false)
+          if memento_text.present?
+            return memento_text.force_encoding('UTF-8').simhash(:preserve_punctuation => true, :stop_words => false)
           else
             return 0
           end
         end
         
         def download_memento_text
-          
           # Insert id_ after the datetime part in the uri to avoid
           # the wayback rewritten
-          if @memento_uri.nil? || @memento_uri.empty? then
-             return "" 
+          if @memento_uri.nil? || @memento_uri.empty?
+             return ''
           end
           datetime_path = @memento_uri.match(/\/\d+{14}\//).to_s
-          if datetime_path.length == 0 then
-            return ""
+          if datetime_path.length == 0
+            return ''
           end
             
-          memento_uri_unwritten = @memento_uri.sub(datetime_path, datetime_path[0..-2]+"id_/")
+          memento_uri_unwritten = @memento_uri.sub(datetime_path, datetime_path[0..-2]+'id_/')
           begin
-            response=RestClient.get(memento_uri_unwritten, :timeout => 60, :open_timeout => 60)
+            response = RestClient.get(memento_uri_unwritten, :timeout => 60, :open_timeout => 60)
             return response
           rescue => e
             Rails.logger.error{ "Error in downloading memento text.\n#{e.message}\n#{e.backtrace}"}
-            return ""
+            return ''
           end
         end
       end

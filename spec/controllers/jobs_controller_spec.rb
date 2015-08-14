@@ -4,8 +4,7 @@ RSpec.describe JobsController, :type => :controller do
 
   describe 'GET retry' do
     it 'returns 404 if there is no id passed' do
-      get :retry
-      expect(response).to have_http_status(404)
+      expect{get :retry}.to raise_error(ActionController::ParameterMissing)
     end
     it 'retries a job from delayed job queue' do
       job = Delayed::Job.create({:handler=>''})
@@ -47,8 +46,7 @@ RSpec.describe JobsController, :type => :controller do
       expect(Delayed::Job.all.length).to eq(0)
     end
     it 'returns 404 if there is no id passed' do
-      get :remove
-      expect(response).to have_http_status(404)
+      expect{get :remove}.to raise_error(ActionController::ParameterMissing)
     end
   end
 

@@ -9,6 +9,7 @@ module Was
         @uri = uri
         @uri_id = uri_id
       end
+      
       def run
         Was::ThumbnailService::Synchronization::TimemapSynchronization.new(@uri, @uri_id).sync_database
         Was::ThumbnailService::Picker::MementoPicker.new(@uri_id).pick_mementos

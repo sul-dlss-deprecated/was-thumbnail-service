@@ -7,14 +7,14 @@ module Was
       
         def initialize(uri)
           @uri = uri
-        end        
+        end  
         
         def get_timemap
           memento_hash_list = {}
   
-          memento_records = Memento.joins('INNER JOIN seed_uris on mementos.uri_id = seed_uris.id').where( "seed_uris.uri" => @uri)
+          memento_records = Memento.memento_records(@uri)
           memento_records.each do |memento_record| 
-            if memento_record[:memento_uri].present? && memento_record[:memento_datetime].present? then
+            if memento_record[:memento_uri].present? && memento_record[:memento_datetime].present?
               memento_hash = {}
               memento_datetime = Utilities.convert_date_to_14_digits(memento_record[:memento_datetime].to_s)
               memento_hash_list[memento_datetime] = memento_record[:memento_uri]

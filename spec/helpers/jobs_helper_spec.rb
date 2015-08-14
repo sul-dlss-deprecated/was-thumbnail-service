@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe JobsHelper, :type => :helper do
+describe JobsHelper, :type => :helper do
   describe '.get_thumbnail_uri' do
     it 'returns the full uri for the thumbnail' do
       Rails.configuration.image_stacks_uri = 'http://stacks.example.org/'

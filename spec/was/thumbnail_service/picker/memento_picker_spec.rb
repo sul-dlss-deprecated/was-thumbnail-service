@@ -14,7 +14,7 @@ describe Was::ThumbnailService::Picker::MementoPicker do
     it 'calls the steps to choose the mementos' do
       picker = MementoPicker.new(1)
       mem_list = [{:id=>101, :simhash_value=>9876543210987654321},{:id=>102, :simhash_value=>1234567890123456789}]
-      chosen_list = [101,102]
+      chosen_list = [101, 102]
       
       allow(picker).to receive(:upload_mementos_list).and_return(mem_list)   
       allow(picker).to receive(:choose_mementos).with(mem_list).and_return(chosen_list)    
@@ -57,11 +57,10 @@ describe Was::ThumbnailService::Picker::MementoPicker do
 
   describe '.update_chosen_list_database' do
     before :each do
-      Memento.delete_all
       Memento.create({:id=>101, :is_selected=>0})
       Memento.create({:id=>102, :is_selected=>0})
     end
-    it 'update the choosen list in the database with is_selected =1 ' do
+    it 'updates the choosen list in the database with is_selected =1 ' do
       picker = MementoPicker.new(1)
       expect(Memento.find(101).is_selected).to eq(false)
       expect(Memento.find(102).is_selected).to eq(false)
@@ -73,9 +72,6 @@ describe Was::ThumbnailService::Picker::MementoPicker do
     it 'returns successfully if the chosen_memento_list is empty' do
       picker = MementoPicker.new(1)
       picker.update_chosen_list_database([])
-    end
-    after :each do
-      Memento.delete_all
     end
   end
     

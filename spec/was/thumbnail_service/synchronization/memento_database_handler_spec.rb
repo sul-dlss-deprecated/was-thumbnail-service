@@ -67,9 +67,7 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
        expect(@test_memento[:is_thumbnail_captured]).to eq(false)
     end
     after :each do
-      unless @test_memento.nil? then
-        @test_memento.destroy
-      end
+      @test_memento.destroy unless @test_memento.nil?
     end
   end
 

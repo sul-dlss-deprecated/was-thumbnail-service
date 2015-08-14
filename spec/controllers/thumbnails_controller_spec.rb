@@ -28,9 +28,9 @@ RSpec.describe Api::ThumbnailsController, :type => :controller do
     end
     it 'assigns druid_id and memento_records for seed uri with available memento' do
       seed_uri = SeedUri.create({:id=>100, :uri=>'http://test1.edu/', :druid_id => 'ab123cd4567'})
-      memento1 = Memento.create( :uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 1)
-      memento2 = Memento.create({ :uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 1})
-      memento3 = Memento.create({ :uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 0})
+      memento1 = Memento.create({:uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 1})
+      memento2 = Memento.create({:uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 1})
+      memento3 = Memento.create({:uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 0})
       get :list, {:druid_id => 'ab123cd4567', :format => 'json'}
       expect(assigns['seed_uri']).to eq(seed_uri)
       expect(assigns['seed_uri'][:druid_id]).to eq('ab123cd4567')

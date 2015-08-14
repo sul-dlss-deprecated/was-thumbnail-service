@@ -7,14 +7,14 @@ RSpec.describe AdminHelper, :type => :helper do
       Memento.create({ :id=>100, :uri_id=>999, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/'})
       expect(helper.get_memento_uri_from_handler handler).to eq('https://swap.stanford.edu/19980901000000/http://test1.edu/')
     end
-    it 'raise an exception if the there ' do
+    it 'raises an exception if the there is no valid memento id' do
       handler = "--- !ruby/struct:Was::ThumbnailService::Capture::CaptureJob\nmemento_id: 500\ndruid_id: ab123cd4567\n"
       expect(helper.get_memento_uri_from_handler handler).to eq("Couldn't find Memento with 'id'=500")
     end
-    it 'raise an exception if the there ' do
-      handler = "not valid handler"
+    it 'raises an exception if the there is no valid memento id' do
+      handler = 'not valid handler'
       helper.get_memento_uri_from_handler handler
-      expect(helper.get_memento_uri_from_handler handler).to eq("Problem in extracting memento_id from handler: not valid handler")
+      expect(helper.get_memento_uri_from_handler handler).to eq('Problem in extracting memento_id from handler: not valid handler')
     end 
   end
 

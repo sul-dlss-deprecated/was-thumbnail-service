@@ -13,6 +13,8 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
     @fixtures = 'spec/fixtures/'
     @timemap_5_mementos = File.read("#{@fixtures}/timemap_5_mementos.txt")
     @rest_404_response  = File.read("#{@fixtures}/404_response.txt")
+    Memento.delete_all
+    SeedUri.delete_all
   end
 
   describe '.initialize' do
@@ -41,7 +43,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
   end
 
   describe '.insert_mementos_into_database' do
-    it 'should instert ' do
+    it 'should instert new mementos in the database' do
       timemap_synchronization = TimemapSynchronization.new('http://test2.edu/', 1)
       timemap_synchronization.instance_variable_set(:@wayback_memento_hash,{'19980101120000'=>'uri1','19990101120000'=>'uri1'})
       diff_mementos = Set.new(['19980101120000','19990101120000'])
@@ -62,9 +64,6 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
       timemap_synchronization = TimemapSynchronization.new('http://test4.edu/', '')
       timemap_synchronization.get_timemap_from_database
       expect(timemap_synchronization.instance_variable_get(:@database_memento_hash).length).to eq(0)
-    end
-    after :all do
-      destroy_database_mementos
     end
   end
   
@@ -121,31 +120,6 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
       expect(timemap_synchronization.get_timemap_difference_list.length).to eq(0)
     end
   end
-
-#  describe '.uri_id' do
-#    before :each do
-#      @uri = SeedUri.create({:id=>9999, :uri=>'http://test.edu/', :druid_id=>'aa111aa1111'})
-#    end
-    
-#    it 'should return valid id number for valid uri string' do
-#      timemap_synchronization = TimemapSynchronization.new('http://test.edu/', '')
-#      expect(timemap_synchronization.uri_id).to eq(9999)
-#    end
- 
-#    it 'should return -1 for not-valid uri string' do
-#      timemap_synchronization = TimemapSynchronization.new('http://doesn.t.exist', '')
-#      expect(timemap_synchronization.uri_id).to eq(-1)
-#    end
-    
-#    it 'should return -1 for not-valid uri string' do
-#      timemap_synchronization = TimemapSynchronization.new(nil, '')
-#      expect(timemap_synchronization.uri_id).to eq(-1)
-#    end
-    
-#    after :each do
-#      @uri.destroy
-#    end
-#  end
 end
 
 def initialize_database_with_mementos
@@ -163,19 +137,4 @@ def initialize_database_with_mementos
   @memento34 = Memento.create({ :uri_id=>@uri2.id, :memento_uri=>'https://swap.stanford.edu/19990901000000/http://test1.edu/', :memento_datetime=>''})
   @memento35 = Memento.create({ :uri_id=>@uri2.id, :memento_uri=>'https://swap.stanford.edu/19990901000000/http://test1.edu/'})
   @memento36 = Memento.create({ :uri_id=>@uri2.id})
-end
-
-def destroy_database_mementos
-  @uri1.destroy
-  @uri2.destroy
-  @uri3.destroy
-  @memento11.destroy
-  @memento12.destroy
-  @memento13.destroy
-  @memento31.destroy
-  @memento32.destroy
-  @memento33.destroy
-  @memento34.destroy
-  @memento35.destroy
-  @memento36.destroy
 end
