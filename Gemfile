@@ -36,6 +36,7 @@ gem 'mini_magick'
 group :test do
   gem 'webmock'
   gem 'vcr'
+  gem 'database_cleaner'
 end
 
 group :deployment do

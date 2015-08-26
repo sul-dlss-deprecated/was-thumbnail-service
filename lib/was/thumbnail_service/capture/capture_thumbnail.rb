@@ -15,43 +15,43 @@ module Was
         
         def process_thumbnail
           result = capture
-          if (result.length > 0 && result.starts_with?('#FAIL#')) then
-            if File.exist?(@temporary_file) then File.delete(@temporary_file) end
+          if result.length > 0 && result.starts_with?('#FAIL#')
+            File.delete(@temporary_file) if File.exist?(@temporary_file)
             raise "Thumbnail for memento #{@memento_uri} can't be generated.\n#{result}"
           end
           
-          resize_temporary_image(@temporary_file+'.jpeg')
-          if Rails.configuration.jp2_required then
-              Assembly::Image.new(@temporary_file+'.jpeg').create_jp2(:output=>@temporary_file+".jp2")
-              FileUtils.rm @temporary_file+'.jpeg'
+          resize_temporary_image(@temporary_file + '.jpeg')
+          if Rails.configuration.jp2_required
+              Assembly::Image.new(@temporary_file + '.jpeg').create_jp2(:output=>@temporary_file + '.jp2')
+              FileUtils.rm @temporary_file + '.jpeg'
           end
           save_to_stack
           update_database
         end
         
         def capture
-          result = ""
+          result = ''
           begin
-            result = Phantomjs.run(Rails.configuration.phantom_js_script, @memento_uri, @temporary_file+".jpeg")
-          rescue Exception => e 
-            result = result +"\nException in generating thumbnail. #{e.message}\n#{e.backtrace.inspect}"
+            result = Phantomjs.run(Rails.configuration.phantom_js_script, @memento_uri, @temporary_file + '.jpeg')
+          rescue StandardError => e 
+            result = result + "\nException in generating thumbnail. #{e.message}\n#{e.backtrace.inspect}"
           end
           return result
         end
         
         def update_database
           memento = Memento.find @id
-          memento.update(is_thumbnail_captured: "true")
+          memento.update(is_thumbnail_captured: 'true')
         end
         
         def save_to_stack
           stacks_dir = DruidTools::StacksDruid.new(@druid_id, Rails.configuration.image_stacks).content_dir
-          if Rails.configuration.jp2_required then
+          if Rails.configuration.jp2_required
             thumbnail_file = "#{stacks_dir}/#{@memento_datetime}.jp2"
-            FileUtils.mv @temporary_file+'.jp2', thumbnail_file
+            FileUtils.mv @temporary_file + '.jp2', thumbnail_file
           else
             thumbnail_file = "#{stacks_dir}/#{@memento_datetime}.jpeg"
-            FileUtils.mv @temporary_file+".jpeg", thumbnail_file
+            FileUtils.mv @temporary_file + '.jpeg', thumbnail_file
           end
         end
         def resize_temporary_image(temporary_image)
@@ -59,10 +59,10 @@ module Was
           width = image.width
           height = image.height
           
-          if width > height then
-            resize_dimension = " 400x "
+          if width > height
+            resize_dimension = ' 400x '
           else
-            resize_dimension = " x400 "
+            resize_dimension = ' x400 '
           end
           image.resize resize_dimension
           image.write(temporary_image)

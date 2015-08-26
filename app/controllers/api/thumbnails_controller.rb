@@ -3,19 +3,19 @@ module Api
     before_filter :find_uri, only: [:list]
     respond_to :json
 
-    #https://was-thumbnail-dev.stanford.edu/api/v1/was/thumbnails/druid_id/druid:jx731tz7613?format=json
+    #https://was-thumbnail.example.org/api/v1/was/thumbnails/druid_id/jx731tz7613?format=json
     def list
       uri_id = @seed_uri[:id]
       @druid_id = @seed_uri[:druid_id]
-      @memento_records = Memento.where( "uri_id = ? AND is_selected = 1 AND is_thumbnail_captured = 1", uri_id )
+      @memento_records = Memento.captured_thumbnails( uri_id )
     end
-  
-  private 
+
+    private 
     def find_uri
-      if params[:druid_id].present? then
+      if params[:druid_id].present?
         @seed_uri = SeedUri.find_by(druid_id: params[:druid_id]) 
         render nothing: true, status: :not_found unless @seed_uri.present?
-      elsif params[:uri].present? then
+      elsif params[:uri].present?
         @seed_uri = SeedUri.find_by(uri: params[:uri]) 
         render nothing: true, status: :not_found unless @seed_uri.present?
       else

@@ -48,7 +48,3 @@ module Was
     end
   end
 end
-    
-#logger.debug "Person attributes hash: #{@person.attributes.inspect}"
-#logger.info "Processing the request..."
-#logger.fatal "Terminating application, raised unrecoverable error!!!"

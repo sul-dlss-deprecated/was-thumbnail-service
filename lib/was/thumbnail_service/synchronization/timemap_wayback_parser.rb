@@ -16,7 +16,7 @@ module Was
         end
         
         def read_timemap
-          unless @uri.present? then
+          unless @uri.present?
             return ""
           end
           timemap_uri = "#{Rails.configuration.wayback_timemap_uri}#{@uri}"
@@ -36,7 +36,7 @@ module Was
           memento_string_list = timemap_text.scan(memento_pattern)
           memento_string_list.each do |memento_str|
             memento_hash = extract_memento_from_memento_string(memento_str)
-            unless memento_hash.nil? then
+            unless memento_hash.nil?
               mementos_hash[ memento_hash[:memento_datetime] ] = memento_hash[:memento_uri] 
             end
           end
@@ -44,13 +44,13 @@ module Was
         end
         
         def extract_memento_from_memento_string(memento_str)
-          if memento_str.nil? || memento_str.blank? then 
+          if memento_str.nil? || memento_str.blank? 
             return nil
           end
           
           memento_datetime = memento_str.match(/datetime=".*"\z/).to_s[10..-2]
           memento_uri = memento_str.match(/\A<.*>;/).to_s[1..-3]
-          if memento_uri.nil? || memento_datetime.nil? then
+          if memento_uri.nil? || memento_datetime.nil?
             return nil
           else
             return {:memento_datetime=>Utilities.convert_date_to_14_digits(memento_datetime), :memento_uri=>memento_uri }
