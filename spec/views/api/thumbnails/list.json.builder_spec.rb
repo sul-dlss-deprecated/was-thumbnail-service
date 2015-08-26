@@ -7,6 +7,7 @@ describe 'api/thumbnails/list' do
     memento2 = Memento.create({:uri_id=>100, :memento_uri=> 'https://swap.stanford.edu/20120102131416/http://test1.edu/', :memento_datetime=>'20120102131416'})
     assign('memento_records',[memento1,memento2])
     assign('druid_id','ab123cd4567')
+    assign('thumb_size', 200)
     Rails.configuration.image_stacks_uri = 'http://stacks.stanford.edu/'
     render(:template=>'api/thumbnails/list.json.jbuilder')
     expect(rendered).to eq({'thumbnails'=>[{'memento_uri'=>'https://swap.stanford.edu/20120102131415/http://test1.edu/',
