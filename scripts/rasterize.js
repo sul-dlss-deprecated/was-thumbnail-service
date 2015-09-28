@@ -39,6 +39,11 @@ if (system.args.length < 3 || system.args.length > 5) {
             phantom.exit();
         } else {
             page.evaluate(function() {
+            	var style = document.createElement('style'),
+      			text = document.createTextNode('body { background: #fff }');
+  				style.setAttribute('type', 'text/css');
+  				style.appendChild(text);
+  				document.head.insertBefore(style, document.head.firstChild);
                 $( "#wm-ipp" ).remove();
             });
             window.setTimeout(function () {
