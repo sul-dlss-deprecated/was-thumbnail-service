@@ -7,7 +7,8 @@ module Api
     def list
       uri_id = @seed_uri[:id]
       @druid_id = @seed_uri[:druid_id]
-      @memento_records = Memento.captured_thumbnails( uri_id )
+      @memento_records = Memento.captured_thumbnails(uri_id)
+      @thumb_size = get_thumb_size(params[:thumb_size])
     end
 
     private 
@@ -20,6 +21,13 @@ module Api
         render nothing: true, status: :not_found unless @seed_uri.present?
       else
         render nothing: true, status: :not_found 
+      end
+    end
+    def get_thumb_size(param_thumb_size)
+      if param_thumb_size.present? && param_thumb_size.to_i > 0
+        return param_thumb_size.to_i
+      else
+        return 200
       end
     end
   end

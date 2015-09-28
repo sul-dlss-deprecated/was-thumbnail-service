@@ -7,14 +7,17 @@ describe 'api/thumbnails/list' do
     memento2 = Memento.create({:uri_id=>100, :memento_uri=> 'https://swap.stanford.edu/20120102131416/http://test1.edu/', :memento_datetime=>'20120102131416'})
     assign('memento_records',[memento1,memento2])
     assign('druid_id','ab123cd4567')
+    assign('thumb_size', 200)
     Rails.configuration.image_stacks_uri = 'http://stacks.stanford.edu/'
     render(:template=>'api/thumbnails/list.json.jbuilder')
     expect(rendered).to eq({'thumbnails'=>[{'memento_uri'=>'https://swap.stanford.edu/20120102131415/http://test1.edu/',
                                             'memento_datetime'=>'20120102131415',
-                                            'thumbnail_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131415/full/200,/0/default.jpg'},
-                                          {'memento_uri'=>'https://swap.stanford.edu/20120102131416/http://test1.edu/',
+                                            'thumbnail_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131415/full/200,/0/default.jpg',
+                                            'iiif_json_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131415/info.json'},
+                                           {'memento_uri'=>'https://swap.stanford.edu/20120102131416/http://test1.edu/',
                                             'memento_datetime'=>'20120102131416',
-                                            'thumbnail_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131416/full/200,/0/default.jpg'}]}.to_json)
+                                            'thumbnail_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131416/full/200,/0/default.jpg',
+                                            'iiif_json_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131416/info.json'}]}.to_json)
   end
   it 'retuns an empty response for empy memento records' do
     assign('memento_records',[])
