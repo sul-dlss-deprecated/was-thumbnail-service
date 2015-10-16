@@ -34,6 +34,7 @@ Rails.application.configure do
 
   # Project specific configuration
   config.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
+  config.wayback_uri = "https://swap.stanford.edu/*/"
   config.phantom_js_script = "scripts/rasterize.js"
   config.thumbnail_tmp_directory = "tmp"
   config.image_stacks = "."
