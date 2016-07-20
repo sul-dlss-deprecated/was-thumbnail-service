@@ -27,8 +27,12 @@ gem 'whenever', :require => false
 gem 'druid-tools'
 gem 'is_it_working-cbeer'
 
-group :development do
+group :development, :test do
+  gem 'rubocop'
   gem 'sqlite3'
+end
+
+group :development do
   gem 'spring'
 end
 

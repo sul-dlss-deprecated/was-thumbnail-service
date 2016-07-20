@@ -34,8 +34,8 @@ end
 
 task :default => :ci
 
-desc "run continuous integration suite (tests, coverage, docs)"
-task :ci => [:rspec, :doc]
+desc "run continuous integration suite (tests, coverage, rubocop)"
+task :ci => [:rspec, :rubocop]
 
 begin
   require 'rspec/core/rake_task'
@@ -46,6 +46,18 @@ begin
     spec.rspec_opts = ["-c", "-f progress", "--tty", "-r ./spec/spec_helper.rb"]
   end
 rescue LoadError
+  # should only get here on production system, and we don't care in that context
+end
+
+begin
+  require 'rubocop/rake_task'
+
+  desc 'Run rubocop'
+  task :rubocop do
+    RuboCop::RakeTask.new
+  end
+rescue LoadError
+  # should only get here on production system, and we don't care in that context
 end
 
 # Use yard to build docs
