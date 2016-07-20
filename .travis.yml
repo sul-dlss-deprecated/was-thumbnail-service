@@ -2,8 +2,6 @@ language: ruby
 rvm:
   - "2.1.4"
 
-language: ruby
-
 before_script:
   - mysql -e 'create database was_thumbnail_service;'
   - "bundle exec rake db:migrate"
