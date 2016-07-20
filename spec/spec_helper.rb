@@ -10,3 +10,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   CodeClimate::TestReporter::Formatter,
   Coveralls::SimpleCov::Formatter
 ]
+
+VCR.configure do |config|
+  config.ignore_hosts 'codeclimate.com'
+end
