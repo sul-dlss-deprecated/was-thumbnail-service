@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.1.16'
-gem 'mysql2', '~> 0.3.20' # issue with Rails 4.1.x and 4.2.x https://github.com/rails/rails/issues/21544
-gem 'sass-rails', '~> 4.0.3'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'mysql2', '~> 0.3.21' # issue with Rails 4.1.x and 4.2.x https://github.com/rails/rails/issues/21544
+gem 'sass-rails', '~> 4.0.5'  # use SCSS as CSS preprocessor
+#gem 'coffee-rails', '~> 4.0.1'  # not used?  no coffee assets or views?
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'

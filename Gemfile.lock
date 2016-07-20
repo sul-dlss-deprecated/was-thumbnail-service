@@ -75,13 +75,6 @@ GEM
     chronic (0.10.2)
     codeclimate-test-reporter (0.6.0)
       simplecov (>= 0.7.1, < 1.0.0)
-    coffee-rails (4.0.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.10.0)
     coveralls (0.8.14)
       json (>= 1.8, < 3)
       simplecov (~> 0.12.0)
@@ -269,7 +262,6 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   codeclimate-test-reporter
-  coffee-rails (~> 4.0.0)
   coveralls
   daemons
   database_cleaner
@@ -281,13 +273,13 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
-  mysql2 (~> 0.3.20)
+  mysql2 (~> 0.3.21)
   phantomjs
   rails (~> 4.1.16)
   rest-client
   rspec
   rspec-rails
-  sass-rails (~> 4.0.3)
+  sass-rails (~> 4.0.5)
   sdoc
   simhash
   spring
