@@ -22,6 +22,8 @@ engines:
 exclude_paths:
 - db/
 - spec/
+- app/assets/javascripts/bootstrap.js
+- app/assets/javascripts/jquery.dataTables.js
 - "**/vendor/**/*"
 
 ratings:
