@@ -1,3 +1,7 @@
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.min.js"></script>
+
 <script>
 //$().ready(function() {
 	$("#jobs-navbar").addClass("active");
@@ -9,27 +13,25 @@
 	<div class="panel-heading"> The following jobs have been submitted to the queue
 </div>
 	<div class="panel-body">
-
-<table id="jobs_table" class="table table-striped">
-	<tr>
-		<th>Job id</th>
-		<th>Druid</th>
-		<th>Memento</th>
-		<th>Attempts</th>
-		<th>Creation</th>
-		<th>Last run</th>
-	</tr>
-<%@jobs.each do |job| %>
-	<tr>
-		<td> <%=job.id%>	 </td>
-		<td> <%=get_druid_from_handler(job.handler)%>	 </td>
-		<td> <%=get_memento_uri_from_handler(job.handler)%>	 </td>
-		<td> <%=job.attempts%>	 </td>
-		<td> <%=job.created_at%>	 </td>
-		<td> <%=job.run_at%>	 </td>
-	</tr>
-<%end%>
-
-</table>
-</div>
+		<table id="jobs_table" class="table table-striped">
+			<tr>
+				<th>Job id</th>
+				<th>Druid</th>
+				<th>Memento</th>
+				<th>Attempts</th>
+				<th>Creation</th>
+				<th>Last run</th>
+			</tr>
+			<%@jobs.each do |job| %>
+				<tr>
+					<td> <%=job.id%>	 </td>
+					<td> <%=get_druid_from_handler(job.handler)%>	 </td>
+					<td> <%=get_memento_uri_from_handler(job.handler)%>	 </td>
+					<td> <%=job.attempts%>	 </td>
+					<td> <%=job.created_at%>	 </td>
+					<td> <%=job.run_at%>	 </td>
+				</tr>
+			<%end%>
+		</table>
+	</div>
 </div>

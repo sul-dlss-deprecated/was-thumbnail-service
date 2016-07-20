@@ -17,12 +17,12 @@
 		    error:function (results){
 		    	console.log(results)
 		    	$("#error_message_"+element_id).addClass("alert alert-danger");
-		    	$("#error_message_"+element_id).text(results.statusText)	   		
+		    	$("#error_message_"+element_id).text(results.statusText)
 			}
 		});
 
 	});
-	
+
 	$('.retry').click(function (event){
 		element_id =this.id
 		$.ajax({
@@ -37,7 +37,7 @@
 		    error:function (results){
 		    	console.log(results)
 		    	$("#error_message_"+element_id).addClass("alert alert-danger");
-		    	$("#error_message_"+element_id).text(results.statusText)	   		
+		    	$("#error_message_"+element_id).text(results.statusText)
 			}
 		});
 
@@ -49,7 +49,7 @@ jQuery(function(){
 	var minimized_elements = $('div.minimize');
 	var maxLines = 5;
 
-	minimized_elements.each(function(){    
+	minimized_elements.each(function(){
 	    // var textArr = $(this).text().split(/\n/); // Not supported in IE < 9
 	    var textArr = $(this).html().replace(/\n?<br>/gi,"<br>").split(/<br>/);
 	    var countLines = textArr.length;
@@ -63,40 +63,37 @@ jQuery(function(){
         text_less + '<span>... </span><a href="#" class="more">More</a>'+
         '<span style="display:none;">'+ text_more +' <a href="#" class="less">Less</a></span>'
     );
-}); 
+});
 
 $('a.more', minimized_elements).click(function(event){
     event.preventDefault();
     $(this).hide().prev().hide();
-    $(this).next().show();        
+    $(this).next().show();
 });
 
 $('a.less', minimized_elements).click(function(event){
     event.preventDefault();
-    $(this).parent().hide().prev().show().prev().show();    
+    $(this).parent().hide().prev().show().prev().show();
 });
 
 });
-
-
 
 </script>
-
 
 <%@errors.each do |error| %>
 
 <div class="panel panel-default" id="error_panel_<%=error.id%>">
   <div class="panel-body"  style="background-color: #eee">
-	<table class="table"  style="background-color: #eee">
-		<tr><td>Job id</td>
-			<td> <span> <%=error.id%> </span></td>
-			<td style="text-align: center;"> <span id="error_message_<%=error.id%>" > </span> </td>
-			<td  style="text-align: right;"><span> <a href="#" class="retry" id="<%=error.id%>">	Retry </a>| <a href="#" class="remove" id="<%=error.id%>">Remove</a></span></td>
-			</tr>
-		<tr><td>Druid</td><td colspan="3"><%=get_druid_from_handler(error.handler)%></td></tr>
-		<tr><td>Memento</td><td colspan="3"><%=get_memento_uri_from_handler(error.handler)%>	</td></tr>
-		<tr><td height="100">Error</td><td colspan="3"><%=simple_format(error.last_error,{class:"minimize"},{wrapper_tag: "div"})%></td></tr>
-	</table>
+		<table class="table"  style="background-color: #eee">
+			<tr><td>Job id</td>
+				<td> <span> <%=error.id%> </span></td>
+				<td style="text-align: center;"> <span id="error_message_<%=error.id%>" > </span> </td>
+				<td  style="text-align: right;"><span> <a href="#" class="retry" id="<%=error.id%>">	Retry </a>| <a href="#" class="remove" id="<%=error.id%>">Remove</a></span></td>
+				</tr>
+			<tr><td>Druid</td><td colspan="3"><%=get_druid_from_handler(error.handler)%></td></tr>
+			<tr><td>Memento</td><td colspan="3"><%=get_memento_uri_from_handler(error.handler)%>	</td></tr>
+			<tr><td height="100">Error</td><td colspan="3"><%=simple_format(error.last_error,{class:"minimize"},{wrapper_tag: "div"})%></td></tr>
+		</table>
   </div>
 </div>
 <%end%>

@@ -1,3 +1,7 @@
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.min.js"></script>
+
 <script>
 //$(document).ready(function() {
 	$("#seeds-navbar").addClass("active");
@@ -6,18 +10,18 @@
 
 <script>
 //function loadajax(){
-  $.ajax({ 
+  $.ajax({
     url:'/api/v1/was/thumbnails/druid_id/<%= @druid %>',
     format:"json",
     data:"username=test",
     type:"get",
     success:function(data){
     	if(data['thumbnails'].length == 0 ){
-    		$('#thumbTable').html("There's no available thumbnails for druid "+"<%= @druid %>"); 
+    		$('#thumbTable').html("There's no available thumbnails for druid "+"<%= @druid %>");
     	} else {
 	    	var r = new Array(), j = -1;
 	 	    r[++j] ='<tr><th>Thumb</th><th>Date</th></tr>';
-	
+
 			var size=data['thumbnails'].length;
 			for (var key=0 ; key<size; key++){
 			     r[++j] ='<tr><td><img src="';
@@ -26,19 +30,19 @@
 			     r[++j] = data['thumbnails'][key]['memento_datetime'];
 			     r[++j] = '</td></tr>';
 			}
-			$('#thumbTable').html(r.join('')); 
+			$('#thumbTable').html(r.join(''));
 			$('#thumbTable').DataTable({ "scrollY": "200px", "scrollCollapse": true, "paging": false });
 		 }
     },
     error: function(){
-    	$('#thumbTable').html("There's no available thumbnails for druid "+"<%= @druid %>"); 
+    	$('#thumbTable').html("There's no available thumbnails for druid "+"<%= @druid %>");
     }
   });
 //}
 </script>
+
 <p>
-<table id="thumbTable" class="table" > </table>
+  <table id="thumbTable" class="table" > </table>
 </p>
 <br />
 <div align="right"><a href="/admin/seeds">Return to seed list page</div>
-
