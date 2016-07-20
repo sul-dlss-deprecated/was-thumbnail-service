@@ -36,6 +36,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'coveralls', require: false
+  gem 'codeclimate-test-reporter', require: false
   gem 'webmock'
   gem 'vcr'
   gem 'database_cleaner'

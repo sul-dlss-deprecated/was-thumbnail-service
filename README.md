@@ -1,6 +1,7 @@
 [<img src="https://travis-ci.org/sul-dlss/was-thumbnail-service.svg?branch=master" alt="Build Status" />](https://travis-ci.org/sul-dlss/was-thumbnail-service)
 [![Coverage Status](https://coveralls.io/repos/sul-dlss/was-thumbnail-service/badge.svg?branch=master)](https://coveralls.io/r/sul-dlss/was-thumbnail-service?branch=master)
 [![Code Climate](https://codeclimate.com/github/sul-dlss/was-thumbnail-service/badges/gpa.svg)](https://codeclimate.com/github/sul-dlss/was-thumbnail-service)
+[![CodeClimate Test Coverage](https://codeclimate.com/github/sul-dlss/was-thumbnail-service/badges/coverage.svg)](https://codeclimate.com/github/sul-dlss/was-thumbnail-service/coverage)
 [![Dependency Status](https://gemnasium.com/badges/github.com/sul-dlss/was-thumbnail-service.svg)](https://gemnasium.com/github.com/sul-dlss/was-thumbnail-service)
 
 # was-thumbnail-service
