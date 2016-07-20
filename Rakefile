@@ -15,9 +15,7 @@ namespace :was_thumbnail_service do
     Was::ThumbnailService::Monitor.run
     File.open("log/run_thumbnail_monitor.log", 'a') { |f| f.write("Check if there are new mementos added to SWAP at #{Time.now}\n") }
   end
-end
 
-namespace :was_thumbnail_service do
   task install_phantomJS: :environment do
     puts "Ensure PhatonmJS is installed"
     Phantomjs.path
@@ -32,15 +30,15 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-task :default => :ci
+task default: :ci
 
 desc "run continuous integration suite (tests, coverage, rubocop)"
-task :ci => [:rspec, :rubocop]
+task ci: [:rspec, :rubocop]
 
 begin
   require 'rspec/core/rake_task'
 
-  task :spec => :rspec
+  task spec: :rspec
 
   RSpec::Core::RakeTask.new(:rspec) do |spec|
     spec.rspec_opts = ["-c", "-f progress", "--tty", "-r ./spec/spec_helper.rb"]
