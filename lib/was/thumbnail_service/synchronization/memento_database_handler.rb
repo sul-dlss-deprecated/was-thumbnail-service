@@ -2,7 +2,6 @@ module Was
   module ThumbnailService
     module Synchronization
       class MementoDatabaseHandler
-
         def initialize(uri_id, memento_uri, memento_datetime)
           @uri_id = uri_id
           @memento_uri = memento_uri
@@ -57,7 +56,7 @@ module Was
             # NOTE:  if the url gives a 302 to the original, non-wayback url, then who is to say that page still is extant?
             #   and then the 302 becomes a 404, which blows up here.
           rescue RestClient::Exception => e
-            raise "RestClient error in downloading memento text from #{memento_uri_unwritten}.\n#{e.inspect}\nHTTP Status code: #{e.http_code}\n#{e.backtrace.join(%Q{\n})}"
+            raise "RestClient error in downloading memento text from #{memento_uri_unwritten}.\n#{e.inspect}\nHTTP Status code: #{e.http_code}\n#{e.backtrace.join(%(\n))}"
           end
         end
       end
