@@ -123,9 +123,7 @@ GEM
     libv8 (3.16.14.15)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    mime-types (3.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types (2.99.2)
     mini_exiftool (1.7.0)
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
@@ -168,10 +166,10 @@ GEM
     rdoc (4.2.2)
       json (~> 1.4)
     ref (2.0.0)
-    rest-client (2.0.0)
+    rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -289,7 +287,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.21)
   phantomjs
   rails (~> 4.1.16)
-  rest-client
+  rest-client (~> 1.8)
   rspec
   rspec-rails
   rubocop
