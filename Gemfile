@@ -21,7 +21,6 @@ gem 'assembly-image'
 
 gem 'delayed_job_active_record'
 gem 'daemons' # ruby code can be run as daemon with simple start/stop/restart commands.
-gem 'bluepill' # process monitoring tool
 gem 'whenever', :require => false
 
 gem 'druid-tools'
