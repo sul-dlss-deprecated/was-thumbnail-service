@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-gem 'rest-client'
+gem 'rest-client', '~> 1.8' # pinned to 1.x release line as 2.x breaks our code as-is
 gem 'simhash' # to compare mementos
 # gem 'execjs' # to run JavaScript code from Ruby  # not used??
 gem 'therubyracer' # embed the V8 JavaScript interpreter into Ruby
