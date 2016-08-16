@@ -6,7 +6,7 @@ module Was
         def self.choose_mementos mementos_list
           chosen_list = []
           
-          if mementos_list.nil? || mementos_list.length == 0
+          if mementos_list.nil? || mementos_list.zero?
             return chosen_list
           end
           

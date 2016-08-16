@@ -8,6 +8,6 @@ db/*.sql
 log/*.log
 tmp
 
-config/environments/
-
 coverage
+/doc
+/.yardoc

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.16'
+gem 'rails', '~> 4.2.7.1'
 gem 'mysql2', '~> 0.3.21' # issue with Rails 4.1.x and 4.2.x https://github.com/rails/rails/issues/21544
 gem 'sass-rails', '~> 4.0.5'  # use SCSS as CSS preprocessor
 gem 'jquery-rails'
@@ -37,6 +37,7 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'responders', '~> 2.0'
   gem 'coveralls', require: false
   gem 'codeclimate-test-reporter', require: false
   gem 'webmock'
