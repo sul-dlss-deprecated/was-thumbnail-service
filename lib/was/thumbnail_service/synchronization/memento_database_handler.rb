@@ -44,7 +44,7 @@ module Was
         def download_memento_text
           return '' if @memento_uri.nil? || @memento_uri.empty?
           datetime_path = @memento_uri.match(/\/\d+{14}\//).to_s
-          return '' if datetime_path.length == 0
+          return '' if datetime_path.empty?
 
           # Insert id_ after the datetime part in the uri to avoid wayback rewriting page w its own header
           memento_uri_unwritten = @memento_uri.sub(datetime_path, datetime_path[0..-2]+'id_/')

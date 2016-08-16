@@ -156,7 +156,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
   
   describe '.update_database' do
     before :all do
-      @memento11 = Memento.create({:id=>10001, :uri_id=>1001, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00', :is_selected=>'true', :is_thumbnail_captured=>'False'})
+      @memento11 = Memento.create({:id=>10001, :uri_id=>1001, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00', :is_selected=>'true', :is_thumbnail_captured=>'false'})
     end
     it 'updates is_thumbnail_captured for the memento record in the database' do
       capture_thumbnail = CaptureThumbnail.new(10001, '', 'https://swap.stanford.edu/19980901000000/http://test1.edu/', '19980901000000')

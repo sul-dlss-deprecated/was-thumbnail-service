@@ -23,7 +23,7 @@ class JobsController < ApplicationController
     id = id_param
     begin
       records_count = Delayed::Job.delete(id)
-      if records_count.present? && records_count == 0             
+      if records_count.present? && records_count.zero?
         render nothing: true, status: 404
       else
         render nothing: true, status: 200
