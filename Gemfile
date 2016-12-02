@@ -23,7 +23,7 @@ gem 'daemons' # ruby code can be run as daemon with simple start/stop/restart co
 gem 'whenever', :require => false
 
 gem 'druid-tools'
-gem 'is_it_working-cbeer'
+gem 'okcomputer'
 
 group :development, :test do
   gem 'rubocop'
