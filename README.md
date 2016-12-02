@@ -3,6 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/sul-dlss/was-thumbnail-service/badges/gpa.svg)](https://codeclimate.com/github/sul-dlss/was-thumbnail-service)
 [![CodeClimate Test Coverage](https://codeclimate.com/github/sul-dlss/was-thumbnail-service/badges/coverage.svg)](https://codeclimate.com/github/sul-dlss/was-thumbnail-service/coverage)
 [![Dependency Status](https://gemnasium.com/badges/github.com/sul-dlss/was-thumbnail-service.svg)](https://gemnasium.com/github.com/sul-dlss/was-thumbnail-service)
+[![GitHub version](https://badge.fury.io/gh/sul-dlss%2Fwas-thumbnail-service.svg)](https://badge.fury.io/gh/sul-dlss%2Fwas-thumbnail-service)
 
 # was-thumbnail-service
 It is responsible for creating and delivering the thumbnails for the seed URIs.
