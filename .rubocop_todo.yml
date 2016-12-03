@@ -435,7 +435,6 @@ Style/TrailingBlankLines:
   Exclude:
     - 'app/controllers/api/seed_controller.rb'
     - 'config/initializers/cookies_serializer.rb'
-    - 'config/initializers/is_it_working.rb'
     - 'config/schedule.rb'
     - 'lib/was/thumbnail_service/synchronization/memento_database_handler.rb'
     - 'lib/was/thumbnail_service/synchronization/timemap_wayback_parser.rb'
