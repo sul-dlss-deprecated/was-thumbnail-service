@@ -5,7 +5,6 @@ rvm:
 
 before_script:
   # note that tests fail locally with sqlite
-  # fails in travis without this.  Possibly related to what is described here:
-  # http://www.stackblogs.xyz/questions/5649445/rake-dbcreate-throws-database-does-not-exist-error-with-postgresql
-  - mysql -e 'create database was_thumbnail_service;'
-  - "bundle exec rake db:migrate"
+  # must explicitly create the test database for travis
+  - mysql -e 'create database test_was_thumbnail_service;'
+  - 'bundle exec rake db:migrate'
