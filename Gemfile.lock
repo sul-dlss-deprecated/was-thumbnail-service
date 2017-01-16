@@ -286,7 +286,6 @@ PLATFORMS
 
 DEPENDENCIES
   assembly-image
-  capistrano
   capistrano-bundler
   capistrano-passenger
   capistrano-rails
@@ -324,4 +323,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
