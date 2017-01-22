@@ -191,10 +191,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rspec (3.5.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
     rspec-core (3.5.2)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -306,9 +302,8 @@ DEPENDENCIES
   okcomputer
   phantomjs
   rails (~> 4.2.7.1)
-  responders (~> 2.0)
+  responders
   rest-client (~> 1.8)
-  rspec
   rspec-rails
   rubocop
   sass-rails (~> 4.0.5)
