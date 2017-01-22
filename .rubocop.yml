@@ -20,3 +20,19 @@ Metrics/LineLength:
     - 'spec/was/thumbnail_service/generator_spec.rb'
     - 'spec/was/thumbnail_service/synchronization/memento_database_handler_spec.rb'
     - 'spec/was/thumbnail_service/synchronization/timemap_wayback_parser_spec.rb'
+
+# because it can make the code more readable
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+# because it can make the code more readable
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+# because it can make the code more readable
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# because it's silly to care
+Style/StringLiterals:
+  Enabled: false
