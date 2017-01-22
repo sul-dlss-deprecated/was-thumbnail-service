@@ -1,4 +1,3 @@
-require 'spec_helper'
 include Was::ThumbnailService::Capture
 
 RSpec.configure do |c|

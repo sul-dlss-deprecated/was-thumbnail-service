@@ -1,13 +1,12 @@
-require 'spec_helper'
 include Was::ThumbnailService::Synchronization
 
 describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
-  
+
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-    config.hook_into :webmock 
+    config.hook_into :webmock
   end
-  
+
   before :all do
     Rails.configuration.wayback_timemap_uri = 'https://swap.stanford.edu/timemap/link/'
     @fixtures = 'spec/fixtures/'
@@ -16,7 +15,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
     @rest_400_response  = File.read("#{@fixtures}/400_response.txt")
     @slac_time = "<http://www.slac.stanford.edu/>; rel=\"original\",\r\n<https://swap.stanford.edu/timemap/link/http://www.slac.stanford.edu/>; rel=\"self\"; type=\"application/link-format\"; from=\"Fri, 22 Dec 1995 00:00:00 GMT\"; until=\"Mon, 04 Jan 1999 00:00:00 GMT\",\r\n<https://swap.stanford.edu/http://www.slac.stanford.edu/>; rel=\"timegate\",\r\n<https://swap.stanford.edu/19951222000000/http://www.slac.stanford.edu/>; rel=\"first memento\"; datetime=\"Fri, 22 Dec 1995 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19961125000000/http://www.slac.stanford.edu/>; rel=\"memento\"; datetime=\"Mon, 25 Nov 1996 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19971219000000/http://www.slac.stanford.edu/>; rel=\"memento\"; datetime=\"Fri, 19 Dec 1997 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19980901000000/http://www.slac.stanford.edu/>; rel=\"memento\"; datetime=\"Tue, 01 Sep 1998 00:00:00 GMT\",\r\n<https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/>; rel=\"last memento\"; datetime=\"Mon, 04 Jan 1999 00:00:00 GMT\""
   end
-  
+
   describe '.initialize' do
      it 'initializes the TimemapSynchronization  with uri and uri_id' do
       timemap_parser = TimemapWaybackParser.new('http://test1.edu/')
@@ -47,7 +46,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
       expect(memento_hash.length).to eq(0)
     end
   end
-  
+
   describe '.read_timemap' do
     it 'downloads the timemap for existent URI' do
       VCR.use_cassette('slac_timemap') do
@@ -91,7 +90,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
       expect(memento_hash.length).to eq(0)
     end
   end
-  
+
   describe '.extract_memento_from_memento_string' do
     it 'returns memento hash for a valid memento string' do
       timemap_parser = TimemapWaybackParser.new('')

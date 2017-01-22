@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'api/thumbnails/list' do
   it 'renders the list.json' do
     seed_uri = SeedUri.create({:id=>100, :uri=>'http=>//test1.edu/', :druid_id=>'druid=>ab123cd4567'})
@@ -24,5 +22,5 @@ describe 'api/thumbnails/list' do
     render(:template=>'api/thumbnails/list.json.jbuilder')
     expect(rendered).to eq({'thumbnails'=>[]}.to_json)
   end
-  
+
 end

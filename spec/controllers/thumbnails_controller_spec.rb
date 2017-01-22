@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Api::ThumbnailsController, :type => :controller do
   describe 'Get list' do
     before :all do

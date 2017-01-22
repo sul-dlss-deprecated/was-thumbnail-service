@@ -1,4 +1,3 @@
-require 'spec_helper'
 include Was::ThumbnailService::Picker
 
 describe Was::ThumbnailService::Picker::MementoPicker do

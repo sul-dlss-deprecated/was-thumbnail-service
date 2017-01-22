@@ -1,13 +1,10 @@
-require 'spec_helper' 
-include Was::ThumbnailService::Synchronization
-
 describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
 
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
     config.hook_into :webmock # or :fakeweb
   end
-  
+
   before :all do
     Rails.configuration.wayback_timemap_uri = 'https://swap.stanford.edu/timemap/link/'
     @fixtures = 'spec/fixtures/'
@@ -50,7 +47,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
       timemap_synchronization.insert_mementos_into_database diff_mementos
     end
   end
-  
+
   describe '.get_timemap_from_database' do
     before :all do
       initialize_database_with_mementos
@@ -66,7 +63,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
       expect(timemap_synchronization.instance_variable_get(:@database_memento_hash).length).to eq(0)
     end
   end
-  
+
   describe '.get_timemap_from_wayback' do
     it 'should fill wayback_memento_hash for existent uri' do
       VCR.use_cassette('slac_timemap') do
@@ -75,7 +72,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
         expect(timemap_synchronization.instance_variable_get(:@wayback_memento_hash).length).to eq(5)
       end
     end
- 
+
     it 'should keep wayback_memento_hash emtpy for non-existent uri' do
       VCR.use_cassette('notexistent_timemap') do
         timemap_synchronization = TimemapSynchronization.new('http://non.existent.edu', '')
@@ -92,7 +89,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
       timemap_synchronization.instance_variable_set(:@database_memento_hash,{})
       expect(timemap_synchronization.get_timemap_difference_list.length).to eq(0)
     end
-    
+
     it 'should return the diff list for wayback_hash more than database_hash' do
       timemap_synchronization = TimemapSynchronization.new('', '')
       timemap_synchronization.instance_variable_set(:@wayback_memento_hash,{'19980101120000'=>'uri1','19990101120000'=>'uri1'})
@@ -105,14 +102,14 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
       timemap_synchronization.instance_variable_set(:@database_memento_hash,{'19980101120000'=>'uri1'})
       expect(timemap_synchronization.get_timemap_difference_list).to eq(Set.new(['19990101120000']))
     end
-    
+
     it 'should return empty set for two equivalent hash' do
       timemap_synchronization = TimemapSynchronization.new('', '')
       timemap_synchronization.instance_variable_set(:@wayback_memento_hash,{'19980101120000'=>'uri1','19990101120000'=>'uri1'})
       timemap_synchronization.instance_variable_set(:@database_memento_hash,{'19980101120000'=>'uri1','19990101120000'=>'uri1'})
       expect(timemap_synchronization.get_timemap_difference_list.length).to eq(0)
     end
-     
+
     it 'should return empty set for database_hash that contains all wayback_hash' do
       timemap_synchronization = TimemapSynchronization.new('', '')
       timemap_synchronization.instance_variable_set(:@wayback_memento_hash,{})
@@ -127,9 +124,9 @@ def initialize_database_with_mementos
   @memento11 = Memento.create({ :uri_id=>@uri1.id, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00'})
   @memento12 = Memento.create({ :uri_id=>@uri1.id, :memento_uri=>'https://swap.stanford.edu/19990901000000/http://test1.edu/', :memento_datetime=>'1999-09-01 00:00:00'})
   @memento13 = Memento.create({ :uri_id=>@uri1.id, :memento_uri=>'https://swap.stanford.edu/20000901000000/http://test1.edu/', :memento_datetime=>'2000-09-01 00:00:00'})
-   
+
   @uri2 = SeedUri.create({ :uri=>'http://test2.edu/', :druid_id=>'bb111bb1111'})
-  
+
   @uri3 = SeedUri.create({ :uri=>'http://test3.edu/', :druid_id=>'cc111cc1111'})
   @memento31 = Memento.create({ :uri_id=>@uri2.id, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00'})
   @memento32 = Memento.create({ :uri_id=>@uri2.id, :memento_uri=>'', :memento_datetime=>'1999-09-01 00:00:00'})

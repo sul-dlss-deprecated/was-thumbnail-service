@@ -1,6 +1,3 @@
-require 'spec_helper'
-include Was::ThumbnailService::Synchronization
-
 describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
 
   VCR.configure do |config|
