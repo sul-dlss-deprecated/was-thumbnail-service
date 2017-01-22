@@ -21,5 +21,4 @@ describe Was::ThumbnailService::Generator do
       generator.run
     end
   end
-
 end
