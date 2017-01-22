@@ -3,7 +3,11 @@ include Was::ThumbnailService::Picker
 describe Was::ThumbnailService::Picker::MementoPickerThresholdGrouping do
 
   describe '.choose_mementos' do
-    pending
+    it 'does not throw NoMethodError when mementos_list is empty array' do
+      mem_list = []
+      expect{MementoPickerThresholdGrouping.choose_mementos(mem_list)}.not_to raise_error(NoMethodError)
+      expect(MementoPickerThresholdGrouping.choose_mementos(mem_list)).to eq([])
+    end
   end
 
   describe '.simhash_hamming_distance' do
