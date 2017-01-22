@@ -28,7 +28,7 @@ RSpec.describe Api::ThumbnailsController, :type => :controller do
       expect(response).to have_http_status(200)
       expect(response.content_type).to eq('application/json')
     end
-    it 'assigns druid_id and memento_records for seed uri with available memento' do
+    it 'assigns druid_id and memento_records for seed uri with available memento', :mysql do
       insert_seed_and_mementos
       get :list, {:druid_id => 'ab123cd4567', :format => 'json'}
       expect(assigns['seed_uri']).to eq(@seed_uri)

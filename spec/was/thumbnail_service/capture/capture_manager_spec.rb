@@ -12,7 +12,7 @@ describe Was::ThumbnailService::Capture::CaptureManager do
     SeedUri.delete_all
     Memento.delete_all
   end
-  
+
   describe '.initialize' do
     it 'initializes the CaptureManager with Uri_id' do
       capture_manager = CaptureManager.new(5)
@@ -21,7 +21,7 @@ describe Was::ThumbnailService::Capture::CaptureManager do
   end
 
   describe '.submit_capture_jobs' do
-    it 'submits jobs based on the available mementos that is_selected but not captured yet' do
+    it 'submits jobs based on the available mementos that is_selected but not captured yet', :mysql do
       capture_manager = CaptureManager.new(100)
       allow(capture_manager).to receive(:get_druid_id).and_return('ab123cd4567')
       memento1 = Memento.create({ :uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 0})
@@ -53,7 +53,7 @@ describe Was::ThumbnailService::Capture::CaptureManager do
       allow(capture_manager).to receive(:get_druid_id).and_return('ab123cd4567')
       capture_manager.submit_capture_jobs
       expect(Delayed::Job.all.size).to eq(0)
-    end  
+    end
   end
 
   describe '.get_druid_id' do
@@ -67,7 +67,7 @@ describe Was::ThumbnailService::Capture::CaptureManager do
       expect{capture_manager.get_druid_id}.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
-  
+
   after :each do
     Delayed::Job.delete_all
     SeedUri.delete_all
