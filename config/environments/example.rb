@@ -33,13 +33,13 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   # Project specific configuration
-  config.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
-  config.wayback_uri = "https://swap.stanford.edu/*/"
+  config.wayback_timemap_uri = "https://openwayback.example.edu/timemap/link/"
+  config.wayback_uri = "https://openwayback.example.edu/*/"
   config.phantom_js_script = "scripts/rasterize.js"
   config.thumbnail_tmp_directory = "tmp"
-  config.image_stacks = "."
-  config.image_stacks_uri = ""
-  config.jp2_required = true  
-  config.purl_url =  "http://purl.stanford.edu/"
+  config.image_stacks = "tmp"
+  config.image_stacks_uri = "https://stacks.example.edu/image/iiif/"
+  config.jp2_required = true
+  config.purl_url = "https://purl.example.edu/"
   config.threshold = 2
 end

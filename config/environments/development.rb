@@ -34,29 +34,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  
-  
+
   # Project specific configuration
-  config.wayback_timemap_uri = ""
+  config.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
+  config.wayback_uri = "https://wayback-dev.stanford.edu/*/"
   config.phantom_js_script = "scripts/rasterize.js"
   config.thumbnail_tmp_directory = "tmp"
-  config.image_stacks = ""
-  config.image_stacks_uri = ""
+  config.image_stacks = "tmp"
+  config.image_stacks_uri = "http://example.stanford.edu"
+  config.purl_url = "http://purl-test.stanford.edu/"
 end
-
-#Bluepill.application("was-thumbnail-service", :foreground => true) do |app|
-#  app.process("delayed_job") do |process|
-#    process.working_dir = "/Users/aalsum/CodeWorkspace/was-thumbnail-service/"
-
-   # process.start_grace_time    = 10.seconds
-   # process.stop_grace_time     = 10.seconds
-   # process.restart_grace_time  = 10.seconds
-
-    #process.start_command = "RAILS_ENV=development bin/delayed_job start"
-    #process.stop_command  = "RAILS_ENV=development bin/delayed_job stop"
-
-    #process.pid_file = "/Users/aalsum/CodeWorkspace/was-thumbnail-service/tmp/pids/delayed_job.pid"
-    #process.uid = "deploy"
-    #process.gid = "deploy"
-  #end
-#end
