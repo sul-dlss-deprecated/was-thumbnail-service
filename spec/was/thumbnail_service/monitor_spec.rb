@@ -5,6 +5,13 @@ describe Was::ThumbnailService::Monitor do
       SeedUri.delete_all
     end
     it 'ends silently if there is no seed uris' do
+      expect(Was::ThumbnailService::Generator).to_not receive(:run)
+      expect{Was::ThumbnailService::Monitor.run}.to_not raise_error
+    end
+    it 'does not call generator run if there are no mementos for the seed' do
+      Memento.delete_all
+      SeedUri.create({:id=>1001, :uri=>'http://test1.edu/', :druid_id=>'aa111aa1111'})
+      expect(Was::ThumbnailService::Generator).to_not receive(:run)
       expect{Was::ThumbnailService::Monitor.run}.to_not raise_error
     end
     it 'does not call generator run if the mementos wayback equals to mementos db' do

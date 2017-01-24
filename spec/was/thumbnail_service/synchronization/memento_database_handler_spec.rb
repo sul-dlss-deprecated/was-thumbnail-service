@@ -98,7 +98,7 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
     it 'should raise an error for non-available memento' do
       VCR.use_cassette('test1_notavailable') do
         m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test2.edu/', '')
-        expect { m_db_handler.download_memento_text }.to raise_error(RuntimeError, /RestClient error in downloading memento text/)
+        expect { m_db_handler.download_memento_text }.to raise_error(RuntimeError, /RestClient error downloading memento text/)
       end
     end
     it 'should return an emtpy string for not-valid memento' do
