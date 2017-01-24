@@ -44,7 +44,12 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
-      invoke 'delayed_job:restart'
+      # note that the following doesn't kill old processes due to ? daemon gem
+      #   see https://github.com/collectiveidea/delayed_job/issues/3
+      # invoke 'delayed_job:restart'
+      # this two step approach doesn't always work either
+      invoke 'delayed_job:stop'
+      invoke 'delayed_job:start'
     end
   end
 end
