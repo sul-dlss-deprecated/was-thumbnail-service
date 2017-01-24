@@ -33,15 +33,17 @@ end
 task default: :ci
 
 desc "run continuous integration suite (tests, coverage, rubocop)"
-task ci: [:rspec, :rubocop]
+task ci: [:spec, :rubocop]
 
 begin
   require 'rspec/core/rake_task'
 
-  task spec: :rspec
+  desc 'Run RSpec tests'
+  RSpec::Core::RakeTask.new(:spec)
 
-  RSpec::Core::RakeTask.new(:rspec) do |spec|
-    spec.rspec_opts = ["-c", "-f progress", "--tty", "-r ./spec/spec_helper.rb"]
+  desc 'Run RSpec tests except those that require mysql'
+  RSpec::Core::RakeTask.new(:spec_sqlite) do |t|
+    t.rspec_opts = ['-t ~@mysql']
   end
 rescue LoadError
   # should only get here on production system, and we don't care in that context

@@ -1,6 +1,3 @@
-require 'spec_helper'
-include Was::ThumbnailService::Synchronization
-
 describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
 
   VCR.configure do |config|
@@ -53,7 +50,7 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
        m_db_handler.instance_variable_set(:@simhash_value,0)
        expect{m_db_handler.insert_memento_into_databse}.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
     end
-    it 'should insert memento into the database' do
+    it 'should insert memento into the database', :mysql do
        m_db_handler = MementoDatabaseHandler.new(9999, 'https://swap.stanford.edu/20120101120000/http://test2.edu/', 'Mon, 23 Nov 2001 12:00:00')
        m_db_handler.instance_variable_set(:@simhash_value,9342137274140115447)
        m_db_handler.insert_memento_into_databse

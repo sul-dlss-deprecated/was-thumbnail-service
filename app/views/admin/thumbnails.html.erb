@@ -13,7 +13,7 @@
   $.ajax({
     url:'/api/v1/was/thumbnails/druid_id/<%= @druid %>',
     format:"json",
-    data:"username=test",
+    // data:"username=test",
     type:"get",
     success:function(data){
     	if(data['thumbnails'].length == 0 ){

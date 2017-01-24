@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'api/thumbnails/list' do
   it 'renders the list.json' do
     seed_uri = SeedUri.create({:id=>100, :uri=>'http=>//test1.edu/', :druid_id=>'druid=>ab123cd4567'})
@@ -19,10 +17,10 @@ describe 'api/thumbnails/list' do
                                             'thumbnail_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131416/full/200,/0/default.jpg',
                                             'iiif_json_uri'=>'http://stacks.stanford.edu/ab123cd4567%2F20120102131416/info.json'}]}.to_json)
   end
+
   it 'retuns an empty response for empy memento records' do
     assign('memento_records',[])
     render(:template=>'api/thumbnails/list.json.jbuilder')
     expect(rendered).to eq({'thumbnails'=>[]}.to_json)
   end
-  
 end

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe JobsController, :type => :controller do
 
   describe 'GET retry' do
@@ -29,7 +27,7 @@ RSpec.describe JobsController, :type => :controller do
     it 'deletes a job from delayed job queue' do
       job = Delayed::Job.create({:handler=>''})
       expect(Delayed::Job.all.length).to eq(1)
-      
+
       get :remove,  {:id=> job.id}
       expect(response).to have_http_status(:success)
       expect(Delayed::Job.all.length).to eq(0)

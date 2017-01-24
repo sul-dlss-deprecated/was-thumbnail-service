@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Api::SeedController, :type => :controller do
 
   describe 'Get create' do
@@ -17,11 +15,11 @@ RSpec.describe Api::SeedController, :type => :controller do
     it 'returns 409 if the druid is already exists' do
       SeedUri.create({:id=>100, :uri=>'http://test1.edu/', :druid_id => 'ab123cd4567'})
       expect(SeedUri.all.length).to eq(1)
-      
+
       post :create, {:druid=> 'ab123cd4567',:uri=>'http://test1.edu/'}
       expect(response).to have_http_status(409)
       expect(SeedUri.all.length).to eq(1)
     end
   end
-  
+
 end

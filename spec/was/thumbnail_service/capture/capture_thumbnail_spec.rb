@@ -1,21 +1,21 @@
-require 'spec_helper'
 include Was::ThumbnailService::Capture
+
 RSpec.configure do |c|
   c.filter_run_excluding :image_prerequisite
 end
 
 describe Was::ThumbnailService::Capture::CaptureThumbnail do
-  
+
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-    config.hook_into :webmock 
+    config.hook_into :webmock
   end
-  
+
   before :all do
     @fixtures = 'spec/fixtures/'
     @memento_html = File.read("#{@fixtures}/memento.txt")
   end
-  
+
   describe '.initialize' do
     it 'initializes the object with the parameters' do
       capture_thumbnail = CaptureThumbnail.new(1, 'ab123cd4567', 'memento-uri','19990104000000')
@@ -26,7 +26,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       expect(capture_thumbnail.instance_variable_get(:@temporary_file)).to eq("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000")
     end
   end
-  
+
   describe '.process_thumbnail' do
     it 'calls the steps to create a thumbnail with jp2_required' do
       Rails.configuration.jp2_required = true
@@ -67,7 +67,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       expect{capture_thumbnail.process_thumbnail}.to raise_error("Thumbnail for memento memento-uri can't be generated.\n#FAIL#")
     end
   end
-  
+
   describe '.capture' do
     before :each do
       if File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
@@ -103,17 +103,17 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
         expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jp2")).to be false
       end
     end
-    
+
     after :each do
       if File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
         FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
       end
       if File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
         FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
-      end    
+      end
     end
   end
-    
+
   describe '.save_to_stack' do
     before :all do
       tmp_directory = "#{@fixtures}/tmp_directory"
@@ -130,7 +130,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
 
       expect(File.exist?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jpeg")).to be true
     end
-    it 'raises an error if the source file is not available' do       
+    it 'raises an error if the source file is not available' do
       Rails.configuration.jp2_required = false
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
       expect{capture_thumbnail.save_to_stack}.to raise_error(Errno::ENOENT)
@@ -142,7 +142,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
 
       expect(File.exist?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jp2")).to be true
     end
-    it 'raises an error if the source file is not available' do       
+    it 'raises an error if the source file is not available' do
       Rails.configuration.jp2_required = true
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
       expect{capture_thumbnail.save_to_stack}.to raise_error(Errno::ENOENT)
@@ -153,7 +153,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       end
     end
   end
-  
+
   describe '.update_database' do
     before :all do
       @memento11 = Memento.create({:id=>10001, :uri_id=>1001, :memento_uri=>'https://swap.stanford.edu/19980901000000/http://test1.edu/', :memento_datetime=>'1998-09-01 00:00:00', :is_selected=>'true', :is_thumbnail_captured=>'false'})
@@ -161,7 +161,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
     it 'updates is_thumbnail_captured for the memento record in the database' do
       capture_thumbnail = CaptureThumbnail.new(10001, '', 'https://swap.stanford.edu/19980901000000/http://test1.edu/', '19980901000000')
       capture_thumbnail.update_database
-      
+
       expect(Memento.find(10001)[:is_thumbnail_captured]).to be true
     end
     it 'raises an error if the memento id is not found' do
@@ -172,7 +172,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       @memento11.destroy
     end
   end
-  
+
   describe '.resize_temporary_image' do
     it 'resizes the image with extra width to maximum 400 pixel width', :image_prerequisite do
       temporary_image = 'tmp/thum_extra_width.jpeg'
@@ -187,7 +187,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       expect(FileUtils.compare_file(temporary_image, 'spec/fixtures/thumbnail_files/thum_extra_height.jpeg')).to be_truthy
     end
 
-    after :each do 
+    after :each do
       FileUtils.rm_rf 'tmp/thum_extra_width.jpeg' if File.exist?('tmp/thum_extra_width.jpeg')
       FileUtils.rm 'tmp/thum_extra_height.jpeg' if File.exist?('tmp/thum_extra_height.jpeg')
     end

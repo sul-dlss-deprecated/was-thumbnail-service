@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe AdminHelper, :type => :helper do
   describe '.get_memento_uri_from_handler' do
     it 'returns the memento uri based on the handler value' do
@@ -15,7 +13,7 @@ RSpec.describe AdminHelper, :type => :helper do
       handler = 'not valid handler'
       helper.get_memento_uri_from_handler handler
       expect(helper.get_memento_uri_from_handler handler).to eq('Problem in extracting memento_id from handler: not valid handler')
-    end 
+    end
   end
 
   describe '.extract_memento_id' do
@@ -30,7 +28,7 @@ RSpec.describe AdminHelper, :type => :helper do
     it 'raises an error it can not find the memento_id prefix' do
       handler = "--- !ruby/struct:Was::ThumbnailService::Capture::CaptureJob\n"
       expect{helper.extract_memento_id handler}.to raise_error("Problem in extracting memento_id from handler: --- !ruby/struct:Was::ThumbnailService::Capture::CaptureJob\n")
-    end  
+    end
   end
 
   describe '.extract_memento_uri' do

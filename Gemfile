@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.7.1'
+gem 'responders' # controller-level `respond_to' feature now in `responders` gem as of rails 4.2
 gem 'mysql2', '~> 0.3.21' # issue with Rails 4.1.x and 4.2.x https://github.com/rails/rails/issues/21544
 gem 'sass-rails', '~> 4.0.5'  # use SCSS as CSS preprocessor
 
@@ -24,6 +25,7 @@ gem 'daemons' # ruby code can be run as daemon with simple start/stop/restart co
 gem 'whenever', :require => false
 
 gem 'druid-tools'
+gem 'is_it_working-cbeer' # TODO: get rid of this (and initializer as soon as nagios works off okcomputer)
 gem 'okcomputer' # for 'upness' monitoring
 
 group :development, :test do
@@ -36,9 +38,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec'
   gem 'rspec-rails'
-  gem 'responders', '~> 2.0'
   gem 'coveralls', require: false
   gem 'codeclimate-test-reporter', require: false
   gem 'webmock'
