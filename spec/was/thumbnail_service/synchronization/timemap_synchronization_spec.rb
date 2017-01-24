@@ -40,7 +40,7 @@ describe Was::ThumbnailService::Synchronization::TimemapSynchronization do
   end
 
   describe '.insert_mementos_into_database' do
-    it 'should instert new mementos in the database' do
+    it 'should insert new mementos in the database' do
       timemap_synchronization = TimemapSynchronization.new('http://test2.edu/', 1)
       timemap_synchronization.instance_variable_set(:@wayback_memento_hash,{'19980101120000'=>'uri1','19990101120000'=>'uri1'})
       diff_mementos = Set.new(['19980101120000','19990101120000'])

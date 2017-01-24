@@ -6,12 +6,12 @@ class JobsController < ApplicationController
       job = Delayed::Job.find(id)
       status = worker.run job
       job.last_error
-      if status 
+      if status
         render nothing: true, status: 200
       else
         render nothing: true, status: 500
       end
-    rescue ActiveRecord::RecordNotFound=> e
+    rescue ActiveRecord::RecordNotFound
       render nothing: true, status: 404
     rescue => e
       Rails.logger.error e.inspect

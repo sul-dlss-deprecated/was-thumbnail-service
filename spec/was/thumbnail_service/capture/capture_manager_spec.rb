@@ -47,7 +47,7 @@ describe Was::ThumbnailService::Capture::CaptureManager do
       capture_manager.submit_capture_jobs
       expect(Delayed::Job.all.size).to eq(0)
     end
-    it 'returns succesfully if the uri does not have any memento' do
+    it 'returns successfully if the uri does not have any memento' do
       capture_manager = CaptureManager.new(100)
       allow(capture_manager).to receive(:get_druid_id).and_return('ab123cd4567')
       capture_manager.submit_capture_jobs
