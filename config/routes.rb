@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   root to: "admin#seeds"
-  
+
   get 'jobs/retry'
 
   get 'jobs/remove'
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
 
   get 'api/seed/create'
 
-  scope '/api' do 
-    scope '/v1' do  
+  scope '/api' do
+    scope '/v1' do
       scope '/was' do
         scope '/thumbnails' do
           scope '/druid_id' do
@@ -28,12 +28,10 @@ Rails.application.routes.draw do
             end
           end
           scope 'uri' do
-          #  scope '/:uri' do
-              get '/' => 'api/thumbnails#list'
-          #  end
+            get '/' => 'api/thumbnails#list'
           end
         end
       end
     end
-  end 
+  end
 end
