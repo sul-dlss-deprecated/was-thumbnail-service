@@ -6,6 +6,7 @@ module AdminHelper
       id = extract_memento_id(handler)
       memento_uri = extract_memento_uri(id) if id.present?
     rescue => e
+      Honeybadger.notify e
       return e.message
     end
     return memento_uri.nil? ? "Can't extract uri from #{handler}" : memento_uri

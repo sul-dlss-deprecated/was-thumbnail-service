@@ -22,6 +22,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 
 require 'dlss/capistrano'
+require 'capistrano/honeybadger'
 require 'capistrano/passenger'
 require "whenever/capistrano"
 

@@ -122,6 +122,7 @@ GEM
       activesupport (>= 4.1.0)
     hashdiff (0.3.0)
     hike (1.2.3)
+    honeybadger (2.7.2)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -304,6 +305,7 @@ DEPENDENCIES
   dlss-capistrano
   druid-tools
   fastimage
+  honeybadger
   is_it_working-cbeer
   jbuilder (~> 2.0)
   jquery-rails
