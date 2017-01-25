@@ -30,7 +30,7 @@ set :linked_files, %w(config/database.yml config/honeybadger.yml config/secrets.
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_dirs, %w(config/environments log public/system tmp/cache vendor/bundle)
+set :linked_dirs, %w(config/environments log public/system tmp/cache tmp/pids vendor/bundle)
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 # honeybadger_env otherwise defaults to rails_env
 set :honeybadger_env, fetch(:stage)
@@ -41,17 +41,9 @@ set :honeybadger_env, fetch(:stage)
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-  desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
-      # note that the following doesn't kill old processes due to ? daemon gem
-      #   see https://github.com/collectiveidea/delayed_job/issues/3
-      # invoke 'delayed_job:restart'
-      # this two step approach doesn't always work either
-      invoke 'delayed_job:stop'
-      invoke 'delayed_job:start'
-    end
+    invoke 'delayed_job:restart'
   end
 end
