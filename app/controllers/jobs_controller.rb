@@ -11,10 +11,12 @@ class JobsController < ApplicationController
       else
         render nothing: true, status: 500
       end
-    rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound => e
+      Honeybadger.notify e
       render nothing: true, status: 404
     rescue => e
       Rails.logger.error e.inspect
+      Honeybadger.notify e
       render nothing: true, status: 500
     end
   end
@@ -29,6 +31,7 @@ class JobsController < ApplicationController
         render nothing: true, status: 200
       end
     rescue => e
+      Honeybadger.notify e
       Rails.logger.error e.inspect
       render nothing: true, status: 500
     end

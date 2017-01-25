@@ -37,12 +37,7 @@ namespace :delayed_job do
     on roles(delayed_job_roles) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          # note that the following doesn't kill old processes due to ? daemon gem
-          #   see https://github.com/collectiveidea/delayed_job/issues/3
           execute :bundle, :exec, :'bin/delayed_job', args, :restart
-          # two step approach doesn't always work either.
-          # invoke 'delayed_job:stop'
-          # invoke 'delayed_job:start'
         end
       end
     end
