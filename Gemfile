@@ -26,7 +26,6 @@ gem 'whenever', :require => false
 
 gem 'druid-tools'
 gem 'honeybadger' # for exception reporting
-gem 'is_it_working-cbeer' # TODO: get rid of this (and initializer as soon as nagios works off okcomputer)
 gem 'okcomputer' # for 'upness' monitoring
 
 group :development, :test do
