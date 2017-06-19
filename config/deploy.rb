@@ -1,17 +1,10 @@
 set :application, 'was-thumbnail-service'
 set :repo_url, 'https://github.com/sul-dlss/was-thumbnail-service.git'
-set :deploy_host, "was-thumbnail-#{fetch(:stage)}.stanford.edu"
-set :user, 'was'
 
 # Default branch is :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-# Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/opt/app/#{fetch(:user)}/#{fetch(:application)}"
-
-server fetch(:deploy_host), user: fetch(:user), roles: %w(web db app)
-
-Capistrano::OneTimeKey.generate_one_time_key!
+set :deploy_to, "/opt/app/was/was-thumbnail-service"
 
 # Default value for :scm is :git
 # set :scm, :git
