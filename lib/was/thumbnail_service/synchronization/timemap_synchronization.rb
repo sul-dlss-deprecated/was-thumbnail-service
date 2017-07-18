@@ -24,7 +24,6 @@ module Was
             begin
               memento_database_handler.add_memento_to_database_timemap
             rescue => e
-              Honeybadger.notify e
               Rails.logger.error{ "Error in inserting memento #{memento_database_handler.inspect} into database.\n#{e.message}\n#{e.backtrace}"}
             end
           end
