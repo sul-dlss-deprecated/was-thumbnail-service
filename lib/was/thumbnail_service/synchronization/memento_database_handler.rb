@@ -56,7 +56,6 @@ module Was
             # NOTE:  if the url gives a 302 to the original, non-wayback url, then who is to say that page still is extant?
             #   and then the 302 becomes a 404, which blows up here.
           rescue RestClient::Exception => e
-            Honeybadger.notify e
             raise "RestClient error downloading memento text from #{memento_uri_unwritten}.\n#{e.inspect}\nHTTP Status code: #{e.http_code}\n#{e.backtrace.join(%(\n))}"
           end
         end
