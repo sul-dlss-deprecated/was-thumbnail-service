@@ -34,7 +34,7 @@ module Was
           begin
             result = Phantomjs.run(Rails.configuration.phantom_js_script, @memento_uri, @temporary_file + '.jpeg')
           rescue StandardError => e
-            Honeybadger.notify e
+            Rails.logger.warn e
             result = result + "\nException in generating thumbnail. #{e.message}\n#{e.backtrace.inspect}"
           end
           return result
