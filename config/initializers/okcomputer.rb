@@ -13,7 +13,6 @@ OkComputer::Registry.register 'ruby_version', OkComputer::RubyVersionCheck.new
 
 OkComputer::Registry.register 'thumbnail_tmp_dir', OkComputer::DirectoryCheck.new(Rails.application.config.thumbnail_tmp_directory)
 OkComputer::Registry.register 'digital_stacks_dir', OkComputer::DirectoryCheck.new(Rails.application.config.image_stacks)
-OkComputer::Registry.register 'external-image_stacks_uri', OkComputer::HttpCheck.new(Rails.application.config.image_stacks_uri)
 
 # config.wayback_timemap_uri is used to determine if there are new mementos that require additional thumbnails
 #  would like a better check, but config.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/" gives HTTP 404 error

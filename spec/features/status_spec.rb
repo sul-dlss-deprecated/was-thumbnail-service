@@ -12,7 +12,6 @@ describe 'application and dependency monitoring' do
     expect(page).to have_text('ruby_version')
     expect(page).to have_text('thumbnail_tmp_dir')
     expect(page).to have_text('digital_stacks_dir')
-    expect(page).to have_text('external-image_stacks_uri')
     expect(page).to have_text('external-wayback_timemap_root_url')
     expect(page).to have_text('delayed-job-size')
     expect(page).to have_text('OPTIONAL')
