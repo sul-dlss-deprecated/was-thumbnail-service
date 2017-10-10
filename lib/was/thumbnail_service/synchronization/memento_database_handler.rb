@@ -11,10 +11,10 @@ module Was
         def add_memento_to_database_timemap
           memento_text = download_memento_text
           @simhash_value = compute_simhash_value(memento_text)
-          insert_memento_into_databse
+          insert_memento_into_database
         end
 
-        def insert_memento_into_databse
+        def insert_memento_into_database
           unless  @uri_id.present? &&  @memento_uri.present? && @memento_datetime.present? &&
                    !@simhash_value.nil? && @simhash_value > 0
 
