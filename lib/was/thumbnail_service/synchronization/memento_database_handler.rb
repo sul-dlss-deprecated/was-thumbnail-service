@@ -11,10 +11,10 @@ module Was
         def add_memento_to_database_timemap
           memento_text = download_memento_text
           @simhash_value = compute_simhash_value(memento_text)
-          insert_memento_into_databse
+          insert_memento_into_database
         end
 
-        def insert_memento_into_databse
+        def insert_memento_into_database
           unless  @uri_id.present? &&  @memento_uri.present? && @memento_datetime.present? &&
                    !@simhash_value.nil? && @simhash_value > 0
 
@@ -35,9 +35,9 @@ module Was
 
         def compute_simhash_value(memento_text)
           if memento_text.present?
-            return memento_text.force_encoding('UTF-8').simhash(:preserve_punctuation => true, :stop_words => false)
+            memento_text.simhash(:preserve_punctuation => true, :stop_words => false)
           else
-            return 0
+            0
           end
         end
 
@@ -51,7 +51,7 @@ module Was
           begin
             # NOTE:  these timeouts don't work - wrong
             # response = RestClient.get(memento_uri_unwritten, :timeout => 60, :open_timeout => 60)
-            RestClient.get(memento_uri_unwritten)
+            RestClient.get(memento_uri_unwritten).encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
 
             # NOTE:  if the url gives a 302 to the original, non-wayback url, then who is to say that page still is extant?
             #   and then the 302 becomes a 404, which blows up here.
