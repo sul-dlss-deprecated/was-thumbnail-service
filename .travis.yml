@@ -8,3 +8,13 @@ before_script:
   # must explicitly create the test database for travis
   - mysql -e 'create database test_was_thumbnail_service;'
   - 'bundle exec rake db:migrate'
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=c4b64609b0e4b9414033742a04ee21de4cc25c567f7255b4e21ddb776b15122f
