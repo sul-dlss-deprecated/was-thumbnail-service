@@ -22,15 +22,15 @@ Metrics/LineLength:
     - 'spec/was/thumbnail_service/synchronization/timemap_wayback_parser_spec.rb'
 
 # because it can make the code more readable
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
 # because it can make the code more readable
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
 # because it can make the code more readable
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
 # because it's silly to care
