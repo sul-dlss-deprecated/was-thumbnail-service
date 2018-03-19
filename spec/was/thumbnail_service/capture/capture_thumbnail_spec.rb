@@ -89,7 +89,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       VCR.use_cassette('slac_19990104000000') do
         capture_thumbnail = CaptureThumbnail.new(1, '', 'https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/','19990104000000')
         result = capture_thumbnail.capture
-        expect(result.length).to eq(0)
+        expect(result).to be_blank
         expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")).to be false
         expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")).to be true
       end
@@ -98,7 +98,7 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       VCR.use_cassette('notexistent_20120101120000') do
         capture_thumbnail = CaptureThumbnail.new(1, '', 'https://swap.stanford.edu/20120101120000/http://not.existent.edu/','20120101120000')
         result = capture_thumbnail.capture
-        expect(result.length).to be > 0
+        expect(result).to be_present
         expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jpeg")).to be false
         expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jp2")).to be false
       end

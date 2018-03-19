@@ -40,7 +40,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'coveralls', require: false
-  gem 'codeclimate-test-reporter', require: false
   gem 'capybara'
   gem 'webmock'
   gem 'vcr'
