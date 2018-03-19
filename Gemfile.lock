@@ -80,8 +80,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
     chronic (0.10.2)
-    codeclimate-test-reporter (1.0.8)
-      simplecov (<= 0.13)
     concurrent-ruby (1.0.5)
     coveralls (0.8.19)
       json (>= 1.8, < 3)
@@ -292,7 +290,6 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   capybara
-  codeclimate-test-reporter
   coveralls
   daemons
   database_cleaner
