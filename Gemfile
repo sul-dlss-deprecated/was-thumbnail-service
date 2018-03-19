@@ -56,5 +56,4 @@ end
 
 group :doc do
   gem 'sdoc'
-  gem 'yard'
 end
