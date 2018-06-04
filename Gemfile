@@ -29,7 +29,7 @@ gem 'honeybadger' # for exception reporting
 gem 'okcomputer' # for 'upness' monitoring
 
 group :development, :test do
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.53.0' # avoid code churn due to rubocop changes
   gem 'sqlite3'
 end
 
