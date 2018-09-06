@@ -12,7 +12,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'rest-client', '~> 1.8' # pinned to 1.x release line as 2.x breaks rake was_thumbnail_service:run_thumbnail_monitor
 gem 'simhash' # to compare mementos
 
-gem 'therubyracer' # embed the V8 JavaScript interpreter into Ruby
 gem 'phantomjs' # headless WebKit scriptable with a JavaScript API
 gem 'uglifier' # js compression
 
