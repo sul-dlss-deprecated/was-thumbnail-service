@@ -5,7 +5,7 @@ RSpec.describe AdminController, :type => :controller do
       expect { get :thumbnails }.to raise_error(ActionController::ParameterMissing)
     end
     it 'does not raise error if there is a druid parameter' do
-      expect { get :thumbnails, druid: 'ab123cd4567' }.not_to raise_error
+      expect { get :thumbnails, params: { druid: 'ab123cd4567' } }.not_to raise_error
     end
   end
 
