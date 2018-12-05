@@ -7,17 +7,17 @@ class JobsController < ApplicationController
       status = worker.run job
       job.last_error
       if status
-        render nothing: true, status: 200
+        head status: 200
       else
-        render nothing: true, status: 500
+        head status: 500
       end
     rescue ActiveRecord::RecordNotFound => e
       Honeybadger.notify e
-      render nothing: true, status: 404
+      head status: 404
     rescue => e
       Rails.logger.error e.inspect
       Honeybadger.notify e
-      render nothing: true, status: 500
+      head status: 500
     end
   end
 
@@ -26,20 +26,20 @@ class JobsController < ApplicationController
     begin
       records_count = Delayed::Job.delete(id)
       if records_count.present? && records_count.zero?
-        render nothing: true, status: 404
+        head status: 404
       else
-        render nothing: true, status: 200
+        head status: 200
       end
     rescue => e
       Honeybadger.notify e
       Rails.logger.error e.inspect
-      render nothing: true, status: 500
+      head status: 500
     end
   end
 
   private
+
   def id_param
     params.require(:id)
   end
-
 end
