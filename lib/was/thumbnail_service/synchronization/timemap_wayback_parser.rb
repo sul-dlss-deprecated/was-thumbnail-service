@@ -25,7 +25,7 @@ module Was
             response=RestClient.get(timemap_uri,  :timeout => 60, :open_timeout => 60)
             return response
           rescue => e
-            Honeybadger.notify e
+            Honeybadger.notify e, context: { timemap_uri: timemap_uri }
             Rails.logger.error { "Error in retrieving the timemap from #{timemap_uri}.\n#{e.message}\n#{e.backtrace}"}
             return ""
           end
