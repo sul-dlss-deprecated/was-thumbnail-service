@@ -15,12 +15,12 @@ module Api
     def find_uri
       if params[:druid_id].present?
         @seed_uri = SeedUri.find_by(druid_id: params[:druid_id])
-        head status: :not_found unless @seed_uri.present?
+        head 404 unless @seed_uri.present?
       elsif params[:uri].present?
         @seed_uri = SeedUri.find_by(uri: params[:uri])
-        head status: :not_found unless @seed_uri.present?
+        head 404 unless @seed_uri.present?
       else
-        head status: :not_found
+        head 404
       end
     end
     def get_thumb_size(param_thumb_size)
