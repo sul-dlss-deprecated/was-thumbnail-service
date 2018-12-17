@@ -1,4 +1,4 @@
-class InitializeDatabase < ActiveRecord::Migration
+class InitializeDatabase < ActiveRecord::Migration[4.2]
   def up
     create_table :seed_uris do |t|
         t.column "uri",           :string
