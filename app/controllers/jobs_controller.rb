@@ -7,17 +7,17 @@ class JobsController < ApplicationController
       status = worker.run job
       job.last_error
       if status
-        head status: 200
+        head 200
       else
-        head status: 500
+        head 500
       end
     rescue ActiveRecord::RecordNotFound => e
       Honeybadger.notify e
-      head status: 404
+      head 404
     rescue => e
       Rails.logger.error e.inspect
       Honeybadger.notify e
-      head status: 500
+      head 500
     end
   end
 
@@ -26,14 +26,14 @@ class JobsController < ApplicationController
     begin
       records_count = Delayed::Job.delete(id)
       if records_count.present? && records_count.zero?
-        head status: 404
+        head 404
       else
-        head status: 200
+        head 200
       end
     rescue => e
       Honeybadger.notify e
       Rails.logger.error e.inspect
-      head status: 500
+      head 500
     end
   end
 
