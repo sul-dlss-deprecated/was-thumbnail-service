@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-gem 'rest-client', '~> 2.0' # '~> 1.8' # pinned to 1.x release line as 2.x breaks rake was_thumbnail_service:run_thumbnail_monitor
+gem 'rest-client', '~> 2.0'
 gem 'simhash' # to compare mementos
 
 gem 'phantomjs' # headless WebKit scriptable with a JavaScript API
