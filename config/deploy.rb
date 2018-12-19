@@ -25,7 +25,7 @@ set :linked_files, %w[config/database.yml config/honeybadger.yml config/secrets.
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_dirs, %w[log public/system tmp/cache tmp/pids vendor/bundle]
+set :linked_dirs, %w[log public/system tmp/cache tmp/pids vendor/bundle config/settings]
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 # honeybadger_env otherwise defaults to rails_env
 set :honeybadger_env, fetch(:stage)
@@ -36,8 +36,8 @@ set :honeybadger_env, fetch(:stage)
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# update shared_configs before restarting app
-before 'deploy:restart', 'shared_configs:update'
+# update shared_configs before precompiling assets
+before 'deploy:assets:precompile', 'shared_configs:update'
 
 # restart delayed_job after publishing
 after 'deploy:publishing', 'deploy:restart'
