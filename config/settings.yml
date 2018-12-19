@@ -1,0 +1,5 @@
+ # Non-env-specific configuration
+phantom_js_script: "scripts/rasterize.js"
+thumbnail_tmp_directory: "tmp"
+image_stacks: "/stacks/"
+jp2_required: true

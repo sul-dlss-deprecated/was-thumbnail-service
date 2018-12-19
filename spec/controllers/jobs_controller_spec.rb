@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe JobsController, :type => :controller do
 
   describe 'GET retry' do

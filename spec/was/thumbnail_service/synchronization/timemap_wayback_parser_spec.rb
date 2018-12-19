@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include Was::ThumbnailService::Synchronization
 
 describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
@@ -8,7 +10,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
   end
 
   before :all do
-    Rails.configuration.wayback_timemap_uri = 'https://swap.stanford.edu/timemap/link/'
+    Settings.wayback_timemap_uri = 'https://swap.stanford.edu/timemap/link/'
     @fixtures = 'spec/fixtures/'
     @timemap_5_mementos = File.read("#{@fixtures}/timemap_5_mementos.txt")
     @rest_404_response  = File.read("#{@fixtures}/404_response.txt")

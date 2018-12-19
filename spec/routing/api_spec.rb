@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'api routing specs' do
   context 'v1/was/thumbnails/druid_id' do
     it 'routes to api/thumbnails#list when there is a druid' do

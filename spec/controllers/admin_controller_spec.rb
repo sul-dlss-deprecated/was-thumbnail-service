@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe AdminController, :type => :controller do
 
   describe '#thumbnails' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -39,13 +41,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # Project specific configuration
-  config.wayback_timemap_uri = 'http://openwayback.example.edu/timemap/link'
-  config.wayback_uri = 'http://openwayback.example.edu/*/'
-  config.phantom_js_script = 'scripts/rasterize.js'
-  config.thumbnail_tmp_directory = 'tmp'
-  config.image_stacks = 'tmp'
-  config.image_stacks_uri = 'http://stacks.example.org'
-  config.purl_url = 'http://purl.example.edu/'
 end

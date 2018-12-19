@@ -22,9 +22,9 @@
 			</tr>
 			<%@seeds.each do |seed| %>
 				<tr>
-					<td><%=link_to(seed.druid_id, "#{Rails.configuration.purl_url}#{seed.druid_id}")%></td>
+					<td><%=link_to(seed.druid_id, "#{Settings.purl_url}#{seed.druid_id}")%></td>
 					<td><%=link_to(seed.uri,seed.uri)%></td>
-					<td><%=link_to(seed.no_mementos, "#{Rails.configuration.wayback_uri}#{seed.uri}")%></td>
+					<td><%=link_to(seed.no_mementos, "#{Settings.wayback_uri}#{seed.uri}")%></td>
 					<td><%=link_to(seed.captured, "/admin/thumbnails?druid=#{seed.druid_id}")%></td>
 				</tr>
 			<%end%>

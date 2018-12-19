@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Was
   module ThumbnailService
     module Picker
@@ -34,9 +36,8 @@ module Was
         end
 
         def self.threshold
-          return Rails.configuration.try(:threshold) ? Rails.configuration.threshold : 0
+          Settings.threshold || 0
         end
-
       end
     end
   end

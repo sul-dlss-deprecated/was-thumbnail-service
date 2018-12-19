@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'api/thumbnails/list' do
   it 'renders the list.json' do
     seed_uri = SeedUri.create({:id=>100, :uri=>'http=>//test1.edu/', :druid_id=>'druid=>ab123cd4567'})
@@ -6,7 +8,7 @@ describe 'api/thumbnails/list' do
     assign('memento_records',[memento1,memento2])
     assign('druid_id','ab123cd4567')
     assign('thumb_size', 200)
-    Rails.configuration.image_stacks_uri = 'http://stacks.stanford.edu/'
+    Settings.image_stacks_uri = 'http://stacks.stanford.edu/'
     render(:template=>'api/thumbnails/list.json.jbuilder')
     expect(rendered).to eq({'thumbnails'=>[{'memento_uri'=>'https://swap.stanford.edu/20120102131415/http://test1.edu/',
                                             'memento_datetime'=>'20120102131415',

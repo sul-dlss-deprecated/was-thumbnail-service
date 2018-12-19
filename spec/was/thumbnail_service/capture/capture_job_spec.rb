@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include Was::ThumbnailService::Capture
 
 RSpec.configure do |c|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Was
   module ThumbnailService
     module Synchronization
@@ -19,7 +21,7 @@ module Was
           unless @uri.present?
             return ""
           end
-          timemap_uri = "#{Rails.configuration.wayback_timemap_uri}#{@uri}"
+          timemap_uri = "#{Settings.wayback_timemap_uri}#{@uri}"
 
           begin
             response=RestClient.get(timemap_uri,  :timeout => 60, :open_timeout => 60)

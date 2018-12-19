@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe AdminHelper, :type => :helper do
   describe '.get_memento_uri_from_handler' do
     it 'returns the memento uri based on the handler value' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SeedUri < ApplicationRecord
   scope :seed_info, lambda { 
                       joins('LEFT OUTER JOIN (select sum(mementos.is_thumbnail_captured) as captured, count(mementos.is_selected) as no_mementos, mementos.uri_id from mementos group by uri_id) as' \
