@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
 
   VCR.configure do |config|
@@ -64,7 +66,7 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
        expect(@test_memento[:is_thumbnail_captured]).to eq(false)
     end
     after :each do
-      @test_memento.destroy unless @test_memento.nil?
+      @test_memento&.destroy
     end
   end
 

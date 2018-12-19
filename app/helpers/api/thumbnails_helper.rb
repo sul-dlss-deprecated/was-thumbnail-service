@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module ThumbnailsHelper
     def build_thumbnail_uri(druid, memento_datetime, thumb_size)

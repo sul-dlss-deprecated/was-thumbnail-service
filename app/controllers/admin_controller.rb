@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
   def jobs
     @jobs = Delayed::Job.all

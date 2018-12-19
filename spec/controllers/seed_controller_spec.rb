@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::SeedController, :type => :controller do
 
   describe 'Get create' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Was::ThumbnailService::Synchronization::TimemapDatabaseParser do
 
   VCR.configure do |config|

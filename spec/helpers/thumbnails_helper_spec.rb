@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Api::ThumbnailsHelper, :type => :helper do
   it 'builds the thumbnail uri' do
     Settings.image_stacks_uri = 'http://stacks.stanford.edu/'

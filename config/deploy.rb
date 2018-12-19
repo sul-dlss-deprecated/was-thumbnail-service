@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 set :application, 'was-thumbnail-service'
 set :repo_url, 'https://github.com/sul-dlss/was-thumbnail-service.git'
 

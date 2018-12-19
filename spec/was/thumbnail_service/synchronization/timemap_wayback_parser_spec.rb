@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include Was::ThumbnailService::Synchronization
 
 describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Was::ThumbnailService::Monitor do
 
   describe '.run' do

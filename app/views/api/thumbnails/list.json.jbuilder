@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.thumbnails @memento_records do |memento|
   json.memento_uri memento.memento_uri
   json.memento_datetime Was::ThumbnailService::Utilities.convert_date_to_14_digits(memento['memento_datetime'].to_s)

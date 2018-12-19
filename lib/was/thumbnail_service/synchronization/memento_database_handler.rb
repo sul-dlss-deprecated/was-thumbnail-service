@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Was
   module ThumbnailService
     module Synchronization
@@ -16,7 +18,7 @@ module Was
 
         def insert_memento_into_database
           unless  @uri_id.present? &&  @memento_uri.present? && @memento_datetime.present? &&
-                   !@simhash_value.nil? && @simhash_value > 0
+                   !@simhash_value.nil? && @simhash_value.positive?
 
             raise 'Memento insert is missing required fields. '+
                   "Uri-id: #{@uri_id}, Memento-uri: #{@memento_uri}, "+

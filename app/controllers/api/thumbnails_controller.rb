@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class ThumbnailsController < ApplicationController
     before_action :find_uri, only: [:list]
@@ -24,10 +26,10 @@ module Api
       end
     end
     def get_thumb_size(param_thumb_size)
-      if param_thumb_size.present? && param_thumb_size.to_i > 0
-        return param_thumb_size.to_i
+      if param_thumb_size.present? && param_thumb_size.to_i.positive?
+        param_thumb_size.to_i
       else
-        return 200
+        200
       end
     end
   end

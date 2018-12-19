@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::ThumbnailsController, :type => :controller do
   describe 'Get list' do
     before :all do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe JobsHelper, :type => :helper do
   describe '.get_thumbnail_uri' do
     it 'returns the full uri for the thumbnail' do

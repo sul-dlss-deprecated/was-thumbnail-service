@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 set :bundle_without, %w(deployment development test).join(' ')
 set :deploy_environment, 'production'
 set :rails_env, fetch(:deploy_environment)

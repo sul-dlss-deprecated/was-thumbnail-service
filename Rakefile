@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
@@ -33,7 +35,7 @@ end
 task default: :ci
 
 desc "run continuous integration suite (tests, coverage, rubocop)"
-task ci: [:spec, :rubocop]
+task ci: [:rubocop, :spec]
 
 begin
   require 'rspec/core/rake_task'
@@ -52,10 +54,7 @@ end
 begin
   require 'rubocop/rake_task'
 
-  desc 'Run rubocop'
-  task :rubocop do
-    RuboCop::RakeTask.new
-  end
+  RuboCop::RakeTask.new(:rubocop)
 rescue LoadError
   # should only get here on production system, and we don't care in that context
 end

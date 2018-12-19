@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mini_magick'
 
 module Was
@@ -15,7 +17,7 @@ module Was
 
         def process_thumbnail
           result = capture
-          if result.length > 0 && result.starts_with?('#FAIL#')
+          if result.length.positive? && result.starts_with?('#FAIL#')
             File.delete(@temporary_file) if File.exist?(@temporary_file)
             raise "Thumbnail for memento #{@memento_uri} can't be generated.\n#{result}"
           end

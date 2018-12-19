@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'admin routing specs' do
   context 'thumbnails' do
     it 'routes to admin#thumbnails with druid parameter' do

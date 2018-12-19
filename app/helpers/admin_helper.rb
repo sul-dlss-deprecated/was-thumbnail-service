@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AdminHelper
 
   def get_memento_uri_from_handler(handler)

@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 module Was
   module ThumbnailService
     module Capture
       class CaptureManager
 
-
         def initialize(uri_id)
           @uri_id = uri_id
         end
-
 
         def submit_capture_jobs
           druid_id = get_druid_id
@@ -16,7 +16,6 @@ module Was
             Delayed::Job.enqueue(CaptureJob.new(memento_record['id'], druid_id))
           end
         end
-
 
         def get_druid_id
           return SeedUri.find(@uri_id)['druid_id']
