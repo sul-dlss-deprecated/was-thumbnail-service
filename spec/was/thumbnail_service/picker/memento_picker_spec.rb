@@ -27,17 +27,17 @@ describe Was::ThumbnailService::Picker::MementoPicker do
     end
   end
 
-  describe '.upload_mementos_list' do
+  describe '.upload_mementos_list', :mysql do
     before :each do
       Memento.delete_all
       Memento.create({ :id=>101, :uri_id=>1, :simhash_value=>9876543210987654321})
       Memento.create({ :id=>102, :uri_id=>1, :simhash_value=>1234567890123456789})
     end
-    it 'fill memento_list with a list of mementos', :mysql do
+    it 'fill memento_list with a list of mementos' do
       picker = MementoPicker.new(1)
       expect(picker.upload_mementos_list).to eq([{:id=>101, :simhash_value=>9876543210987654321},{:id=>102, :simhash_value=>1234567890123456789}])
     end
-    it 'keeps the memento_list empty or uri without mementos', :mysql do
+    it 'keeps the memento_list empty or uri without mementos' do
       picker = MementoPicker.new(2)
       expect(picker.upload_mementos_list).to eq([])
     end

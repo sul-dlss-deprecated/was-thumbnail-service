@@ -6,7 +6,7 @@ end
 
 describe Was::ThumbnailService::Capture::CaptureManager do
 
-  before :each do
+  before do
     Delayed::Job.delete_all
     SeedUri.delete_all
     Memento.delete_all
@@ -20,7 +20,7 @@ describe Was::ThumbnailService::Capture::CaptureManager do
   end
 
   describe '.submit_capture_jobs' do
-    it 'submits jobs based on the available mementos that is_selected but not captured yet', :mysql do
+    it 'submits jobs based on the available mementos that is_selected but not captured yet' do
       capture_manager = CaptureManager.new(100)
       allow(capture_manager).to receive(:get_druid_id).and_return('ab123cd4567')
       memento1 = Memento.create({ :uri_id=>100, :is_selected => 1, :is_thumbnail_captured => 0})

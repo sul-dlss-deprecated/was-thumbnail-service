@@ -1,0 +1,4 @@
+wayback_timemap_uri: 'http://openwayback.example.edu/timemap/link'
+wayback_uri: 'http://openwayback.example.edu/*/'
+image_stacks_uri: 'http://stacks.example.org'
+purl_url: 'http://purl.example.edu/'

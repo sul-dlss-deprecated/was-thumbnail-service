@@ -21,9 +21,10 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 
-require 'dlss/capistrano'
 require 'capistrano/honeybadger'
 require 'capistrano/passenger'
+require 'capistrano/shared_configs'
+require 'dlss/capistrano'
 require "whenever/capistrano"
 
 require "capistrano/scm/git"

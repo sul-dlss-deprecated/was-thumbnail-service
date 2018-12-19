@@ -5,7 +5,6 @@ RSpec.configure do |c|
 end
 
 describe Was::ThumbnailService::Capture::CaptureThumbnail do
-
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
     config.hook_into :webmock
@@ -23,39 +22,39 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       expect(capture_thumbnail.instance_variable_get(:@druid_id)).to eq('ab123cd4567')
       expect(capture_thumbnail.instance_variable_get(:@memento_uri)).to eq('memento-uri')
       expect(capture_thumbnail.instance_variable_get(:@memento_datetime)).to eq('19990104000000')
-      expect(capture_thumbnail.instance_variable_get(:@temporary_file)).to eq("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000")
+      expect(capture_thumbnail.instance_variable_get(:@temporary_file)).to eq("#{Settings.thumbnail_tmp_directory}/19990104000000")
     end
   end
 
   describe '.process_thumbnail' do
     it 'calls the steps to create a thumbnail with jp2_required' do
-      Rails.configuration.jp2_required = true
+      Settings.jp2_required = true
       capture_thumbnail = CaptureThumbnail.new(1, '', 'memento-uri', '19990104000000')
       allow(capture_thumbnail).to receive(:capture).and_return('')
-      allow(capture_thumbnail).to receive(:resize_temporary_image).with("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
-      allow_any_instance_of(Assembly::Image).to receive(:create_jp2).with(:output=>"#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
+      allow(capture_thumbnail).to receive(:resize_temporary_image).with("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
+      allow_any_instance_of(Assembly::Image).to receive(:create_jp2).with(:output=>"#{Settings.thumbnail_tmp_directory}/19990104000000.jp2")
       allow(FileUtils).to receive(:rm)
       allow(capture_thumbnail).to receive(:save_to_stack)
       allow(capture_thumbnail).to receive(:update_database)
 
       expect(capture_thumbnail).to receive(:capture)
-      expect(capture_thumbnail).to receive(:resize_temporary_image).with("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
-      expect_any_instance_of(Assembly::Image).to receive(:create_jp2).with(:output=>"#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
+      expect(capture_thumbnail).to receive(:resize_temporary_image).with("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
+      expect_any_instance_of(Assembly::Image).to receive(:create_jp2).with(:output=>"#{Settings.thumbnail_tmp_directory}/19990104000000.jp2")
       expect(capture_thumbnail).to receive(:save_to_stack)
       expect(capture_thumbnail).to receive(:update_database)
 
       capture_thumbnail.process_thumbnail
     end
     it 'calls the steps to create a thumbnail with jp2_required equals false' do
-      Rails.configuration.jp2_required = false
+      Settings.jp2_required = false
       capture_thumbnail = CaptureThumbnail.new(1, '', 'memento-uri', '19990104000000')
       allow_any_instance_of(CaptureThumbnail).to receive(:capture).and_return('')
-      allow_any_instance_of(CaptureThumbnail).to receive(:resize_temporary_image).with("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
+      allow_any_instance_of(CaptureThumbnail).to receive(:resize_temporary_image).with("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
       allow_any_instance_of(CaptureThumbnail).to receive(:save_to_stack)
       allow_any_instance_of(CaptureThumbnail).to receive(:update_database)
 
       expect_any_instance_of(CaptureThumbnail).to receive(:capture)
-      expect_any_instance_of(CaptureThumbnail).to receive(:resize_temporary_image).with("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
+      expect_any_instance_of(CaptureThumbnail).to receive(:resize_temporary_image).with("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
       expect_any_instance_of(CaptureThumbnail).to receive(:save_to_stack)
       expect_any_instance_of(CaptureThumbnail).to receive(:update_database)
 
@@ -69,29 +68,29 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
   end
 
   describe '.capture' do
-    before :each do
-      if File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
-        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
+    before do
+      if File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
+        FileUtils.rm("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
       end
     end
-    it 'creates an jp2 temporary image for a webpage', :image_prerequisite do
-      Rails.configuration.jp2_required = true
+    it 'creates a jp2 temporary image for a webpage', :image_prerequisite do
+      Settings.jp2_required = true
       VCR.use_cassette('slac_19990104000000') do
         capture_thumbnail = CaptureThumbnail.new(1, '', 'https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/','19990104000000')
         result = capture_thumbnail.capture
         expect(result.length).to eq(0)
-        expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")).to be true
-        expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")).to be false
+        expect(File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jp2")).to be true
+        expect(File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")).to be false
       end
     end
-    it 'creates an jpeg temporary image for a webpage' do
-      Rails.configuration.jp2_required = false
+    it 'creates a jpeg temporary image for a webpage' do
+      Settings.jp2_required = false
       VCR.use_cassette('slac_19990104000000') do
         capture_thumbnail = CaptureThumbnail.new(1, '', 'https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/','19990104000000')
         result = capture_thumbnail.capture
         expect(result).to be_blank
-        expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")).to be false
-        expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")).to be true
+        expect(File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jp2")).to be false
+        expect(File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")).to be true
       end
     end
     it 'returns result message if there is an error' do
@@ -99,17 +98,17 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
         capture_thumbnail = CaptureThumbnail.new(1, '', 'https://swap.stanford.edu/20120101120000/http://not.existent.edu/','20120101120000')
         result = capture_thumbnail.capture
         expect(result).to be_present
-        expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jpeg")).to be false
-        expect(File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/20120101120000.jp2")).to be false
+        expect(File.exist?("#{Settings.thumbnail_tmp_directory}/20120101120000.jpeg")).to be false
+        expect(File.exist?("#{Settings.thumbnail_tmp_directory}/20120101120000.jp2")).to be false
       end
     end
 
     after :each do
-      if File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
-        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jpeg")
+      if File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
+        FileUtils.rm("#{Settings.thumbnail_tmp_directory}/19990104000000.jpeg")
       end
-      if File.exist?("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
-        FileUtils.rm("#{Rails.configuration.thumbnail_tmp_directory}/19990104000000.jp2")
+      if File.exist?("#{Settings.thumbnail_tmp_directory}/19990104000000.jp2")
+        FileUtils.rm("#{Settings.thumbnail_tmp_directory}/19990104000000.jp2")
       end
     end
   end
@@ -120,30 +119,30 @@ describe Was::ThumbnailService::Capture::CaptureThumbnail do
       image_stacks = "#{@fixtures}/image_stacks"
       FileUtils.cp("#{@fixtures}/19961125000000.jpeg","#{tmp_directory}/19961125000000.jpeg")
       FileUtils.cp("#{@fixtures}/19961125000000.jp2","#{tmp_directory}/19961125000000.jp2")
-      Rails.configuration.thumbnail_tmp_directory = tmp_directory
-      Rails.configuration.image_stacks = image_stacks
+      Settings.thumbnail_tmp_directory = tmp_directory
+      Settings.image_stacks = image_stacks
     end
     it 'copies the jpeg thumbnail file from the temp location to the stacks location' do
-      Rails.configuration.jp2_required = false
+      Settings.jp2_required = false
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19961125000000')
       capture_thumbnail.save_to_stack
 
       expect(File.exist?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jpeg")).to be true
     end
     it 'raises an error if the source file is not available' do
-      Rails.configuration.jp2_required = false
+      Settings.jp2_required = false
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
       expect{capture_thumbnail.save_to_stack}.to raise_error(Errno::ENOENT)
     end
     it 'copies the jp2 thumbnail file from the temp location to the stacks location' do
-      Rails.configuration.jp2_required = true
+      Settings.jp2_required = true
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19961125000000')
       capture_thumbnail.save_to_stack
 
       expect(File.exist?("#{@fixtures}/image_stacks/aa/111/aa/1111/19961125000000.jp2")).to be true
     end
     it 'raises an error if the source file is not available' do
-      Rails.configuration.jp2_required = true
+      Settings.jp2_required = true
       capture_thumbnail = CaptureThumbnail.new(1, 'aa111aa1111', '', '19991125000000')
       expect{capture_thumbnail.save_to_stack}.to raise_error(Errno::ENOENT)
     end

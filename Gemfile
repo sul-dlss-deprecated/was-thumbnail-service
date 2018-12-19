@@ -23,6 +23,7 @@ gem 'delayed_job_active_record'
 gem 'daemons' # ruby code can be run as daemon with simple start/stop/restart commands.
 gem 'whenever', :require => false
 
+gem 'config'
 gem 'druid-tools'
 gem 'honeybadger' # for exception reporting
 gem 'okcomputer' # for 'upness' monitoring

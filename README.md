@@ -20,12 +20,6 @@ bundle install
 
 ## Configuration
 
-### Settings
-Copy the configuration from the example.
-```
-cp config/environments/example.rb config/environments/development.rb
-```
-
 ### Database
 
 #### config/database.yml

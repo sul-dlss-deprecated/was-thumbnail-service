@@ -51,13 +51,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  # Project specific configuration
-  config.wayback_timemap_uri = "https://swap.stanford.edu/timemap/link/"
-  config.wayback_uri = "https://wayback-dev.stanford.edu/*/"
-  config.phantom_js_script = "scripts/rasterize.js"
-  config.thumbnail_tmp_directory = "tmp"
-  config.image_stacks = "tmp"
-  config.image_stacks_uri = "http://example.stanford.edu"
-  config.purl_url = "http://purl-test.stanford.edu/"
 end
