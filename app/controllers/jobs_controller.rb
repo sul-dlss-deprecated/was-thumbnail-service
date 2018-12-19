@@ -16,7 +16,7 @@ class JobsController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       Honeybadger.notify e
       head 404
-    rescue => e
+    rescue StandardError => e
       Rails.logger.error e.inspect
       Honeybadger.notify e
       head 500
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
       else
         head 200
       end
-    rescue => e
+    rescue StandardError => e
       Honeybadger.notify e
       Rails.logger.error e.inspect
       head 500

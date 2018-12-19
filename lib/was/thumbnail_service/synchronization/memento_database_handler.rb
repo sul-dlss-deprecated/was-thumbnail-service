@@ -17,11 +17,11 @@ module Was
         end
 
         def insert_memento_into_database
-          unless  @uri_id.present? &&  @memento_uri.present? && @memento_datetime.present? &&
-                   !@simhash_value.nil? && @simhash_value.positive?
+          unless @uri_id.present? && @memento_uri.present? && @memento_datetime.present? &&
+                 !@simhash_value.nil? && @simhash_value.positive?
 
-            raise 'Memento insert is missing required fields. '+
-                  "Uri-id: #{@uri_id}, Memento-uri: #{@memento_uri}, "+
+            raise 'Memento insert is missing required fields. ' \
+                  "Uri-id: #{@uri_id}, Memento-uri: #{@memento_uri}, " \
                   "Memento-datetime: #{@memento_datetime}, Simhash_value: #{@simhash_value}"
           end
 
@@ -37,19 +37,19 @@ module Was
 
         def compute_simhash_value(memento_text)
           if memento_text.present?
-            memento_text.simhash(:preserve_punctuation => true, :stop_words => false)
+            memento_text.simhash(preserve_punctuation: true, stop_words: false)
           else
             0
           end
         end
 
         def download_memento_text
-          return '' if @memento_uri.nil? || @memento_uri.empty?
-          datetime_path = @memento_uri.match(/\/\d+{14}\//).to_s
+          return '' if @memento_uri.blank?
+          datetime_path = @memento_uri.match(%r{/\d+{14}/}).to_s
           return '' if datetime_path.empty?
 
           # Insert id_ after the datetime part in the uri to avoid wayback rewriting page w its own header
-          memento_uri_unwritten = @memento_uri.sub(datetime_path, datetime_path[0..-2]+'id_/')
+          memento_uri_unwritten = @memento_uri.sub(datetime_path, datetime_path[0..-2] + 'id_/')
           begin
             # NOTE:  these timeouts don't work - wrong
             # response = RestClient.get(memento_uri_unwritten, :timeout => 60, :open_timeout => 60)

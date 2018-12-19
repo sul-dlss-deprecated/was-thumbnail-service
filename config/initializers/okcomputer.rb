@@ -22,7 +22,7 @@ wayback_timemap_root_url = "#{Settings.wayback_timemap_uri.split('.edu').first}.
 OkComputer::Registry.register 'external-wayback_timemap_root_url', OkComputer::HttpCheck.new(wayback_timemap_root_url)
 
 # check if delayed_job is known to app by looking for any priority and a queue size <= 10,000
-OkComputer::Registry.register 'delayed-job-size', OkComputer::DelayedJobBackedUpCheck.new(0, 10000, greater_than_priority: 0)
+OkComputer::Registry.register 'delayed-job-size', OkComputer::DelayedJobBackedUpCheck.new(0, 10_000, greater_than_priority: 0)
 
 # ------------------------------------------------------------------------------
 
@@ -38,4 +38,4 @@ OkComputer::Registry.register 'external-purl_status_url', OkComputer::HttpCheck.
 wayback_root_url = "#{Settings.wayback_uri.split('.edu').first}.edu"
 OkComputer::Registry.register 'external-wayback_root_uri', OkComputer::HttpCheck.new(wayback_root_url)
 
-OkComputer.make_optional %w(external-purl_status_url external-wayback_root_uri)
+OkComputer.make_optional %w[external-purl_status_url external-wayback_root_uri]

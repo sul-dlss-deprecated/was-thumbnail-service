@@ -5,7 +5,7 @@ module Api
     before_action :find_uri, only: [:list]
     respond_to :json
 
-    #https://was-thumbnail.example.org/api/v1/was/thumbnails/druid_id/jx731tz7613?format=json
+    # https://was-thumbnail.example.org/api/v1/was/thumbnails/druid_id/jx731tz7613?format=json
     def list
       uri_id = @seed_uri[:id]
       @druid_id = @seed_uri[:druid_id]
@@ -14,17 +14,19 @@ module Api
     end
 
     private
+
     def find_uri
       if params[:druid_id].present?
         @seed_uri = SeedUri.find_by(druid_id: params[:druid_id])
-        head 404 unless @seed_uri.present?
+        head 404 if @seed_uri.blank?
       elsif params[:uri].present?
         @seed_uri = SeedUri.find_by(uri: params[:uri])
-        head 404 unless @seed_uri.present?
+        head 404 if @seed_uri.blank?
       else
         head 404
       end
     end
+
     def get_thumb_size(param_thumb_size)
       if param_thumb_size.present? && param_thumb_size.to_i.positive?
         param_thumb_size.to_i

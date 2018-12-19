@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
-  root to: "admin#seeds"
+  root to: 'admin#seeds'
 
   get 'jobs/retry'
 

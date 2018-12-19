@@ -3,7 +3,6 @@
 include Was::ThumbnailService::Picker
 
 describe Was::ThumbnailService::Picker::MementoPicker do
-
   describe '.initialize' do
     it 'initializes the object with the parameters' do
       picker = MementoPicker.new(1)
@@ -14,7 +13,7 @@ describe Was::ThumbnailService::Picker::MementoPicker do
   describe '.pick_mementos' do
     it 'calls the steps to choose the mementos' do
       picker = MementoPicker.new(1)
-      mem_list = [{:id=>101, :simhash_value=>9876543210987654321},{:id=>102, :simhash_value=>1234567890123456789}]
+      mem_list = [{ id: 101, simhash_value: 9_876_543_210_987_654_321 }, { id: 102, simhash_value: 1_234_567_890_123_456_789 }]
       chosen_list = [101, 102]
 
       allow(picker).to receive(:upload_mementos_list).and_return(mem_list)
@@ -32,12 +31,12 @@ describe Was::ThumbnailService::Picker::MementoPicker do
   describe '.upload_mementos_list', :mysql do
     before :each do
       Memento.delete_all
-      Memento.create({ :id=>101, :uri_id=>1, :simhash_value=>9876543210987654321})
-      Memento.create({ :id=>102, :uri_id=>1, :simhash_value=>1234567890123456789})
+      Memento.create(id: 101, uri_id: 1, simhash_value: 9_876_543_210_987_654_321)
+      Memento.create(id: 102, uri_id: 1, simhash_value: 1_234_567_890_123_456_789)
     end
     it 'fill memento_list with a list of mementos' do
       picker = MementoPicker.new(1)
-      expect(picker.upload_mementos_list).to eq([{:id=>101, :simhash_value=>9876543210987654321},{:id=>102, :simhash_value=>1234567890123456789}])
+      expect(picker.upload_mementos_list).to eq([{ id: 101, simhash_value: 9_876_543_210_987_654_321 }, { id: 102, simhash_value: 1_234_567_890_123_456_789 }])
     end
     it 'keeps the memento_list empty or uri without mementos' do
       picker = MementoPicker.new(2)
@@ -58,15 +57,15 @@ describe Was::ThumbnailService::Picker::MementoPicker do
 
   describe '.update_chosen_list_database' do
     before :each do
-      Memento.create({:id=>101, :is_selected=>0})
-      Memento.create({:id=>102, :is_selected=>0})
+      Memento.create(id: 101, is_selected: 0)
+      Memento.create(id: 102, is_selected: 0)
     end
     it 'updates the choosen list in the database with is_selected =1 ' do
       picker = MementoPicker.new(1)
       expect(Memento.find(101).is_selected).to eq(false)
       expect(Memento.find(102).is_selected).to eq(false)
 
-      picker.update_chosen_list_database([101,102])
+      picker.update_chosen_list_database([101, 102])
       expect(Memento.find(101).is_selected).to eq(true)
       expect(Memento.find(101).is_selected).to eq(true)
     end
@@ -75,5 +74,4 @@ describe Was::ThumbnailService::Picker::MementoPicker do
       picker.update_chosen_list_database([])
     end
   end
-
 end

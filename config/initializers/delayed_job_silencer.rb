@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # from http://stackoverflow.com/questions/20081186/how-to-ignore-delayed-job-query-logging-in-development-on-rails
-if %w(development test).include? Rails.env
+if %w[development test].include? Rails.env
   module Delayed
     module Backend
       module ActiveRecord

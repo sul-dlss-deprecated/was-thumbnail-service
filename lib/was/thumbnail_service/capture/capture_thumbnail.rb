@@ -6,7 +6,6 @@ module Was
   module ThumbnailService
     module Capture
       class CaptureThumbnail
-
         def initialize(id, druid_id, memento_uri, memento_datetime)
           @id = id
           @druid_id = druid_id
@@ -24,8 +23,8 @@ module Was
 
           resize_temporary_image(@temporary_file + '.jpeg')
           if Settings.jp2_required
-              Assembly::Image.new(@temporary_file + '.jpeg').create_jp2(:output=>@temporary_file + '.jp2')
-              FileUtils.rm @temporary_file + '.jpeg'
+            Assembly::Image.new(@temporary_file + '.jpeg').create_jp2(output: @temporary_file + '.jp2')
+            FileUtils.rm @temporary_file + '.jpeg'
           end
           save_to_stack
           update_database
@@ -37,9 +36,9 @@ module Was
             result = Phantomjs.run(Settings.phantom_js_script, @memento_uri, @temporary_file + '.jpeg')
           rescue StandardError => e
             Rails.logger.warn e
-            result = result + "\nException in generating thumbnail. #{e.message}\n#{e.backtrace.inspect}"
+            result += "\nException in generating thumbnail. #{e.message}\n#{e.backtrace.inspect}"
           end
-          return result
+          result
         end
 
         def update_database
@@ -57,20 +56,20 @@ module Was
             FileUtils.mv @temporary_file + '.jpeg', thumbnail_file
           end
         end
+
         def resize_temporary_image(temporary_image)
           image = MiniMagick::Image.open(temporary_image)
           width = image.width
           height = image.height
 
-          if width > height
-            resize_dimension = ' 400x '
-          else
-            resize_dimension = ' x400 '
-          end
+          resize_dimension = if width > height
+                               ' 400x '
+                             else
+                               ' x400 '
+                             end
           image.resize resize_dimension
           image.write(temporary_image)
         end
-
       end
     end
   end

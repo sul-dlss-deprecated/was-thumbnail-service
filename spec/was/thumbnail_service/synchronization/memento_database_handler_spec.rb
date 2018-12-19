@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
-
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
     config.hook_into :webmock # or :fakeweb
@@ -33,37 +32,37 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
 
   describe '.insert_memento_into_database' do
     it 'should raise an error if any required fields is missing' do
-       m_db_handler = MementoDatabaseHandler.new(nil, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', 'Mon, 23 Nov 2001 12:00:00')
-       m_db_handler.instance_variable_set(:@simhash_value,'1234')
-       expect{m_db_handler.insert_memento_into_database}.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
+      m_db_handler = MementoDatabaseHandler.new(nil, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', 'Mon, 23 Nov 2001 12:00:00')
+      m_db_handler.instance_variable_set(:@simhash_value, '1234')
+      expect { m_db_handler.insert_memento_into_database }.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
 
-       m_db_handler = MementoDatabaseHandler.new(1, '', 'Mon, 23 Nov 2001 12:00:00')
-       m_db_handler.instance_variable_set(:@simhash_value,'1234')
-       expect{m_db_handler.insert_memento_into_database}.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
+      m_db_handler = MementoDatabaseHandler.new(1, '', 'Mon, 23 Nov 2001 12:00:00')
+      m_db_handler.instance_variable_set(:@simhash_value, '1234')
+      expect { m_db_handler.insert_memento_into_database }.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
 
-       m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', '')
-       m_db_handler.instance_variable_set(:@simhash_value,'1234')
-       expect{m_db_handler.insert_memento_into_database}.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
+      m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', '')
+      m_db_handler.instance_variable_set(:@simhash_value, '1234')
+      expect { m_db_handler.insert_memento_into_database }.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
 
-       m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', 'Mon, 23 Nov 2001 12:00:00')
-       expect{m_db_handler.insert_memento_into_database}.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
+      m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', 'Mon, 23 Nov 2001 12:00:00')
+      expect { m_db_handler.insert_memento_into_database }.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
 
-       m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', 'Mon, 23 Nov 2001 12:00:00')
-       m_db_handler.instance_variable_set(:@simhash_value,0)
-       expect{m_db_handler.insert_memento_into_database}.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
+      m_db_handler = MementoDatabaseHandler.new(1, 'https://swap.stanford.edu/20120101120000/http://test1.edu/', 'Mon, 23 Nov 2001 12:00:00')
+      m_db_handler.instance_variable_set(:@simhash_value, 0)
+      expect { m_db_handler.insert_memento_into_database }.to raise_error(RuntimeError, /^Memento insert is missing required fields/)
     end
     it 'should insert memento into the database', :mysql do
-       m_db_handler = MementoDatabaseHandler.new(9999, 'https://swap.stanford.edu/20120101120000/http://test2.edu/', 'Mon, 23 Nov 2001 12:00:00')
-       m_db_handler.instance_variable_set(:@simhash_value,9342137274140115447)
-       m_db_handler.insert_memento_into_database
+      m_db_handler = MementoDatabaseHandler.new(9999, 'https://swap.stanford.edu/20120101120000/http://test2.edu/', 'Mon, 23 Nov 2001 12:00:00')
+      m_db_handler.instance_variable_set(:@simhash_value, 9_342_137_274_140_115_447)
+      m_db_handler.insert_memento_into_database
 
-       @test_memento = Memento.find_by( memento_uri: 'https://swap.stanford.edu/20120101120000/http://test2.edu/')
-       expect(@test_memento[:uri_id]).to eq(9999)
-       expect(@test_memento[:memento_uri]).to eq('https://swap.stanford.edu/20120101120000/http://test2.edu/')
-       expect(@test_memento[:memento_datetime]).to eq('2001-11-23 12:00:00')
-       expect(@test_memento[:simhash_value]).to eq(9342137274140115447)
-       expect(@test_memento[:is_selected]).to eq(false)
-       expect(@test_memento[:is_thumbnail_captured]).to eq(false)
+      @test_memento = Memento.find_by(memento_uri: 'https://swap.stanford.edu/20120101120000/http://test2.edu/')
+      expect(@test_memento[:uri_id]).to eq(9999)
+      expect(@test_memento[:memento_uri]).to eq('https://swap.stanford.edu/20120101120000/http://test2.edu/')
+      expect(@test_memento[:memento_datetime]).to eq('2001-11-23 12:00:00')
+      expect(@test_memento[:simhash_value]).to eq(9_342_137_274_140_115_447)
+      expect(@test_memento[:is_selected]).to eq(false)
+      expect(@test_memento[:is_thumbnail_captured]).to eq(false)
     end
     after :each do
       @test_memento&.destroy
@@ -74,7 +73,7 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
     it 'should return valid simhash for a string' do
       m_db_handler = MementoDatabaseHandler.new(1, '', '')
       simhash_value = m_db_handler.compute_simhash_value('I\'m a basic string')
-      expect(simhash_value).to eq(9342137274140115447)
+      expect(simhash_value).to eq(9_342_137_274_140_115_447)
     end
     it 'should return 0 for emtpy string' do
       m_db_handler = MementoDatabaseHandler.new(1, '', '')
@@ -121,5 +120,4 @@ describe Was::ThumbnailService::Synchronization::MementoDatabaseHandler do
       expect(memento_text).to eq('')
     end
   end
-
 end

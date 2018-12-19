@@ -3,7 +3,6 @@
 include Was::ThumbnailService::Picker
 
 describe Was::ThumbnailService::Picker::MementoPickerThresholdGrouping do
-
   describe '.choose_mementos' do
     it 'does not raise error when mementos_list is empty array' do
       mem_list = []
@@ -14,12 +13,12 @@ describe Was::ThumbnailService::Picker::MementoPickerThresholdGrouping do
 
   describe '.simhash_hamming_distance' do
     it 'computes the distance based hamming distance for different numbers' do
-      mem_list = [{:id=>101, :simhash_value=>1111111111111111111},{:id=>102, :simhash_value=>1111111111111111112}]
-      expect(MementoPickerThresholdGrouping.simhash_hamming_distance(mem_list,0,1)).to eq(4)
+      mem_list = [{ id: 101, simhash_value: 1_111_111_111_111_111_111 }, { id: 102, simhash_value: 1_111_111_111_111_111_112 }]
+      expect(MementoPickerThresholdGrouping.simhash_hamming_distance(mem_list, 0, 1)).to eq(4)
     end
     it 'computes the distance based hamming distance for the same number' do
-      mem_list = [{:id=>101, :simhash_value=>1111111111111111111},{:id=>102, :simhash_value=>1111111111111111111}]
-      expect(MementoPickerThresholdGrouping.simhash_hamming_distance(mem_list,0,1)).to eq(0)
+      mem_list = [{ id: 101, simhash_value: 1_111_111_111_111_111_111 }, { id: 102, simhash_value: 1_111_111_111_111_111_111 }]
+      expect(MementoPickerThresholdGrouping.simhash_hamming_distance(mem_list, 0, 1)).to eq(0)
     end
   end
 
