@@ -3,7 +3,6 @@
 include Was::ThumbnailService::Synchronization
 
 describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
-
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
     config.hook_into :webmock
@@ -19,17 +18,17 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
   end
 
   describe '.initialize' do
-     it 'initializes the TimemapSynchronization  with uri and uri_id' do
+    it 'initializes the TimemapSynchronization  with uri and uri_id' do
       timemap_parser = TimemapWaybackParser.new('http://test1.edu/')
       expect(timemap_parser.instance_variable_get(:@uri)).to eq('http://test1.edu/')
     end
   end
 
-  describe '.get_timemap' do
+  describe '.timemap' do
     it 'returns memento hash for an existent uri' do
       VCR.use_cassette('slac_timemap') do
         timemap_parser = TimemapWaybackParser.new('http://www.slac.stanford.edu/')
-        memento_hash = timemap_parser.get_timemap
+        memento_hash = timemap_parser.timemap
         expect(memento_hash.length).to eq(5)
         expect(memento_hash['19951222000000']).to eq('https://swap.stanford.edu/19951222000000/http://www.slac.stanford.edu/')
         expect(memento_hash['19990104000000']).to eq('https://swap.stanford.edu/19990104000000/http://www.slac.stanford.edu/')
@@ -38,13 +37,13 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
     it 'return an emtpy memento hash for an non-existent uri' do
       VCR.use_cassette('noexistent_timemap') do
         timemap_parser = TimemapWaybackParser.new('http://non.existent.edu')
-        memento_hash = timemap_parser.get_timemap
+        memento_hash = timemap_parser.timemap
         expect(memento_hash.length).to eq(0)
       end
     end
     it 'returns an emtpy memento hash for an empty uri' do
       timemap_parser = TimemapWaybackParser.new('')
-      memento_hash = timemap_parser.get_timemap
+      memento_hash = timemap_parser.timemap
       expect(memento_hash.length).to eq(0)
     end
   end
@@ -58,7 +57,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
     end
     it 'returns empty string for non-existent URI' do
       VCR.use_cassette('noexistent_timemap') do
-       timemap_parser = TimemapWaybackParser.new('http://non.existent.edu')
+        timemap_parser = TimemapWaybackParser.new('http://non.existent.edu')
         expect(timemap_parser.read_timemap).to eq('')
       end
     end
@@ -78,7 +77,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
       expect(memento_hash['19990104000000']).to eq('https://swap.stanford.edu/19990104000000/http://test2.edu/')
     end
     it 'returns an empty list for timemap without mementos' do
-       timemap_text="<http://slac.stanford.edu>; rel='original',
+      timemap_text = "<http://slac.stanford.edu>; rel='original',
 <https://swap.stanford.edu/timemap/link/http://slac.stanford.edu>; rel='self'; type='application/link-format'; from='Fri, 22 Dec 1995 00:00:00 GMT'; until='Mon, 04 Jan 1999 00:00:00 GMT',
 <https://swap.stanford.edu/http://slac.stanford.edu>; rel='timegate'"
       timemap_parser = TimemapWaybackParser.new('')
@@ -86,7 +85,7 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
       expect(memento_hash.length).to eq(0)
     end
     it 'returns an empty list for invalid timemap' do
-      timemap_text='not valid timemap'
+      timemap_text = 'not valid timemap'
       timemap_parser = TimemapWaybackParser.new('')
       memento_hash = timemap_parser.extract_mementos_from_timemap(timemap_text)
       expect(memento_hash.length).to eq(0)
@@ -116,7 +115,6 @@ describe Was::ThumbnailService::Synchronization::TimemapWaybackParser do
       memento_str = '<not-valid memento'
       memento_hash = timemap_parser.extract_memento_from_memento_string(memento_str)
       expect(memento_hash).to be_nil
-   end
+    end
   end
-
 end

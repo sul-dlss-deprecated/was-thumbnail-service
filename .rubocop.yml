@@ -3,37 +3,9 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
-    - 'Gemfile.lock'
-    - '**/*.md'
     - 'bin/**/*'
-    - 'config/**/*.yml'
     - 'db/**/*'
-    - 'spec/fixtures/**/*'
     - 'vendor/**/*'
 
 Rails:
   Enabled: true
-
-Metrics/LineLength:
-  Max: 200   # would like to get this down to 120 ...
-  Exclude:
-    - 'spec/was/thumbnail_service/capture/capture_thumbnail_spec.rb'
-    - 'spec/was/thumbnail_service/generator_spec.rb'
-    - 'spec/was/thumbnail_service/synchronization/memento_database_handler_spec.rb'
-    - 'spec/was/thumbnail_service/synchronization/timemap_wayback_parser_spec.rb'
-
-# because it can make the code more readable
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
-
-# because it can make the code more readable
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-
-# because it can make the code more readable
-Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-
-# because it's silly to care
-Style/StringLiterals:
-  Enabled: false

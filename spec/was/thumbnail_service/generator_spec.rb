@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 describe Was::ThumbnailService::Generator do
-
   describe '.initialize' do
     it 'initializes the Generator with uri and uri_id' do
       generator = Was::ThumbnailService::Generator.new('http://www.example.org', 5)

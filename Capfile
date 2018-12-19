@@ -27,9 +27,9 @@ require 'capistrano/honeybadger'
 require 'capistrano/passenger'
 require 'capistrano/shared_configs'
 require 'dlss/capistrano'
-require "whenever/capistrano"
+require 'whenever/capistrano'
 
-require "capistrano/scm/git"
+require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.

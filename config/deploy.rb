@@ -6,7 +6,7 @@ set :repo_url, 'https://github.com/sul-dlss/was-thumbnail-service.git'
 # Default branch is :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-set :deploy_to, "/opt/app/was/was-thumbnail-service"
+set :deploy_to, '/opt/app/was/was-thumbnail-service'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -21,12 +21,12 @@ set :log_level, :info
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w(config/database.yml config/honeybadger.yml config/secrets.yml)
+set :linked_files, %w[config/database.yml config/honeybadger.yml config/secrets.yml]
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_dirs, %w(log public/system tmp/cache tmp/pids vendor/bundle)
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :linked_dirs, %w[log public/system tmp/cache tmp/pids vendor/bundle]
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 # honeybadger_env otherwise defaults to rails_env
 set :honeybadger_env, fetch(:stage)
 
