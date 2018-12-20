@@ -51,14 +51,13 @@ module Was
           # Insert id_ after the datetime part in the uri to avoid wayback rewriting page w its own header
           memento_uri_unwritten = @memento_uri.sub(datetime_path, datetime_path[0..-2] + 'id_/')
           begin
-            # NOTE:  these timeouts don't work - wrong
-            # response = RestClient.get(memento_uri_unwritten, :timeout => 60, :open_timeout => 60)
-            RestClient.get(memento_uri_unwritten).encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
-
+            response = Faraday.get(memento_uri_unwritten)
+            raise "#{response.reason_phrase}: #{response.status}" unless response.success?
+            response.body.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
             # NOTE:  if the url gives a 302 to the original, non-wayback url, then who is to say that page still is extant?
             #   and then the 302 becomes a 404, which blows up here.
-          rescue RestClient::Exception => e
-            raise "RestClient error downloading memento text from #{memento_uri_unwritten}.\n#{e.inspect}\nHTTP Status code: #{e.http_code}\n#{e.backtrace.join(%(\n))}"
+          rescue StandardError => e
+            raise "error downloading memento text from #{memento_uri_unwritten}.\n#{e.inspect}\nHTTP Response: #{e.message}\n#{e.backtrace.join(%(\n))}"
           end
         end
       end
