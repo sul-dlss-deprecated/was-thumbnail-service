@@ -32,6 +32,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
+# rubocop:disable Lint/HandleExceptions
 begin
   require 'rspec/core/rake_task'
 
@@ -44,7 +45,6 @@ begin
   end
 rescue LoadError
   # should only get here on production system, and we don't care in that context
-  warn 'RSpec could not run'
 end
 
 begin
@@ -53,8 +53,8 @@ begin
   RuboCop::RakeTask.new(:rubocop)
 rescue LoadError
   # should only get here on production system, and we don't care in that context
-  warn 'RuboCop could not run'
 end
+# rubocop:enable Lint/HandleExceptions
 
 desc 'run continuous integration suite (tests, coverage, rubocop)'
 task ci: %i[rubocop spec]
