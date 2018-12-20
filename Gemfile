@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-gem 'rest-client', '~> 2.0'
+gem 'faraday'
 gem 'simhash' # to compare mementos
 
 gem 'phantomjs' # headless WebKit scriptable with a JavaScript API

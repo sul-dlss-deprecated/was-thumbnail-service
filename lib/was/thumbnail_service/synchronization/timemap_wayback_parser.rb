@@ -20,7 +20,9 @@ module Was
           timemap_uri = "#{Settings.wayback_timemap_uri}#{@uri}"
 
           begin
-            RestClient.get(timemap_uri, timeout: 60, open_timeout: 60)
+            response = Faraday.get(timemap_uri)
+            raise "#{response.reason_phrase}: #{response.status}" unless response.success?
+            response.body
           rescue StandardError => e
             Honeybadger.notify e, context: { timemap_uri: timemap_uri }
             Rails.logger.error { "Error in retrieving the timemap from #{timemap_uri}.\n#{e.message}\n#{e.backtrace}" }
