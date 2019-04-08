@@ -17,7 +17,7 @@ gem 'simhash' # to compare mementos
 gem 'phantomjs' # headless WebKit scriptable with a JavaScript API
 gem 'uglifier' # js compression
 
-gem 'assembly-image'
+gem 'assembly-image', '>= 1.7.4' # 1.7.3 has a potential issue with a rubocop autofix
 gem 'fastimage'
 gem 'mini_magick'
 
