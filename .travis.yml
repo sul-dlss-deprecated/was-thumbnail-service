@@ -2,6 +2,8 @@ language: ruby
 cache: bundler
 rvm:
   - 2.5.3
+services:
+  - mysql
 
 before_script:
   # note that tests fail locally with sqlite
