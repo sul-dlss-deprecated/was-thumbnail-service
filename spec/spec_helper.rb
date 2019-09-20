@@ -4,6 +4,6 @@
 require File.expand_path('../config/environment', __dir__)
 
 require 'coveralls'
-Coveralls.wear!
+Coveralls.wear!('rails')
 
 require 'vcr'
