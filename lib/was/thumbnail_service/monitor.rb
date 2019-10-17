@@ -7,7 +7,7 @@ module Was
         seed_uris = SeedUri.all
 
         seed_uris.each do |seed_uri|
-          uri = seed_uri[:uri]
+          uri = seed_uri[:uri].strip
           uri_id = seed_uri[:id]
 
           mementos_db_count = count_mementos_in_database uri_id
