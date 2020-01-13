@@ -41,6 +41,31 @@ create database dev_was_thumbnail_service;
 create database test_was_thumbnail_service;
 ```
 
+##### MySql (in Docker)
+
+1. Start MySql container
+
+```
+docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=<your password> -p 3306:3306 -d mysql:5
+```
+
+2. Configure `config/database.yml`:
+```
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: <your password>
+  host: 127.0.0.1
+```
+
+And to shut it down:
+```
+docker stop test-mysql
+docker rm -vf test-mysql
+```
+
 ##### SQLite (for local testing)
 
 Revise `config/database.yml` with these changes:
