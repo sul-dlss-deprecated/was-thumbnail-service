@@ -69,6 +69,13 @@ module Was
                              end
           image.resize resize_dimension
           image.write(temporary_image)
+        rescue StandardError => e
+          Honeybadger.notify e, context: Honeybadger.get_context.merge(
+            memento_uri: @memento_uri,
+            memento_datetime: @memento_datetime,
+            temp_image_loc: @temporary_file
+          )
+          Rails.logger.error { "Error resizing temporary image for #{@druid_id} at #{@temporary_file} for uri #{@memento_uri}.\n#{e.message}\n#{e.backtrace}" }
         end
       end
     end
