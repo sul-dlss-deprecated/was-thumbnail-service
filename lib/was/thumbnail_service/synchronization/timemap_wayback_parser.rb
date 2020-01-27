@@ -21,7 +21,7 @@ module Was
 
           begin
             response = Faraday.get(timemap_uri)
-            raise "#{response.reason_phrase}: #{response.status}" unless response.success?
+            raise "#{response.reason_phrase}: #{response.status} for #{timemap_uri}" unless response.success?
             response.body
           rescue StandardError => e
             Honeybadger.notify e, context: { timemap_uri: timemap_uri }
