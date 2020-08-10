@@ -91,7 +91,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     chronic (0.10.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     config (2.2.1)
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
