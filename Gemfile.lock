@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/honeybadger-io/honeybadger-ruby.git
+  revision: 6e1b826891b9a50f089ffa0d6018cdf269050c2b
+  branch: avoid-ar-connections
+  specs:
+    honeybadger (4.7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -135,7 +142,7 @@ GEM
     dry-equalizer (0.3.0)
     dry-inflector (0.2.0)
     dry-initializer (3.0.3)
-    dry-logic (1.0.6)
+    dry-logic (1.0.7)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.2)
       dry-equalizer (~> 0.2)
@@ -175,7 +182,6 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashdiff (1.0.1)
-    honeybadger (4.7.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -366,7 +372,7 @@ DEPENDENCIES
   druid-tools
   faraday
   fastimage
-  honeybadger
+  honeybadger!
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
