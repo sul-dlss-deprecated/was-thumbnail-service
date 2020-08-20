@@ -27,10 +27,7 @@ gem 'whenever', require: false
 
 gem 'config'
 gem 'druid-tools'
-# gem 'honeybadger', '~> 4.2' # for exception reporting
-# See https://github.com/honeybadger-io/honeybadger-ruby/issues/369
-gem 'honeybadger', github: 'honeybadger-io/honeybadger-ruby', branch: 'avoid-ar-connections'
-
+gem 'honeybadger', '~> 4.2' # for exception reporting
 gem 'okcomputer' # for 'upness' monitoring
 
 group :development, :test do
